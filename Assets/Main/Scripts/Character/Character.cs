@@ -1,49 +1,71 @@
-using UnityEditorInternal;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
+/// <summary>
+/// Manages the player character
+/// </summary>
 public class Character : MonoBehaviour
 {
+    // Inputs properties, used in mini-games
     [SerializeField] private InputActionReference slideInputActionReference;
-    private InputAction slideInputAction => slideInputActionReference.action;
+    private InputAction SlideInputAction => slideInputActionReference.action;
 
+    // List of the spots available for the player movement
     [SerializeField] private List<Transform> spots = new List<Transform> ();
 
+    // Speed of the right-left slide character
     [SerializeField, Range(0, 1)] private float offsetSpeed;
+    
+    // Current position index
     private int _actualSpot;
-    public int actualSpot {
-        get { return _actualSpot; }
-        set { 
-            if (value < 0) _actualSpot = 0;
-            if (value > 2) _actualSpot = 2;
+    // Properties for the actual spot, allows us to keep the value between 0 and 2
+    public int ActualSpot {
+        get {
+            return _actualSpot;
+        }
+        set {
+            _actualSpot = value switch {
+                < 0 => 0,
+                > 2 => 2,
+                _   => _actualSpot
+            };
         }
     }
 
+    // True if the character is switching of position
     private bool _isMoving;
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        
+    private void Awake() {
+        // Set the initial value at 1, the middle spot point index
+        ActualSpot = 1;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if(_isMoving) Move();
     }
 
-    public void SetDestination(int modifier)
-    {
+    /// <summary>
+    /// The character movement start by calling this method.
+    /// Set this method on a button
+    /// </summary>
+    /// <param name="modifier">Set this to -1 if you wanna go to the left, 1 if you wanna go to the right</param>
+    public void SetDestination(int modifier) {
+        // If the player is on the left side & go to the left or on the right side & go to the right, do nothing
         if (_actualSpot == 0 && modifier == -1 || _actualSpot == 2 && modifier == 1) return;
-        _actualSpot += modifier;
+        // Modify the current index position
+        ActualSpot += modifier;
         _isMoving = true;
     }
 
-    public void Move()
-    {
+    /// <summary>
+    /// Executes the character movement
+    /// </summary>
+    private void Move() {
         transform.position = Vector3.Lerp(transform.position, spots[_actualSpot].position, offsetSpeed);
+        // Stop the movement if the character has reached the destination
         if (Vector3.Distance(transform.position, spots[_actualSpot].position) <= .1f) _isMoving = false;
     }
 }
