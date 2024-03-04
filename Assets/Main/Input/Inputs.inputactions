@@ -13,24 +13,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Position",
-                    "type": "Value",
-                    "id": "990a90b7-6d9f-45a0-ba17-b0effd176d00",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Touch",
-                    "type": "Button",
-                    "id": "187f5b1c-40a6-4730-aa80-9eccf17a9858",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -90,48 +72,59 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "f41f055c-9cf1-4dde-b4c6-7f53c053454b",
-                    "path": "<Touchscreen>/position",
+                    "name": "Mouse",
+                    "id": "1dc4be1d-0e24-4b09-a1a6-314b97a3ef53",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Position",
-                    "isComposite": false,
+                    "action": "Slide",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "8b357d38-c628-4be5-a625-cf7e91740aac",
-                    "path": "<Mouse>/position",
+                    "name": "up",
+                    "id": "ca2bb2cf-b7bd-4133-adea-48dee2c970d7",
+                    "path": "<Mouse>/delta/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Position",
+                    "action": "Slide",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "2f735128-185a-4e5f-8afb-4359ec7c2f1c",
-                    "path": "<Touchscreen>/Press",
+                    "name": "down",
+                    "id": "e6992bcb-0280-40bd-a68b-c7de04c021d1",
+                    "path": "<Mouse>/delta/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Touch",
+                    "action": "Slide",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "5ad9e896-c9b7-461e-9872-f0c1bdff285f",
-                    "path": "<Mouse>/press",
+                    "name": "left",
+                    "id": "faa48f3b-f56b-4ddb-9bc4-d9b450766a9a",
+                    "path": "<Mouse>/delta/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Touch",
+                    "action": "Slide",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "2cfbd52b-3549-4e70-9103-db8444a1c0c5",
+                    "path": "<Mouse>/delta/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
