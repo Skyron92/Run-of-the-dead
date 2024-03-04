@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
 /// <summary>
@@ -8,10 +6,6 @@ using System.Collections.Generic;
 /// </summary>
 public class Character : MonoBehaviour
 {
-    // Inputs properties, used in mini-games
-    [SerializeField] private InputActionReference slideInputActionReference;
-    private InputAction SlideInputAction => slideInputActionReference.action;
-
     // List of the spots available for the player movement
     [SerializeField] private List<Transform> spots = new List<Transform> ();
 
