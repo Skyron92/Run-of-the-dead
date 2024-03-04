@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
     [SerializeField, Range(0, 1)] private float offsetSpeed;
     
     // Current position index
-    private int _actualSpot;
+    private int _actualSpot = 1;
     // Properties for the actual spot, allows us to keep the value between 0 and 2
     public int ActualSpot {
         get {
@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
             _actualSpot = value switch {
                 < 0 => 0,
                 > 2 => 2,
-                _   => _actualSpot
+                _   => value
             };
         }
     }
@@ -64,7 +64,9 @@ public class Character : MonoBehaviour
     /// Executes the character movement
     /// </summary>
     private void Move() {
+        Debug.Log("Move !");
         transform.position = Vector3.Lerp(transform.position, spots[_actualSpot].position, offsetSpeed);
+        Debug.Log(spots[_actualSpot]);
         // Stop the movement if the character has reached the destination
         if (Vector3.Distance(transform.position, spots[_actualSpot].position) <= .1f) _isMoving = false;
     }
