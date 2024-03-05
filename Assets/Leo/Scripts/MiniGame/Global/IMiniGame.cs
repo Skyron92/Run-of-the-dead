@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-/// <summary>
+﻿/// <summary>
 /// All mini games must implement this interface
 /// </summary>
 public interface IMiniGame {
