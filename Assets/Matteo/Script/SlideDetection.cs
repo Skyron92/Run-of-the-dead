@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine.TextCore.LowLevel;
 
 public class SlideDetection : MonoBehaviour
@@ -30,7 +31,8 @@ public class SlideDetection : MonoBehaviour
 
     private void GaySlide()
     {
-        if (_delta.x>0 && globalMenu.anchorMax.x == 2)return;
+        if (_delta.x>0 && globalMenu.anchorMax.x == 2)
+            return;
         if (_delta.x<0 && globalMenu.anchorMax.x == 1)return;
         if (_delta.y>0.5 && _delta.y<-0.5)return;
         if (_delta.x > 0)

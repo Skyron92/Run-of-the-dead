@@ -1,16 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class GameManager : MonoBehaviour
+using TMPro;
 
+public class UIManager : MonoBehaviour
 {
-    public static int beerCount = 200;
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
+    public static TMP_Text beerCountText;
     // Start is called before the first frame update
     void Start()
     {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class UpgradeCravateSysteme : MonoBehaviour
+public class UpgradeArmeSysteme : MonoBehaviour
 {
     [SerializeField] private int requiredBeerCount;
     public TMP_Text beerCountText;
-    public Button button;
+    public Button button; 
 
     void Update()
     {
@@ -25,6 +25,7 @@ public class UpgradeCravateSysteme : MonoBehaviour
     
     public void OnButtonClicked()
     {
+        GetComponent<Button>().image.color = Color.red;
         if (GameManager.beerCount >= requiredBeerCount)
         {
             GameManager.beerCount -= requiredBeerCount;
