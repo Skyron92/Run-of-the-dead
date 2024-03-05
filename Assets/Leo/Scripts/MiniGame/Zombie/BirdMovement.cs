@@ -7,15 +7,16 @@ using Random = UnityEngine.Random;
 
 namespace MiniGame.Zombie
 {
-    public class BirdMovement : MonoBehaviour {
+    [RequireComponent(typeof(Bird))]
+    public class BirdMovement : MonoBehaviour
+    {
 
-        [Header("Move settings")]
-        [SerializeField] private RectTransform bottomLeftTransform;
-        [SerializeField] private RectTransform topRightTransform;
-        private float Left => bottomLeftTransform.position.x;
-        private float Right => topRightTransform.position.x;
-        private float Up => topRightTransform.position.y;
-        private float Down => bottomLeftTransform.position.y;
+        private Bird _birdReference;
+
+        private float Left => _birdReference.GetBottomLeft().position.x;
+        private float Right => _birdReference.GetTopRight().position.x;
+        private float Up => _birdReference.GetTopRight().position.y;
+        private float Down => _birdReference.GetBottomLeft().position.y;
         [SerializeField, Range(0.5f, 5f)] private float moveSpeed;
 
         private Vector2 _destination;
@@ -25,6 +26,7 @@ namespace MiniGame.Zombie
         private TweenerCore<Vector3, Vector3, VectorOptions> tweenerCore;
         private void Awake() {
             _selfRectTransform = GetComponent<RectTransform>();
+            _birdReference = GetComponent<Bird>();
         }
 
         private void OnEnable() {
