@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace MiniGame.Zombie {
@@ -20,8 +21,6 @@ namespace MiniGame.Zombie {
 
         private bool _isDead;
 
-        private bool _canFall;
-
         [SerializeField, Range(0.1f, 1f)] private float fallDuration;
 
         // Event when the player win
@@ -34,7 +33,7 @@ namespace MiniGame.Zombie {
         }
 
         private void CheckIfVariablesIsAssigned() {
-            if (!groundMinTransform || !positionInputActionReference || !touchInputActionReference)
+            if (!groundMinTransform || !positionInputActionReference || !touchInputActionReference || !zombieTransform)
                 Debug.LogError("You have unassigned variables. Check the Bird script on the " + name + " gameObject.");
         }
 
@@ -44,25 +43,25 @@ namespace MiniGame.Zombie {
             TouchInputAction.started += context => {
                 if (!_isDead && PositionIsValid()) Die();
             };
-            TouchInputAction.canceled += context => _canFall = _isDead;
+            TouchInputAction.canceled += context => {
+                if(_isDead) Fall();
+            };
         }
 
         private void Update() {
-            if (_isDead && PositionIsValid() && TouchInputAction.IsInProgress()) TrackInputPosition();
-            else {
-                if (_canFall) {
-                    Fall();
-                }
-            }
+            if (!_isDead || !PositionIsValid() || !TouchInputAction.IsInProgress()) return;
+            TrackInputPosition();
         }
 
         /// <summary>
         /// Follows the finger position
         /// </summary>
         private void TrackInputPosition() {
-            _canFall = false;
+            if(_selfRectTransform == null) return;
             _selfRectTransform.position = InputPosition;
-            if (BirdIsOnZombie()) MiniGameWon?.Invoke(this, MiniGameEventArgs.Empty);
+            if (!BirdIsOnZombie()) return;
+            MiniGameWon?.Invoke(this, MiniGameEventArgs.Empty);
+            Destroy(gameObject, 1f);
         }
 
         /// <summary>
@@ -70,7 +69,7 @@ namespace MiniGame.Zombie {
         /// </summary>
         /// <returns>True if the player touches the bird.</returns>
         private bool PositionIsValid() {
-            return RectTransformUtility.RectangleContainsScreenPoint(_selfRectTransform, InputPosition);
+            return _selfRectTransform != null && RectTransformUtility.RectangleContainsScreenPoint(_selfRectTransform, InputPosition);
         }
 
         /// <summary>
@@ -78,14 +77,14 @@ namespace MiniGame.Zombie {
         /// </summary>
         private void Die() {
             _isDead = true;
-            _canFall = true;
+            Fall();
         }
 
         /// <summary>
         /// Fall of the bird
         /// </summary>
         private void Fall() {
-            Vector3.Lerp(_selfRectTransform.position, groundMinTransform.position, fallDuration);
+            _selfRectTransform.DOMoveY(groundMinTransform.position.y, fallDuration);
         }
 
         private bool BirdIsOnZombie() {
