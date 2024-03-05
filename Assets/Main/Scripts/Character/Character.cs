@@ -58,9 +58,7 @@ public class Character : MonoBehaviour
     /// Executes the character movement
     /// </summary>
     private void Move() {
-        Debug.Log("Move !");
         transform.position = Vector3.Lerp(transform.position, spots[_actualSpot].position, offsetSpeed);
-        Debug.Log(spots[_actualSpot]);
         // Stop the movement if the character has reached the destination
         if (Vector3.Distance(transform.position, spots[_actualSpot].position) <= .1f) _isMoving = false;
     }

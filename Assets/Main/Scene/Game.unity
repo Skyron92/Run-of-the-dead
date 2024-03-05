@@ -1115,9 +1115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f955116395334c944c9c5f80b54d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myInputPosition: {fileID: -5222047949545870860, guid: cc918b61496069342bf8e299f2c4f8aa,
+  myInputPosition: {fileID: 5395757353026614339, guid: cc918b61496069342bf8e299f2c4f8aa,
     type: 3}
-  myInputTouch: {fileID: 249352260208879014, guid: cc918b61496069342bf8e299f2c4f8aa,
+  myInputTouch: {fileID: 5995424857095566631, guid: cc918b61496069342bf8e299f2c4f8aa,
     type: 3}
   plunger: {fileID: 1769671744}
   myPlayZone: {fileID: 1354616538}
@@ -2891,8 +2891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e0839d8bf32e04e9ed2da5a715c679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slideInputActionReference: {fileID: -3423516134463940919, guid: cc918b61496069342bf8e299f2c4f8aa,
-    type: 3}
   spots:
   - {fileID: 1090646683}
   - {fileID: 1443089162}
