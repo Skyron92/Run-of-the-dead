@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DetectCollide : MonoBehaviour, IMiniGame
 {
-    public event IMiniGame.MiniGameWonEvent Victory;
+    public event IMiniGame.MiniGameWonEvent MiniGameWon;
 
     private int _goal = 0;
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class DetectCollide : MonoBehaviour, IMiniGame
     {
         if (_goal >= 2)
         {
-            Victory?.Invoke(this, MiniGameEventArgs.Empty);
+            MiniGameWon?.Invoke(this, MiniGameEventArgs.Empty);
         }
         else
             _goal++;
@@ -30,4 +30,5 @@ public class DetectCollide : MonoBehaviour, IMiniGame
     {
         
     }
+    
 }
