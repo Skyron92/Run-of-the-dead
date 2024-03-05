@@ -9,7 +9,9 @@ public class RoadsManager : MonoBehaviour
     public static List<GameObject> RoadsList = new List<GameObject>();
     [SerializeField] private List<GameObject> initRoadsList = new List<GameObject>();
     public static Road currentRoad;
-    [SerializeField] private Road StartRoad;  
+    [SerializeField] private Road StartRoad;
+
+    public static float Speed = 15f;
 
     private void Awake() {
         // Initialize the current road
