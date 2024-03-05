@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class DetectCollide : MonoBehaviour, IMiniGame
 {
-    public event IMiniGame.MiniGameWonEvent MiniGameWon;
+    public event IMiniGame.MiniGameSuccessEvent MiniGameSuccess;
     [SerializeField] private Slider progressbar;
     private int _goal = 0;
     private int _score = 0;
@@ -21,7 +21,7 @@ public class DetectCollide : MonoBehaviour, IMiniGame
         // Victoire du mini-jeu
         if (_score >= _goal)
         {
-            MiniGameWon?.Invoke(this, MiniGameEventArgs.Empty);
+            MiniGameSuccess?.Invoke(this, MiniGameEventArgs.Empty);
         }
         else
         {

@@ -62,7 +62,7 @@ namespace MiniGame.Zombie {
         private bool _miniGameEnded;
 
         // Event when the player win
-        public event IMiniGame.MiniGameWonEvent MiniGameWon;
+        public event IMiniGame.MiniGameSuccessEvent MiniGameSuccess;
 
         private void Awake() {
             CheckIfVariablesIsAssigned();
@@ -108,7 +108,7 @@ namespace MiniGame.Zombie {
         private void TrackInputPosition() {
             if(_selfRectTransform == null) return;
             if (BirdIsOnZombie()) {
-                MiniGameWon?.Invoke(this, MiniGameEventArgs.Empty);
+                MiniGameSuccess?.Invoke(this, MiniGameEventArgs.Empty);
                 _miniGameEnded = true;
                 Destroy(gameObject, 1f);
             }
@@ -153,5 +153,7 @@ namespace MiniGame.Zombie {
         private bool BirdIsOnZombie() {
             return RectTransformUtility.RectangleContainsScreenPoint(zombieTransform, BirdPosition);
         }
+
+       
     }
 }
