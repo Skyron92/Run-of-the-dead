@@ -15,11 +15,12 @@ public class Character : MonoBehaviour
     // Current position index
     private int _actualSpot = 1;
     // Properties for the actual spot, allows us to keep the value between 0 and 2
-    public int ActualSpot {
+    private int ActualSpot {
         get {
             return _actualSpot;
         }
-        set {
+        set 
+        {
             _actualSpot = value switch {
                 < 0 => 0,
                 > 2 => 2,
