@@ -6,7 +6,8 @@ using UnityEngine;
 public class DetectCollide : MonoBehaviour, IMiniGame
 {
     public event IMiniGame.MiniGameWonEvent Victory;
-    private int goal = 0;
+
+    private int _goal = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +16,12 @@ public class DetectCollide : MonoBehaviour, IMiniGame
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (goal >= 2)
+        if (_goal >= 2)
         {
             Victory?.Invoke(this, MiniGameEventArgs.Empty);
         }
         else
-            goal++;
+            _goal++;
         Debug.Log("collided");
     }
 
