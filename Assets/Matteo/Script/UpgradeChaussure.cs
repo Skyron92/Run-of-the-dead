@@ -5,18 +5,15 @@ using UnityEngine.UI;
 using TMPro;
 public class UpgradeChaussureSysteme : MonoBehaviour
 {
-    [SerializeField] private int beerCount; 
     [SerializeField] private int requiredBeerCount;
-    
-    
-    public Button button;
     public TMP_Text beerCountText;
+    public Button button; 
 
     void Update()
     {
-        beerCountText.text = "" + beerCount;
+        beerCountText.text = "" + GameManager.beerCount;
         
-        if (beerCount >= requiredBeerCount)
+        if (GameManager.beerCount >= requiredBeerCount)
         {
             button.interactable = true;
         }
@@ -28,13 +25,13 @@ public class UpgradeChaussureSysteme : MonoBehaviour
     
     public void OnButtonClicked()
     {
-        if (beerCount >= requiredBeerCount)
+        if (GameManager.beerCount >= requiredBeerCount)
         {
-            beerCount -= requiredBeerCount;
+            GameManager.beerCount -= requiredBeerCount;
             
             requiredBeerCount *= 2;
             
-            Debug.Log("Beer count: " + beerCount);
+            Debug.Log("Beer count: " + GameManager.beerCount);
             Debug.Log("Next required beer count: " + requiredBeerCount);
             
             UpdateButtonInteractivity();
@@ -47,7 +44,7 @@ public class UpgradeChaussureSysteme : MonoBehaviour
     
     private void UpdateButtonInteractivity()
     {
-        if (beerCount >= requiredBeerCount)
+        if (GameManager.beerCount >= requiredBeerCount)
         {
             button.interactable = true;
         }
