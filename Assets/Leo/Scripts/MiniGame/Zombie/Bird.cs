@@ -1,8 +1,7 @@
 ﻿using DG.Tweening;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MiniGame.Zombie {
@@ -20,6 +19,8 @@ namespace MiniGame.Zombie {
         [SerializeField] private InputActionReference touchInputActionReference;
         private InputAction TouchInputAction => touchInputActionReference.action;
 
+        [SerializeField] private RectTransform detectionAreaTransform;
+
         [Header("Die settings")]
         [SerializeField, Range(0.1f, 1f)] private float fallDuration;
         private RectTransform _selfRectTransform;
@@ -27,6 +28,7 @@ namespace MiniGame.Zombie {
         [SerializeField] private RectTransform zombieTransform;
 
         private bool _isDead;
+        private bool _isTracking;
 
         private int _life;
         private int Life {
@@ -36,6 +38,28 @@ namespace MiniGame.Zombie {
 
         private Image _image;
         [SerializeField, Range(0.1f, 1f)] private float fadeDuration;
+        
+        [Header("Move settings")]
+        [SerializeField] private RectTransform bottomLeftTransform;
+        [SerializeField] private RectTransform topRightTransform;
+        private float Left => bottomLeftTransform.position.x;
+        private float Right => topRightTransform.position.x;
+        private float Up => topRightTransform.position.y;
+        private float Down => bottomLeftTransform.position.y;
+
+        public RectTransform GetBottomLeft() {
+            return bottomLeftTransform;
+        }
+        public RectTransform GetTopRight() {
+            return topRightTransform;
+        }
+
+        private Vector3 BirdPosition {
+            get => _selfRectTransform.position;
+            set => _selfRectTransform.position = GetClampedPosition(value);
+        }
+
+        private bool _miniGameEnded;
 
         // Event when the player win
         public event IMiniGame.MiniGameWonEvent MiniGameWon;
@@ -43,6 +67,7 @@ namespace MiniGame.Zombie {
         private void Awake() {
             CheckIfVariablesIsAssigned();
             _selfRectTransform = GetComponent<RectTransform>();
+            Debug.Log(detectionAreaTransform);
             SetupInputs();
             Life = Random.Range(1, 3);
             _image = GetComponent<Image>();
@@ -57,15 +82,23 @@ namespace MiniGame.Zombie {
             positionInputActionReference.action.Enable();
             TouchInputAction.Enable();
             TouchInputAction.started += context => {
-                if (!_isDead && PositionIsValid()) Hit();
+                switch (_isDead) {
+                    case false when PositionIsValid():
+                        Hit();
+                        break;
+                    case true when PositionIsValid():
+                        _isTracking = true;
+                        break;
+                }
             };
             TouchInputAction.canceled += context => {
                 if(_isDead) Fall();
+                _isTracking = false;
             };
         }
 
-        private void Update() {
-            if (!_isDead || !PositionIsValid() || !TouchInputAction.IsInProgress()) return;
+        private void FixedUpdate() {
+            if (!_isDead || !_isTracking || !TouchInputAction.IsInProgress()) return;
             TrackInputPosition();
         }
 
@@ -74,10 +107,16 @@ namespace MiniGame.Zombie {
         /// </summary>
         private void TrackInputPosition() {
             if(_selfRectTransform == null) return;
-            _selfRectTransform.position = InputPosition;
-            if (!BirdIsOnZombie()) return;
-            MiniGameWon?.Invoke(this, MiniGameEventArgs.Empty);
-            Destroy(gameObject, 1f);
+            if (BirdIsOnZombie()) {
+                MiniGameWon?.Invoke(this, MiniGameEventArgs.Empty);
+                _miniGameEnded = true;
+                Destroy(gameObject, 1f);
+            }
+            else BirdPosition = GetClampedPosition(InputPosition);
+        }
+
+        private Vector2 GetClampedPosition(Vector2 value) {
+            return new Vector2(Mathf.Clamp(value.x, Left, Right), Mathf.Clamp(value.y, Down, Up));
         }
 
         /// <summary>
@@ -85,7 +124,7 @@ namespace MiniGame.Zombie {
         /// </summary>
         /// <returns>True if the player touches the bird.</returns>
         private bool PositionIsValid() {
-            return _selfRectTransform != null && RectTransformUtility.RectangleContainsScreenPoint(_selfRectTransform, InputPosition);
+            return detectionAreaTransform != null && RectTransformUtility.RectangleContainsScreenPoint(detectionAreaTransform, InputPosition);
         }
 
         void Hit() {
@@ -99,8 +138,7 @@ namespace MiniGame.Zombie {
         /// </summary>
         private void Die() {
             _isDead = true;
-            BirdMovement birdMovement = gameObject.GetComponent<BirdMovement>();
-            birdMovement.StopMoving();
+            GetComponent<BirdMovement>().StopMoving();
             Fall();
         }
 
@@ -108,11 +146,12 @@ namespace MiniGame.Zombie {
         /// Fall of the bird
         /// </summary>
         private void Fall() {
+            if(_miniGameEnded) return;
             _selfRectTransform.DOMoveY(groundMinTransform.position.y, fallDuration);
         }
 
         private bool BirdIsOnZombie() {
-            return RectTransformUtility.RectangleContainsScreenPoint(zombieTransform, _selfRectTransform.position);
+            return RectTransformUtility.RectangleContainsScreenPoint(zombieTransform, BirdPosition);
         }
     }
 }
