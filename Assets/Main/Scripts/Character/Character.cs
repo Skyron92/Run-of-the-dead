@@ -27,10 +27,12 @@ public class Character : MonoBehaviour
             };
         }
     }
+
+    public static Character Current;
     
     public delegate void MGStartedEvent(object sender, MgStartedEventArgs e);
 
-    public event MGStartedEvent MGstarted;
+    public event MGStartedEvent MgStarted;
 
     // True if the character is switching of position
     private bool _isMoving;
@@ -38,6 +40,7 @@ public class Character : MonoBehaviour
     private void Awake() {
         // Set the initial value at 1, the middle spot point index
         ActualSpot = 1;
+        Current = this;
     }
 
     // Update is called once per frame
@@ -67,10 +70,9 @@ public class Character : MonoBehaviour
         if (Vector3.Distance(transform.position, spots[_actualSpot].position) <= .1f) _isMoving = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PNJ")) {
-            MGstarted?.Invoke(this, new MgStartedEventArgs(other.gameObject.GetComponent<PNJ>().GetMGPrefab()));
+            MgStarted?.Invoke(this, new MgStartedEventArgs(other.gameObject.GetComponent<PNJ>().GetMGPrefab()));
         }
     }
 }

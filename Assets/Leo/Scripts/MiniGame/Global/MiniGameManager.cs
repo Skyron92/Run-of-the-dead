@@ -6,7 +6,16 @@ public class MiniGameManager : MonoBehaviour
     private GameObject _miniGamePrefab;
     private GameObject _miniGameInstance;
 
-    public void SpawnMiniGame(GameObject miniGame, out GameObject instance) {
+    private void Start() {
+        Character.Current.MgStarted += OnMGStarted;
+    }
+
+    private void OnMGStarted(object sender, MgStartedEventArgs e) {
+        SpawnMiniGame(e.MgPrefab, out GameObject instance);
+        _miniGameInstance = instance;
+    }
+
+    private void SpawnMiniGame(GameObject miniGame, out GameObject instance) {
         instance = Instantiate(miniGame);
         _miniGameReference = instance.GetComponent<IMiniGame>();
         BindEvent();
