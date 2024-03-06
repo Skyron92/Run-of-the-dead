@@ -46,6 +46,8 @@ namespace MiniGame.Zombie {
         private float Up => topRightTransform.position.y;
         private float Down => bottomLeftTransform.position.y;
 
+        private readonly Bike _bike = new Bike();
+
         public RectTransform GetBottomLeft() {
             return bottomLeftTransform;
         }
@@ -107,7 +109,7 @@ namespace MiniGame.Zombie {
         private void TrackInputPosition() {
             if(_selfRectTransform == null) return;
             if (BirdIsOnZombie()) {
-                MiniGameSuccess?.Invoke(this, MiniGameEventArgs.Empty);
+                MiniGameSuccess?.Invoke(this, new MiniGameEventArgs(_bike));
                 _miniGameEnded = true;
                 Destroy(gameObject, 1f);
             }

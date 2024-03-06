@@ -2,7 +2,6 @@
 
 public class PNJ : MonoBehaviour
 {
-
     [SerializeField] private GameObject mGPrefab;
     
     public GameObject GetMGPrefab() {

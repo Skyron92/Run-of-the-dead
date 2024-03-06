@@ -30,9 +30,9 @@ public class Character : MonoBehaviour
 
     public static Character Current;
     
-    public delegate void MGStartedEvent(object sender, MgStartedEventArgs e);
+    public delegate void MgStartedEvent(object sender, MgStartedEventArgs e);
 
-    public event MGStartedEvent MgStarted;
+    public event MgStartedEvent MgStarted;
 
     // True if the character is switching of position
     private bool _isMoving;
