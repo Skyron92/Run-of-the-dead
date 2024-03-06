@@ -748,6 +748,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cec0aec27203f42bfa3d5c83fb3c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hereImage: {fileID: 592257515}
+  notHerImage: {fileID: 1060348992}
   globalMenu: {fileID: 1744035391}
   myInput: {fileID: -3423516134463940919, guid: cc918b61496069342bf8e299f2c4f8aa,
     type: 3}
