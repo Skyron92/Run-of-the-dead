@@ -19,8 +19,7 @@ public class Character : MonoBehaviour
         get {
             return _actualSpot;
         }
-        set 
-        {
+        set {
             _actualSpot = value switch {
                 < 0 => 0,
                 > 2 => 2,
@@ -28,6 +27,10 @@ public class Character : MonoBehaviour
             };
         }
     }
+    
+    public delegate void MGStartedEvent(object sender, MgStartedEventArgs e);
+
+    public event MGStartedEvent MGstarted;
 
     // True if the character is switching of position
     private bool _isMoving;
@@ -62,5 +65,12 @@ public class Character : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, spots[_actualSpot].position, offsetSpeed);
         // Stop the movement if the character has reached the destination
         if (Vector3.Distance(transform.position, spots[_actualSpot].position) <= .1f) _isMoving = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PNJ")) {
+            MGstarted?.Invoke(this, new MgStartedEventArgs(other.gameObject.GetComponent<PNJ>().GetMGPrefab()));
+        }
     }
 }
