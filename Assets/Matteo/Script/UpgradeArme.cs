@@ -25,33 +25,6 @@ public class UpgradeArmeSysteme : MonoBehaviour
     
     public void OnButtonClicked()
     {
-        GetComponent<Button>().image.color = Color.red;
-        if (GameManager.beerCount >= requiredBeerCount)
-        {
-            GameManager.beerCount -= requiredBeerCount;
-            
-            requiredBeerCount *= 2;
-            
-            Debug.Log("Beer count: " + GameManager.beerCount);
-            Debug.Log("Next required beer count: " + requiredBeerCount);
-            
-            UpdateButtonInteractivity();
-        }
-        else
-        {
-            Debug.Log("Not enough beers to interact with the button.");
-        }
+        GameManager.UpgradeItem("Arme");
     }
-    
-    private void UpdateButtonInteractivity()
-    {
-        if (GameManager.beerCount >= requiredBeerCount)
-        {
-            button.interactable = true;
-        }
-        else
-        {
-            button.interactable = false;
-        }
-    } 
-}
+} 
