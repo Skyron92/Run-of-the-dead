@@ -1,4 +1,6 @@
 ﻿using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -46,19 +48,23 @@ namespace MiniGame.Zombie {
         private float Up => topRightTransform.position.y;
         private float Down => bottomLeftTransform.position.y;
 
+        private readonly Bike _bike = new Bike();
+
         public RectTransform GetBottomLeft() {
             return bottomLeftTransform;
         }
         public RectTransform GetTopRight() {
             return topRightTransform;
         }
-
+        
         private Vector3 BirdPosition {
             get => _selfRectTransform.position;
             set => _selfRectTransform.position = GetClampedPosition(value);
         }
 
         private bool _miniGameEnded;
+
+        private TweenerCore<Vector3, Vector3, VectorOptions> _tween;
 
         // Event when the player win
         public event IMiniGame.MiniGameSuccessEvent MiniGameSuccess;
@@ -86,6 +92,7 @@ namespace MiniGame.Zombie {
                         Hit();
                         break;
                     case true when PositionIsValid():
+                        StopFall();
                         _isTracking = true;
                         break;
                 }
@@ -106,8 +113,8 @@ namespace MiniGame.Zombie {
         /// </summary>
         private void TrackInputPosition() {
             if(_selfRectTransform == null) return;
-            if (BirdIsOnZombie()) {
-                MiniGameSuccess?.Invoke(this, MiniGameEventArgs.Empty);
+            if (IsOnZombie(BirdPosition)) {
+                MiniGameSuccess?.Invoke(this, new MiniGameEventArgs(_bike));
                 _miniGameEnded = true;
                 Destroy(gameObject, 1f);
             }
@@ -146,11 +153,16 @@ namespace MiniGame.Zombie {
         /// </summary>
         private void Fall() {
             if(_miniGameEnded) return;
-            _selfRectTransform.DOMoveY(groundMinTransform.position.y, fallDuration);
+            _tween = _selfRectTransform.DOMoveY(groundMinTransform.position.y, fallDuration);
         }
 
-        private bool BirdIsOnZombie() {
-            return RectTransformUtility.RectangleContainsScreenPoint(zombieTransform, BirdPosition);
+        private void StopFall() {
+            if(_tween == null) return;
+            _tween.Kill();
+        }
+
+        public bool IsOnZombie(Vector2 position) {
+            return RectTransformUtility.RectangleContainsScreenPoint(zombieTransform, position);
         }
 
        
