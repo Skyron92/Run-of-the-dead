@@ -11,6 +11,9 @@ public class SlideDetection : MonoBehaviour
 {
     public Image hereImage;
     public Image notHerImage;
+
+    private Sprite spriteHere;
+    private Sprite spriteNotHere;
     
     public RectTransform globalMenu;
     
@@ -21,6 +24,9 @@ public class SlideDetection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteHere = hereImage.sprite;
+        spriteNotHere = notHerImage.sprite;
+        
         SlideInputAction.Enable();
         SlideInputAction.started += context => Slide(); 
        // SlideInputAction.performed += context => ;
@@ -34,19 +40,29 @@ public class SlideDetection : MonoBehaviour
 
     private void Slide()
     {
-        if (_delta.x>0 && globalMenu.anchorMax.x == 2)return;
-        if (_delta.x<0 && globalMenu.anchorMax.x == 1)return;
+        if (_delta.x > 0 && globalMenu.anchorMax.x == 2)return;
+        if (_delta.x < 0 && globalMenu.anchorMax.x == 1) return;
         if (_delta.y>0.5 && _delta.y<-0.5)return;
-        
+       
         if (_delta.x > 0)
         {
-                Invoke("ExchangeImages",0.5f);
+            if (hereImage.sprite != spriteNotHere)
+            {
+                // Si c'est le cas, échangez les images
+                ExchangeImages();
+            }
+            
             globalMenu.DOAnchorMax(new Vector2(2, globalMenu.anchorMax.y),0.25f);
             globalMenu.DOAnchorMin(new Vector2(1, globalMenu.anchorMin.y),0.25f);
         }
         if (_delta.x < 0)
         {
-            Invoke("ExchangeImages",0.5f);
+            if (hereImage.sprite != spriteHere)
+            {
+                // Si c'est le cas, échangez les images
+                ExchangeImages();
+            }
+            
             globalMenu.DOAnchorMax(new Vector2(1, globalMenu.anchorMax.y),0.25f);
             globalMenu.DOAnchorMin(new Vector2(0, globalMenu.anchorMin.y),0.25f);
         }
