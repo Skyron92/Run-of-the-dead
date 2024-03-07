@@ -122,3 +122,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mGPrefab: {fileID: 2550272603910688467, guid: f679093b83803a3489afc7b8e7a93910,
     type: 3}
+  dialogBox: {fileID: 9222759601367522330, guid: e13ddef727eb58f43970ae228310a834,
+    type: 3}

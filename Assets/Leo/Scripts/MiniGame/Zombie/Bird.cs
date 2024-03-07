@@ -49,13 +49,6 @@ namespace MiniGame.Zombie {
         private float Down => bottomLeftTransform.position.y;
 
         private readonly Bike _bike = new Bike();
-
-        public RectTransform GetBottomLeft() {
-            return bottomLeftTransform;
-        }
-        public RectTransform GetTopRight() {
-            return topRightTransform;
-        }
         
         private Vector3 BirdPosition {
             get => _selfRectTransform.position;

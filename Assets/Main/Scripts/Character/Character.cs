@@ -72,7 +72,8 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PNJ")) {
-            MgStarted?.Invoke(this, new MgStartedEventArgs(other.gameObject.GetComponent<PNJ>().GetMGPrefab()));
+            PNJ pnj = other.gameObject.GetComponent<PNJ>();
+            MgStarted?.Invoke(this, new MgStartedEventArgs(pnj.GetMGPrefab(), pnj.GetDiologBox()));
         }
     }
 }
