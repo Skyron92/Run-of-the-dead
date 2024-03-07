@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 /// <summary>
@@ -43,11 +44,11 @@ public class RoadsManager : MonoBehaviour
     }
 
     public static void StopMovement() {
-        CurrentSpeed = 0;
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, 0f, 1f);
     }
 
     public static void StartMovement() {
-        CurrentSpeed = BaseSpeed;
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, BaseSpeed, 1f);
     }
     
 }

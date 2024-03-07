@@ -33,7 +33,6 @@ public class Road : MonoBehaviour
         float NewSize = SizeRef.GetComponent<BoxCollider>().size.z / 2;
         float CurrentSize = RoadsManager.currentRoad.SizeRef.GetComponent<BoxCollider>().size.z / 2;
         float Offset = NewSize + CurrentSize;
-        Debug.Log("Offset = " + Offset);
         return new Vector3(_nextposition.x, _nextposition.y, RoadsManager.currentRoad.transform.position.z + Offset);
     }
 }
