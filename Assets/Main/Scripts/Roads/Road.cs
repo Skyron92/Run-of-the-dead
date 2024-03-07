@@ -21,7 +21,7 @@ public class Road : MonoBehaviour
     
     private void Move()
     {
-        _nextposition = new Vector3(_nextposition.x, _nextposition.y, _nextposition.z - RoadsManager.Speed * Time.deltaTime);
+        _nextposition = new Vector3(_nextposition.x, _nextposition.y, _nextposition.z - RoadsManager.CurrentSpeed * Time.deltaTime);
     }
 
     /// <summary>
