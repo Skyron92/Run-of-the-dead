@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
             case ItemType.Chaussure:
                 return 15f * Mathf.Pow(1.5f, chaussureLevel - 1);
             default:
-                Debug.LogError("Unknown item type: " + itemType);
+                Debug.Log("Unknown item type: " + itemType);
                 return 0f;
         }
     }

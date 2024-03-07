@@ -42,7 +42,7 @@ public class UpgradeArmeSysteme : MonoBehaviour
                     break;
             }
             Debug.Log(GetUpgradeCost());
-
+            Debug.Log("Stats for Arme: " + GameManager.GetItemStat(ItemType.Arme));
             Debug.Log("Item upgraded!");
         }
         else
