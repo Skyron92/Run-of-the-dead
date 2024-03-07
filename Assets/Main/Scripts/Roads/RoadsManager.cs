@@ -31,13 +31,13 @@ public class RoadsManager : MonoBehaviour
         // Get a random index in the range of the RoadsList
         int index = Random.Range(0, RoadsList.Count);
 
-        // Instatiate a road and save it in a variable
+        // Instantiate a road and save it in a variable
         var instance = Instantiate(RoadsList[index]);
-
+        Road myRoad = instance.GetComponent<Road>();
         // Set the position of the road
-        instance.transform.position = instance.GetComponent<Road>().GetNextPosition();
+        instance.transform.position = myRoad.GetNextPosition();
 
         // Update the new current road
-        currentRoad = instance.GetComponent<Road>();
+        currentRoad = myRoad;
     }
 }
