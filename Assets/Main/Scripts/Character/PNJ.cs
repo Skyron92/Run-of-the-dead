@@ -1,6 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// PNJ variables
+/// </summary>
 public class PNJ : MonoBehaviour
 {
     [SerializeField] private GameObject mGPrefab;

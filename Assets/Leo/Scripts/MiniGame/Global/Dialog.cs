@@ -4,21 +4,19 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Dialog of the PNJ
+/// </summary>
 public class Dialog : MonoBehaviour
 {
     public delegate void EventHandler(object sender, EventArgs e);
-
     public event EventHandler DisplayEnded;
 
     private TextMeshProUGUI _tmpDialog;
 
+    // Write only variable
     private string DisplayedText {
-        get {
-            return _tmpDialog.text;
-        }
-        set {
-            _tmpDialog.text = value;
-        }
+        set => _tmpDialog.text = value;
     }
 
     [SerializeField] private List<string> dialogContent;
@@ -46,6 +44,9 @@ public class Dialog : MonoBehaviour
         StartCoroutine(DisplayLetterByLetter(Index));
     }
 
+    /// <summary>
+    /// Called by a button
+    /// </summary>
     public void DisplayNext() {
         StopAllCoroutines();
         Index++;
@@ -53,6 +54,11 @@ public class Dialog : MonoBehaviour
         StartCoroutine(DisplayLetterByLetter(Index));
     }
 
+    /// <summary>
+    /// Display method
+    /// </summary>
+    /// <param name="index">The index of the string in the dialogContent list to display</param>
+    /// <returns></returns>
     private IEnumerator DisplayLetterByLetter(int index) {
         for (int i = 0; i < dialogContent[index].Length; i++) {
             DisplayedText = dialogContent[index].Substring(0, i);

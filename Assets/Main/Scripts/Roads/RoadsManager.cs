@@ -11,7 +11,8 @@ public class RoadsManager : MonoBehaviour
     public static Road currentRoad;
     [SerializeField] private Road StartRoad;
 
-    public static float Speed = 15f;
+    public static float CurrentSpeed = BaseSpeed;
+    private const float BaseSpeed = 15f;
 
     private void Awake() {
         // Initialize the current road
@@ -40,4 +41,13 @@ public class RoadsManager : MonoBehaviour
         // Update the new current road
         currentRoad = instance.GetComponent<Road>();
     }
+
+    public static void StopMovement() {
+        CurrentSpeed = 0;
+    }
+
+    public static void StartMovement() {
+        CurrentSpeed = BaseSpeed;
+    }
+    
 }

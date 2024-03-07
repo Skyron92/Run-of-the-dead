@@ -6,10 +6,12 @@ using Random = UnityEngine.Random;
 
 namespace MiniGame.Zombie
 {
+    /// <summary>
+    /// Manages the free movement of the bird (before it dies)
+    /// </summary>
     [RequireComponent(typeof(Bird))]
     public class BirdMovement : MonoBehaviour
     {
-
         [Header("Move settings")]
         [SerializeField] private RectTransform bottomLeftTransform;
         [SerializeField] private RectTransform topRightTransform;

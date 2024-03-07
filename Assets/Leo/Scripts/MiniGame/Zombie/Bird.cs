@@ -142,19 +142,27 @@ namespace MiniGame.Zombie {
         }
 
         /// <summary>
-        /// Fall of the bird
+        /// Makes the bird fall
         /// </summary>
         private void Fall() {
             if(_miniGameEnded) return;
             _tween = _selfRectTransform.DOMoveY(groundMinTransform.position.y, fallDuration);
         }
 
+        /// <summary>
+        /// Interrupts the fall
+        /// </summary>
         private void StopFall() {
             if(_tween == null) return;
             _tween.Kill();
         }
 
-        public bool IsOnZombie(Vector2 position) {
+        /// <summary>
+        /// Check if an element is on the zombie's panel
+        /// </summary>
+        /// <param name="position">Position of the element to check</param>
+        /// <returns></returns>
+        private bool IsOnZombie(Vector2 position) {
             return RectTransformUtility.RectangleContainsScreenPoint(zombieTransform, position);
         }
 

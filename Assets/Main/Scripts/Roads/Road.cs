@@ -15,7 +15,7 @@ public class Road : MonoBehaviour
     
     private void Move()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - RoadsManager.Speed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - RoadsManager.CurrentSpeed * Time.deltaTime);
     }
 
     /// <summary>

@@ -2,6 +2,9 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Provides a scale animation to the button it's attached to
+/// </summary>
 [RequireComponent(typeof(Button))]
 public class ButtonScaleAnimationProvider : MonoBehaviour
 {
@@ -24,7 +27,6 @@ public class ButtonScaleAnimationProvider : MonoBehaviour
             sequence.Kill();
             sequence = null;
         }
-
         sequence = DOTween.Sequence();
         var tween = transform.DOScale(maxScale, scaleUpDuration).onComplete +=
             () => transform.DOScale(_startScale, scaleDownDuration);
