@@ -1,29 +1,39 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// Manages a road
 /// </summary>
 public class Road : MonoBehaviour
 {
-    [SerializeField] private Transform EndRoadRef;
+    [SerializeField] private Transform SizeRef;
+
+    private Vector3 _nextposition
+    {
+        get => transform.position;
+        set => transform.position = value;
+    }
+    
     private void Update() {
         Move();
     }
     
     private void Move()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - RoadsManager.CurrentSpeed * Time.deltaTime);
+        _nextposition = new Vector3(_nextposition.x, _nextposition.y, _nextposition.z - RoadsManager.Speed * Time.deltaTime);
     }
 
     /// <summary>
     /// Calculates the next's road position 
     /// </summary>
     /// <returns>The position of the next road</returns>
-    public Vector3 GetNextPosition() 
+    public Vector3 GetNextPosition()
     {
-        return new Vector3(transform.position.x, transform.position.y, Vector3.Distance(RoadsManager.currentRoad.EndRoadRef.position, RoadsManager.currentRoad.transform.position));
+        float NewSize = SizeRef.GetComponent<BoxCollider>().size.z / 2;
+        float CurrentSize = RoadsManager.currentRoad.SizeRef.GetComponent<BoxCollider>().size.z / 2;
+        float Offset = NewSize + CurrentSize;
+        Debug.Log("Offset = " + Offset);
+        return new Vector3(_nextposition.x, _nextposition.y, RoadsManager.currentRoad.transform.position.z + Offset);
     }
 }

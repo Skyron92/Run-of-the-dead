@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2267620482010402361
+--- !u!1 &2771583662398066529
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,29 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4803877261407773639}
+  - component: {fileID: 5561171725521281763}
+  - component: {fileID: 2963375123623597850}
   m_Layer: 0
-  m_Name: EndRoad
+  m_Name: Sizer
   m_TagString: Untagged
-  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4803877261407773639
+--- !u!4 &5561171725521281763
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2267620482010402361}
+  m_GameObject: {fileID: 2771583662398066529}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 12.025}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6460103208384106996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2963375123623597850
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2771583662398066529}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 24}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3914417496356395745
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,11 +149,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1739345005988665097}
-  - {fileID: 4803877261407773639}
+  - {fileID: 5561171725521281763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5186678526124369521
@@ -162,8 +184,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 078a1da9cef7ebd48aed3eb495f40339, type: 2}
-  - {fileID: 2100000, guid: 66e6275a3bd51b14482a2b8560313271, type: 2}
+  - {fileID: 2100000, guid: cf0dcd2f414bb9f48b30dc9bdc176200, type: 2}
+  - {fileID: 2100000, guid: 28b74721e8cfc8d43a01a3db5c77ccf3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -197,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c572e844c632c849b3f6cf2d2ef4020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndRoadRef: {fileID: 4803877261407773639}
+  SizeRef: {fileID: 5561171725521281763}
 --- !u!65 &3980904891078385642
 BoxCollider:
   m_ObjectHideFlags: 0
