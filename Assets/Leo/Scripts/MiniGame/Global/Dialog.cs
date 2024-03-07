@@ -30,7 +30,6 @@ public class Dialog : MonoBehaviour
             if (_index >= dialogContent.Count - 1) {
                 _isEnded = true;
                 DisplayEnded?.Invoke(this, EventArgs.Empty);
-                Debug.Log("Stop");
                 Destroy(gameObject);
             }
             else _index = value;
@@ -56,7 +55,6 @@ public class Dialog : MonoBehaviour
 
     private IEnumerator DisplayLetterByLetter(int index) {
         for (int i = 0; i < dialogContent[index].Length; i++) {
-            Debug.Log("Display " + index);
             DisplayedText = dialogContent[index].Substring(0, i);
             yield return new WaitForSeconds(delay);
         }

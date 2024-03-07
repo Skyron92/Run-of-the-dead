@@ -8,11 +8,14 @@ public class MiniGameManager : MonoBehaviour
     private GameObject _miniGameInstance;
     private GameObject _dialogBoxInstance;
 
+    [SerializeField] private GameObject runnerButtons;
+
     private void Start() {
         Character.Current.MgStarted += OnMGStarted;
     }
 //coucou
     private void OnMGStarted(object sender, MgStartedEventArgs e) {
+        runnerButtons.SetActive(false);
         SpawnDialogBox(e.DialogBoxPrefab);
         _miniGamePrefab = e.MgPrefab;
     }
@@ -23,7 +26,6 @@ public class MiniGameManager : MonoBehaviour
     }
 
     private void OnDisplayEnded(object sender, EventArgs e) {
-        Debug.Log("Go ");
         Destroy(_dialogBoxInstance);
         SpawnMiniGame(_miniGamePrefab, out GameObject instance);
         _miniGameInstance = instance;
@@ -44,7 +46,7 @@ public class MiniGameManager : MonoBehaviour
     }
 
     private void OnSuccess(object sender, MiniGameEventArgs e) {
-        
+        runnerButtons.SetActive(true);
         StartBonus(e.Bonus);
         UnBindEvent();
         Destroy(_miniGameInstance);
