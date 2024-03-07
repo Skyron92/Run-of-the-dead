@@ -26,15 +26,12 @@ public class Dialog : MonoBehaviour
         get => _index;
         set {
             if (_index >= dialogContent.Count - 1) {
-                _isEnded = true;
                 DisplayEnded?.Invoke(this, EventArgs.Empty);
                 Destroy(gameObject);
             }
             else _index = value;
         }
     }
-
-    private bool _isEnded;
     
     [SerializeField, Range(0.01f, .2f)] private float delay;
     
