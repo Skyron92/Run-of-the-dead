@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arme : MonoBehaviour
+public class Arme : ItemClass
 {
     public string name;
     public int level;

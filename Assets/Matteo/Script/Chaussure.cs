@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chaussure : MonoBehaviour
+public class Chaussure : ItemClass
 {
     public string name;
     public int level;

@@ -7,7 +7,7 @@ public class UpgradeCravateSysteme : MonoBehaviour
 {
     
     public TMP_Text beerCountText;
-    public ItemType itemType;
+    public Cravate cravate;
     public Button button;
 
     void Update()
@@ -25,24 +25,16 @@ public class UpgradeCravateSysteme : MonoBehaviour
         }
     }
 
-    // Méthode appelée lorsque le bouton est cliqué
     public void OnButtonClicked()
     {
-        // Vérifie si le joueur a assez de bière pour améliorer l'item
         if (GameManager.beerCount >= GetUpgradeCost())
         {
-            // Réduit le nombre de bières du coût de l'amélioration
             GameManager.beerCount -= (int)GetUpgradeCost();
-
-            // Augmente le niveau de l'item
-            switch (itemType)
-            {
-                case ItemType.Cravate:
-                    GameManager.cravateLevel++;
-                    break;
-            }
-            Debug.Log(GetUpgradeCost());
-
+            
+            cravate.level++;
+            
+            Debug.Log("Stats for Cravate: " + GameManager.GetCravateStat());
+            
             Debug.Log("Item upgraded!");
         }
         else
@@ -50,16 +42,8 @@ public class UpgradeCravateSysteme : MonoBehaviour
             Debug.Log("Not enough beers to upgrade the item.");
         }
     }
-
-    // Méthode pour obtenir le coût d'amélioration de l'item en fonction de son niveau actuel
     float GetUpgradeCost()
     {
-        switch (itemType)
-        {
-            case ItemType.Cravate:
-                return 300f * Mathf.Pow(1.5f, GameManager.cravateLevel - 1);
-            default: 
-                return 0f;
-        }
+        return 300f * Mathf.Pow(1.5f, cravate.level - 1);
     }
-} 
+}

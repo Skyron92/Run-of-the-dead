@@ -14,27 +14,20 @@ public class GameManager : MonoBehaviour
     public static int cravateLevel = 1;
     public static int armeLevel = 1;
     public static int chaussureLevel = 1;
-
-    // Méthode pour récupérer les statistiques de l'item en fonction de son niveau
-    public static float GetItemStat(ItemType itemType)
+    
+    public static float GetArmeStat()
     {
-        switch (itemType)
-        {
-            case ItemType.Cravate:
-                return 10f * Mathf.Pow(1.5f, cravateLevel - 1);
-            case ItemType.Arme:
-                return 20f * Mathf.Pow(1.5f, armeLevel - 1);
-            case ItemType.Chaussure:
-                return 15f * Mathf.Pow(1.5f, chaussureLevel - 1);
-            default:
-                Debug.Log("Unknown item type: " + itemType);
-                return 0f;
-        }
+        return 20f * Mathf.Pow(1.5f, armeLevel - 1);
+    }
+
+    public static float GetChaussureStat()
+    {
+        return 15f * Mathf.Pow(1.5f, chaussureLevel - 1);
+    }
+    
+    public static float GetCravateStat()
+    {
+        return 15f * Mathf.Pow(1.5f, cravateLevel - 1);
     }
 }
-public enum ItemType
-{
-    Cravate,
-    Arme,
-    Chaussure
-}
+ 

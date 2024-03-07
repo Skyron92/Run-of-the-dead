@@ -7,7 +7,7 @@ public class UpgradeChaussureSysteme : MonoBehaviour
 {
     
     public TMP_Text beerCountText;
-    public ItemType itemType;
+    public Chaussure chaussure;
     public Button button;
 
     void Update()
@@ -25,24 +25,16 @@ public class UpgradeChaussureSysteme : MonoBehaviour
         }
     }
 
-    // Méthode appelée lorsque le bouton est cliqué
     public void OnButtonClicked()
     {
-        // Vérifie si le joueur a assez de bière pour améliorer l'item
         if (GameManager.beerCount >= GetUpgradeCost())
         {
-            // Réduit le nombre de bières du coût de l'amélioration
             GameManager.beerCount -= (int)GetUpgradeCost();
-
-            // Augmente le niveau de l'item
-            switch (itemType)
-            {
-                case ItemType.Chaussure:
-                    GameManager.chaussureLevel++;
-                    break;
-            }
-            Debug.Log(GetUpgradeCost());
-
+            
+            chaussure.level++;
+            
+            Debug.Log("Stats for Chaussure: " + GameManager.GetChaussureStat());
+            
             Debug.Log("Item upgraded!");
         }
         else
@@ -50,16 +42,8 @@ public class UpgradeChaussureSysteme : MonoBehaviour
             Debug.Log("Not enough beers to upgrade the item.");
         }
     }
-
-    // Méthode pour obtenir le coût d'amélioration de l'item en fonction de son niveau actuel
     float GetUpgradeCost()
     {
-        switch (itemType)
-        {
-            case ItemType.Chaussure:
-                return 300f * Mathf.Pow(1.5f, GameManager.chaussureLevel - 1);
-            default: 
-                return 0f;
-        }
+        return 300f * Mathf.Pow(1.5f, chaussure.level - 1);
     }
 }
