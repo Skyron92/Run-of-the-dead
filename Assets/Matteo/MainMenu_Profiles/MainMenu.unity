@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 77511576}
   - component: {fileID: 77511579}
   m_Layer: 5
-  m_Name: Chaussure
+  m_Name: UpgradeChaussure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,8 +403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375c63b62c217eb42be47dcf744e918f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredBeerCount: 10
   beerCountText: {fileID: 836267109}
+  itemType: 2
   button: {fileID: 77511576}
 --- !u!1 &84712043
 GameObject:
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 84712045}
   - component: {fileID: 84712049}
   m_Layer: 5
-  m_Name: Arme
+  m_Name: UpgradeArme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beerCountText: {fileID: 836267109}
+  itemType: 1
   button: {fileID: 84712046}
 --- !u!114 &84712046
 MonoBehaviour:
@@ -3863,7 +3864,7 @@ GameObject:
   - component: {fileID: 2032985872}
   - component: {fileID: 2032985875}
   m_Layer: 5
-  m_Name: Cravate
+  m_Name: UpgradeCravate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3995,8 +3996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ec3bef14e7240419019a7531d856c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredBeerCount: 10
   beerCountText: {fileID: 836267109}
+  itemType: 0
   button: {fileID: 2032985872}
 --- !u!1 &2127682114
 GameObject:

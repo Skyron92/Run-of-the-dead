@@ -5,15 +5,17 @@ using UnityEngine.UI;
 using TMPro;
 public class UpgradeChaussureSysteme : MonoBehaviour
 {
-    [SerializeField] private int requiredBeerCount;
+    
     public TMP_Text beerCountText;
-    public Button button; 
+    public ItemType itemType;
+    public Button button;
 
     void Update()
     {
         beerCountText.text = "" + GameManager.beerCount;
         
-        if (GameManager.beerCount >= requiredBeerCount)
+        // Vérifie si le joueur a assez de bière pour améliorer l'item
+        if (GameManager.beerCount >= GetUpgradeCost())
         {
             button.interactable = true;
         }
@@ -22,35 +24,42 @@ public class UpgradeChaussureSysteme : MonoBehaviour
             button.interactable = false;
         }
     }
-    
+
+    // Méthode appelée lorsque le bouton est cliqué
     public void OnButtonClicked()
     {
-        if (GameManager.beerCount >= requiredBeerCount)
+        // Vérifie si le joueur a assez de bière pour améliorer l'item
+        if (GameManager.beerCount >= GetUpgradeCost())
         {
-            GameManager.beerCount -= requiredBeerCount;
-            
-            requiredBeerCount *= 2;
-            
-            Debug.Log("Beer count: " + GameManager.beerCount);
-            Debug.Log("Next required beer count: " + requiredBeerCount);
-            
-            UpdateButtonInteractivity();
+            // Réduit le nombre de bières du coût de l'amélioration
+            GameManager.beerCount -= (int)GetUpgradeCost();
+
+            // Augmente le niveau de l'item
+            switch (itemType)
+            {
+                case ItemType.Chaussure:
+                    GameManager.chaussureLevel++;
+                    break;
+            }
+            Debug.Log(GetUpgradeCost());
+
+            Debug.Log("Item upgraded!");
         }
         else
         {
-            Debug.Log("Not enough beers to interact with the button.");
+            Debug.Log("Not enough beers to upgrade the item.");
         }
     }
-    
-    private void UpdateButtonInteractivity()
+
+    // Méthode pour obtenir le coût d'amélioration de l'item en fonction de son niveau actuel
+    float GetUpgradeCost()
     {
-        if (GameManager.beerCount >= requiredBeerCount)
+        switch (itemType)
         {
-            button.interactable = true;
+            case ItemType.Chaussure:
+                return 300f * Mathf.Pow(1.5f, GameManager.chaussureLevel - 1);
+            default: 
+                return 0f;
         }
-        else
-        {
-            button.interactable = false;
-        }
-    } 
+    }
 }

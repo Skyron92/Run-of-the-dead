@@ -2,62 +2,39 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 
 {
+
     public static int beerCount = 1000;
 
-    public static float cravateStat = 10f;
-    public static float armeStat = 20f;
-    public static float chaussureStat = 15f;
-    
-    public static float cravateUpgradeCost = 100f;
-    public static float armeUpgradeCost = 300f;
-    public static float chaussureUpgradeCost = 200f;
+    public static int cravateLevel = 1;
+    public static int armeLevel = 1;
+    public static int chaussureLevel = 1;
 
-    private void Awake()
+    // Méthode pour récupérer les statistiques de l'item en fonction de son niveau
+    public static float GetItemStat(ItemType itemType)
     {
-        DontDestroyOnLoad(gameObject);
-    }
-    public static void UpgradeItem(string itemName)
-    {
-        float itemCost;
-        float itemStat;
-
-        switch (itemName)
+        switch (itemType)
         {
-            case "Cravate":
-                itemCost = cravateUpgradeCost;
-                cravateUpgradeCost *= 1.5f;
-                itemStat = cravateStat;
-                cravateStat *= 1.5f;
-                break;
-            case "Arme":
-                itemCost = armeUpgradeCost;
-                armeUpgradeCost *= 1.5f;
-                itemStat = armeStat;
-                armeStat *= 1.5f;
-                break;
-            case "Chaussure":
-                itemCost = chaussureUpgradeCost;
-                chaussureUpgradeCost *= 1.5f;
-                itemStat = chaussureStat;
-                chaussureStat *= 1.5f;
-                break;
+            case ItemType.Cravate:
+                return 10f * Mathf.Pow(1.5f, cravateLevel - 1);
+            case ItemType.Arme:
+                return 20f * Mathf.Pow(1.5f, armeLevel - 1);
+            case ItemType.Chaussure:
+                return 15f * Mathf.Pow(1.5f, chaussureLevel - 1);
             default:
-                Debug.LogError("jsp c quoi : " + itemName);
-                return;
-        }
-
-        if (beerCount >= itemCost)
-        {
-            beerCount -= (int)itemCost;
-            Debug.Log(itemName + " La nouvelle stats: " + itemStat + ", tarpin cher: " + itemCost);
-        }
-        else
-        {
-            Debug.Log("ta pas de biere cheh " + itemName);
+                Debug.LogError("Unknown item type: " + itemType);
+                return 0f;
         }
     }
+}
+public enum ItemType
+{
+    Cravate,
+    Arme,
+    Chaussure
 }
