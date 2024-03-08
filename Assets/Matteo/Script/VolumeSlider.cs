@@ -1,52 +1,24 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
-    public AudioClip[] soundtrack;
+    public AudioMixer audioMixer;
     public Slider volumeSlider;
 
-    AudioSource audioSource;
+    public string volumeParameterName = "Volume";
 
-
-    void Awake()
+    private void Start()
     {
-        DontDestroyOnLoad(transform.gameObject);
+        if (volumeSlider != null)
+            volumeSlider.value = PlayerPrefs.GetFloat(volumeParameterName, 0f);
+       
     }
     
-    void Start()
+    public void SetVolumeLevel()
     {
-        audioSource = GetComponent<AudioSource>();
-
-        if (!audioSource.playOnAwake)
-        {
-            audioSource.clip = soundtrack[Random.Range(0, soundtrack.Length)];
-            audioSource.Play();
-        }
-    }
-
-    void Update()
-    {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.clip = soundtrack[Random.Range(0, soundtrack.Length)];
-            audioSource.Play();
-        }
-    }
-
-    void OnEnable()
-    {
-        volumeSlider.onValueChanged.AddListener(delegate { changeVolume(volumeSlider.value); });
-    }
-    
-    void changeVolume(float sliderValue)
-    {
-        audioSource.volume = sliderValue;
-    }
-
-    void OnDisable()
-    {
-        volumeSlider.onValueChanged.RemoveAllListeners();
+        audioMixer.SetFloat(volumeParameterName, volumeSlider.value);
+        PlayerPrefs.SetFloat(volumeParameterName, volumeSlider.value);
     }
 }
