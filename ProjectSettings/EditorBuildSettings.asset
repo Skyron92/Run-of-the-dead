@@ -14,4 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Leo/Scene/SceneLeo.unity
     guid: bdfa1e97fc33dc44c958975424258c2b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 773ded70074559a4aab7d2bad2806fbc,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 12c5234201c40224b908590611df0657,
+      type: 2}
