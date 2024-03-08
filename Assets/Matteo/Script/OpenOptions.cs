@@ -8,9 +8,20 @@ public class OpenOptions : MonoBehaviour {
 
     public void OpenPanel()
     {
+        SlideDetection slideDetection = FindObjectOfType<SlideDetection>();
+        slideDetection.DisableSlideInputAction();
+        Debug.Log(slideDetection);
         if (Panel != null)
         {
-            Panel.SetActive(true);
+            if (Panel.activeSelf)
+            {
+                Panel.SetActive(false);
+                slideDetection.EnableSlideIpuntAction();
+            }
+            else
+            {
+                Panel.SetActive(true);
+            }
         }
     }
 }

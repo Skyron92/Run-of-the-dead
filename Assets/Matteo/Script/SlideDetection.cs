@@ -20,8 +20,17 @@ public class SlideDetection : MonoBehaviour
     [SerializeField] private InputActionReference myInput;
     private InputAction SlideInputAction => myInput.action; 
     Vector2 _delta => SlideInputAction.ReadValue<Vector2>();
-    
-    // Start is called before the first frame update
+
+
+    public void DisableSlideInputAction()
+    {
+        SlideInputAction.Disable();
+    }
+
+    public void EnableSlideIpuntAction()
+    {
+        SlideInputAction.Enable();
+    }
     void Start()
     {
         spriteHere = hereImage.sprite;
@@ -29,15 +38,7 @@ public class SlideDetection : MonoBehaviour
         
         SlideInputAction.Enable();
         SlideInputAction.started += context => Slide(); 
-       // SlideInputAction.performed += context => ;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void Slide()
     {
         if (_delta.x > 0 && globalMenu.anchorMax.x == 2)return;
@@ -48,7 +49,6 @@ public class SlideDetection : MonoBehaviour
         {
             if (hereImage.sprite != spriteNotHere)
             {
-                // Si c'est le cas, échangez les images
                 ExchangeImages();
             }
             
@@ -59,7 +59,6 @@ public class SlideDetection : MonoBehaviour
         {
             if (hereImage.sprite != spriteHere)
             {
-                // Si c'est le cas, échangez les images
                 ExchangeImages();
             }
             
