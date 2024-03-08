@@ -5,11 +5,16 @@ using UnityEngine.UI;
 using TMPro;
 public class UpgradeCravateSysteme : MonoBehaviour
 {
-    
+    public static UpgradeCravateSysteme Current;
     public TMP_Text beerCountText;
-    public Cravate cravate;
     public Button button;
 
+    private Item _item = new Item("Cravate", 1,10f, 100f);
+    
+    private void Awake()
+    {
+        Current = this;
+    }
     void Update()
     {
         beerCountText.text = "" + GameManager.beerCount;
@@ -31,7 +36,7 @@ public class UpgradeCravateSysteme : MonoBehaviour
         {
             GameManager.beerCount -= (int)GetUpgradeCost();
             
-            cravate.level++;
+            _item.level++;
             
             Debug.Log("Stats for Cravate: " + GameManager.GetCravateStat());
             
@@ -44,6 +49,11 @@ public class UpgradeCravateSysteme : MonoBehaviour
     }
     float GetUpgradeCost()
     {
-        return 300f * Mathf.Pow(1.5f, cravate.level - 1);
+        return 100f * Mathf.Pow(1.5f, _item.level);
+    }
+    
+    public Item GetItem()
+    {
+        return _item;
     }
 }

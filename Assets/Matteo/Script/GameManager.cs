@@ -2,32 +2,29 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class GameManager : MonoBehaviour
-
+    public class GameManager : MonoBehaviour
+    
 {
+    private void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
 
     public static int beerCount = 1000;
-
-    public static int cravateLevel = 1;
-    public static int armeLevel = 1;
-    public static int chaussureLevel = 1;
-    
     public static float GetArmeStat()
     {
-        return 20f * Mathf.Pow(1.5f, armeLevel - 1);
+        return 20f * Mathf.Pow(1.5f,UpgradeArmeSysteme.Current.GetItem().level);
     }
 
     public static float GetChaussureStat()
     {
-        return 15f * Mathf.Pow(1.5f, chaussureLevel - 1);
+        return 15f * Mathf.Pow(1.5f, UpgradeChaussureSysteme.Current.GetItem().level);
     }
     
     public static float GetCravateStat()
     {
-        return 15f * Mathf.Pow(1.5f, cravateLevel - 1);
+        return 10f * Mathf.Pow(1.5f, UpgradeCravateSysteme.Current.GetItem().level);
     }
 }
  

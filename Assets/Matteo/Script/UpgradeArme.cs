@@ -1,15 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
 public class UpgradeArmeSysteme : MonoBehaviour
 {
-    
+    public static UpgradeArmeSysteme Current;
     public TMP_Text beerCountText;
-    public Arme arme;
     public Button button;
+
+    private Item _item = new Item("Arme",1, 20f, 300f);
+
+    private void Awake()
+    {
+        Current = this;
+    }
 
     void Update()
     {
@@ -32,7 +38,7 @@ public class UpgradeArmeSysteme : MonoBehaviour
         {
             GameManager.beerCount -= (int)GetUpgradeCost();
             
-            arme.level++;
+            _item.level++;
             
             Debug.Log("Stats for Arme: " + GameManager.GetArmeStat());
             
@@ -45,6 +51,12 @@ public class UpgradeArmeSysteme : MonoBehaviour
     }
     float GetUpgradeCost()
     {
-        return 300f * Mathf.Pow(1.5f, arme.level - 1);
+        return _item.upgradeCost * Mathf.Pow(1.5f, _item.level);
+        
+    }
+
+    public Item GetItem()
+    {
+        return _item;
     }
 }

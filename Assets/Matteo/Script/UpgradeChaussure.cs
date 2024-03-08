@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +6,21 @@ using UnityEngine.UI;
 using TMPro;
 public class UpgradeChaussureSysteme : MonoBehaviour
 {
-    
+    public static UpgradeChaussureSysteme Current;
     public TMP_Text beerCountText;
-    public Chaussure chaussure;
     public Button button;
+
+    private Item _item = new Item("Chaussure", 1, 15f, 200f);
+
+    private void Awake()
+    {
+        Current = this;
+    }
 
     void Update()
     {
         beerCountText.text = "" + GameManager.beerCount;
         
-        // Vérifie si le joueur a assez de bière pour améliorer l'item
         if (GameManager.beerCount >= GetUpgradeCost())
         {
             button.interactable = true;
@@ -31,7 +37,7 @@ public class UpgradeChaussureSysteme : MonoBehaviour
         {
             GameManager.beerCount -= (int)GetUpgradeCost();
             
-            chaussure.level++;
+            _item.level++;
             
             Debug.Log("Stats for Chaussure: " + GameManager.GetChaussureStat());
             
@@ -44,6 +50,11 @@ public class UpgradeChaussureSysteme : MonoBehaviour
     }
     float GetUpgradeCost()
     {
-        return 300f * Mathf.Pow(1.5f, chaussure.level - 1);
+        return 200f * Mathf.Pow(1.5f, _item.level);
+    }
+    
+    public Item GetItem()
+    {
+        return _item;
     }
 }
