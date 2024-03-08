@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PNJ
   - MiniGame
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
