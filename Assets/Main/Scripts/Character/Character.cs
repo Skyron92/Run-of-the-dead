@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEditor;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -47,6 +48,8 @@ public class Character : MonoBehaviour
 
     // True if the character is switching of position
     private bool _isMoving;
+    
+    private bool _isGrounded = true;
 
     private void Awake() {
         // Set the initial value at 1, the middle spot point index
@@ -57,27 +60,22 @@ public class Character : MonoBehaviour
         positionInputActionReference.action.Enable();
 
         TapInputAction.started += context => {
+            
             SetDestination(GetTargetIndex());
         };
         SlideInputAction.started += context => {
-            Jump();
+            if (SlideInputValue.y > 0.2f) Jump();
         };
-    }
-
-    private void Start()
-    {
-        transform.DOJump(new Vector3(0, 2, 2), 2, 1, 1f);
-    }
-
-    // Update is called once per frame
-    void Update() {
-        if(_isMoving) Move();
+       /* SlideInputAction.started += context => {
+            Debug.Log("Slide");
+           if(!_isGrounded) Jump();
+        };*/
     }
 
     private int GetTargetIndex() {
-        bool left = PositionInputValue.x < Screen.width / 2;
-        bool right = PositionInputValue.x > Screen.width / 2;
-        if (_actualSpot == 0 && left || _actualSpot == 2 && right) return _actualSpot;
+        bool left = PositionInputValue.x < Screen.width *0.4f;
+        bool right = PositionInputValue.x > Screen.width * .4f;
+        if (_actualSpot == 0 && left || _actualSpot == 2 && right || SlideInputValue.y >= 0.5f) return _actualSpot;
         return left ? -1 : 1;
     }
 
@@ -91,21 +89,22 @@ public class Character : MonoBehaviour
         if (_actualSpot == 0 && modifier == -1 || _actualSpot == 2 && modifier == 1) return;
         // Modify the current index position
         ActualSpot += modifier;
-        _isMoving = true;
+        Move();
     }
 
     /// <summary>
     /// Executes the character movement
     /// </summary>
     private void Move() {
-        transform.position = Vector3.Lerp(transform.position, spots[_actualSpot].position, offsetSpeed);
-        // Stop the movement if the character has reached the destination
-        if (Vector3.Distance(transform.position, spots[_actualSpot].position) <= .1f) _isMoving = false;
+        transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true);
     }
 
-    private void Jump() {
-        if(SlideInputValue.y <= 0.5f) return;
-       // transform.DOJump(new Vector3(0, 2, 2), 2, 1, 1f);
+    private void Jump() { 
+        Debug.Log("Jump");
+       transform.DOMoveY(6.5f, .2f, true).onComplete += () => {
+           transform.DOMoveY(1.8f, .2f, true).onComplete += () => _isGrounded = true;
+       };
+       _isGrounded = false;
     }
 
     private void OnTriggerEnter(Collider other) {
