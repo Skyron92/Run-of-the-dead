@@ -18,11 +18,8 @@ public class Character : MonoBehaviour
 
     [SerializeField] private InputActionReference slideInputActionReference;
     [SerializeField] private InputActionReference tapInputActionReference;
-    [SerializeField] private InputActionReference positionInputActionReference;
-    private InputAction TapInputAction => tapInputActionReference.action;
     private InputAction SlideInputAction => slideInputActionReference.action;
     private Vector2 SlideInputValue => SlideInputAction.ReadValue<Vector2>();
-    private Vector2 PositionInputValue => positionInputActionReference.action.ReadValue<Vector2>();
     
     // Current position index
     private int _actualSpot = 1;
@@ -41,7 +38,8 @@ public class Character : MonoBehaviour
     }
 
     public static Character Current;
-    
+
+    private bool _canMove = true;
     public delegate void MgStartedEvent(object sender, MgStartedEventArgs e);
 
     public event MgStartedEvent MgStarted;
@@ -56,15 +54,8 @@ public class Character : MonoBehaviour
         ActualSpot = 1;
         Current = this;
         SlideInputAction.Enable();
-        TapInputAction.Enable();
-        positionInputActionReference.action.Enable();
-
-        TapInputAction.started += context => {
-            
-            SetDestination(GetTargetIndex());
-        };
         SlideInputAction.started += context => {
-            if (SlideInputValue.y > 0.2f) Jump();
+            OnSlide();
         };
        /* SlideInputAction.started += context => {
             Debug.Log("Slide");
@@ -72,11 +63,19 @@ public class Character : MonoBehaviour
         };*/
     }
 
-    private int GetTargetIndex() {
-        bool left = PositionInputValue.x < Screen.width *0.4f;
-        bool right = PositionInputValue.x > Screen.width * .4f;
-        if (_actualSpot == 0 && left || _actualSpot == 2 && right || SlideInputValue.y >= 0.5f) return _actualSpot;
-        return left ? -1 : 1;
+    private void OnSlide() {
+        if(!_canMove) return;
+        // To the left
+        if (Mathf.Abs(SlideInputValue.y) >= Mathf.Abs(SlideInputValue.x) && _isGrounded && SlideInputValue.y >= .4f) {
+            Jump();
+            return;
+        }
+        if(_canMove) { 
+            if (SlideInputValue.x <= -.6f) {
+                SetDestination(-1);
+            }
+            if(SlideInputValue.x >= .6f) SetDestination(1);
+        }
     }
 
     /// <summary>
@@ -96,12 +95,15 @@ public class Character : MonoBehaviour
     /// Executes the character movement
     /// </summary>
     private void Move() {
-        transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true);
+        if(!_canMove) return;
+        _canMove = false;
+        transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true).onComplete += () => _canMove = true;
     }
 
-    private void Jump() { 
-        Debug.Log("Jump");
+    private void Jump() {
+        _canMove = false;
        transform.DOMoveY(6.5f, .2f, true).onComplete += () => {
+           _canMove = true;
            transform.DOMoveY(1.8f, .2f, true).onComplete += () => _isGrounded = true;
        };
        _isGrounded = false;
