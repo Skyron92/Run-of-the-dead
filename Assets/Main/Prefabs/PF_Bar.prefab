@@ -73,10 +73,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6326238625028954baf5ab00d4e44a61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 53ee783e144f3f941bbd5497bdece4cb,
+        type: 3}
+    - target: {fileID: -7511558181221131132, guid: 6326238625028954baf5ab00d4e44a61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: b5046aa24028cfe43815bbd5ab1e1c78,
+        type: 3}
+    - target: {fileID: -7511558181221131132, guid: 6326238625028954baf5ab00d4e44a61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 66f2ab84dfead594ba2e13eb4b36c217,
+        type: 3}
+    - target: {fileID: -7511558181221131132, guid: 6326238625028954baf5ab00d4e44a61,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 6da3227c8cf2f714493637ef580d7079,
+        type: 3}
     - target: {fileID: 919132149155446097, guid: 6326238625028954baf5ab00d4e44a61,
         type: 3}
       propertyPath: m_Name
-      value: FBX-BAR
+      value: PF_Bar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
