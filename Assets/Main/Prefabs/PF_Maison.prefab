@@ -58,10 +58,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 434bc26da17052d43b29e1bbed92b105,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 837052b10fd9cd644b275557d4fcb79e,
+        type: 3}
+    - target: {fileID: -7511558181221131132, guid: 434bc26da17052d43b29e1bbed92b105,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: e0e356cf7ee1a7542b8e0b6f0cbbda2d,
+        type: 3}
     - target: {fileID: 919132149155446097, guid: 434bc26da17052d43b29e1bbed92b105,
         type: 3}
       propertyPath: m_Name
-      value: FBX-MAISON
+      value: PF_Maison
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

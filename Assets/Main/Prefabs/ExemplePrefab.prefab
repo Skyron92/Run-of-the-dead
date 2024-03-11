@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3202543307054268675}
-  - component: {fileID: 3718677964654743842}
   m_Layer: 0
   m_Name: SpawnList
   m_TagString: Untagged
@@ -38,24 +37,6 @@ Transform:
   - {fileID: 6008487749308472662}
   m_Father: {fileID: 5774502767721553885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3718677964654743842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197377430782868168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00897a2428c1b644092d6babcf2926f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 0}
-  numRows: 10
-  numColumns: 3
-  obstacleProbability: 0.5
-  numIterations: 5
-  cellSize: 1
 --- !u!1 &1898036718682135656
 GameObject:
   m_ObjectHideFlags: 0
