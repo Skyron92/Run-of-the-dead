@@ -7,7 +7,7 @@ public class VolumeSlider : MonoBehaviour
     public AudioMixer audioMixer;
     public Slider volumeSlider;
 
-    public string volumeParameterName = "Volume";
+    public string volumeParameterName = "MusicVol";
 
     private void Start()
     {
