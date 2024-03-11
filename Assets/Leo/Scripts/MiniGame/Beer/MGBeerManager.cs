@@ -1,9 +1,12 @@
+using System;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class MGBeerManager : MonoBehaviour, IMiniGame
 {
@@ -18,10 +21,16 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
 
     [SerializeField] private InputActionReference touchInputActionReference;
     private InputAction TouchInputAction => touchInputActionReference.action;
+
+    [SerializeField] private Image rightLimitImage;
+    [SerializeField] private Image leftLimitImage;
     private void Awake() {
-        _limit = Random.Range(-maxLimit, maxLimit);
+        _limit = Random.Range(30f, maxLimit);
+        Debug.Log(_limit);
+        SetPicture();
         TouchInputAction.Enable();
         TouchInputAction.started += context => {
+            Debug.Log(CheckRotation());
             if (!CheckRotation()) return;
             Debug.Log("Glouglou");
             MiniGameSuccess?.Invoke(this, new MiniGameEventArgs());
@@ -30,8 +39,17 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
         _tweener = tweener;
     }
 
+    private void SetPicture() {
+        rightLimitImage.fillAmount = (_limit + 90f) / 180;
+        leftLimitImage.fillAmount = (-_limit + 90f) / 180;
+    }
+
+    private void Update() {
+        Debug.Log(CheckRotation());
+    }
+
     private bool CheckRotation() {
-        return marker.rotation.z < _limit && marker.rotation.z > -_limit;
+        return marker.eulerAngles.z < _limit && marker.eulerAngles.z > -_limit;
     }
 
     private void Rotate(out TweenerCore<Quaternion, Vector3, QuaternionOptions> tweener) {

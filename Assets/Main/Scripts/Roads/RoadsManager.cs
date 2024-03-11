@@ -1,6 +1,10 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using Random = UnityEngine.Random;
+using Update = Unity.VisualScripting.Update;
 
 /// <summary>
 /// Manages the roads spawn
@@ -23,6 +27,13 @@ public class RoadsManager : MonoBehaviour
         for (int i = 0; i < initRoadsList.Count; i++) {
             RoadsList.Add(initRoadsList[i]);
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) CurrentSpeed++;
+        if (Input.GetKeyDown(KeyCode.DownArrow)) CurrentSpeed--;
+        Debug.Log(CurrentSpeed);
     }
 
     /// <summary>
