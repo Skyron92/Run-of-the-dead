@@ -1,14 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-    public class GameManager : MonoBehaviour
-    
+public class GameManager : MonoBehaviour
 {
-    private void Awake()
-    {
+    [SerializeField] private ZombieProgression zombieProgression;
+    private void Awake() {
         DontDestroyOnLoad(transform.gameObject);
+        zombieProgression.GameOver += OnGameOver;
+    }
+
+    private void OnGameOver(object sender, EventArgs e) {
+        
     }
 
     public static int beerCount = 1000;
