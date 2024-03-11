@@ -48,7 +48,7 @@
                 {
                     "name": "up",
                     "id": "370b308f-baa6-4821-a7ca-092448b00cbd",
-                    "path": "<Touchscreen>/primaryTouch/delta/up",
+                    "path": "<Touchscreen>/delta/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -59,7 +59,7 @@
                 {
                     "name": "down",
                     "id": "4bc9ac62-b51f-4f13-8fb9-f9a30782aab6",
-                    "path": "<Touchscreen>/primaryTouch/delta/down",
+                    "path": "<Touchscreen>/delta/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -70,7 +70,7 @@
                 {
                     "name": "left",
                     "id": "4a98d8d3-3ffa-4153-a3fe-cd833b776c2f",
-                    "path": "<Touchscreen>/primaryTouch/delta/left",
+                    "path": "<Touchscreen>/delta/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -81,7 +81,7 @@
                 {
                     "name": "right",
                     "id": "cac02ef0-e6cf-4413-b6f0-7f029a336be6",
-                    "path": "<Touchscreen>/primaryTouch/delta/right",
+                    "path": "<Touchscreen>/delta/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

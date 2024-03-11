@@ -21,6 +21,7 @@ public class SlideDetection : MonoBehaviour
     private InputAction SlideInputAction => myInput.action; 
     Vector2 _delta => SlideInputAction.ReadValue<Vector2>();
 
+    private float sensibility = .5f;
 
     public void DisableSlideInputAction()
     {
@@ -45,7 +46,7 @@ public class SlideDetection : MonoBehaviour
         if (_delta.x < 0 && globalMenu.anchorMax.x == 1) return;
         if (_delta.y>0.5 && _delta.y<-0.5)return;
        
-        if (_delta.x > 1f)
+        if (_delta.x >= sensibility)
         {
             if (hereImage.sprite != spriteNotHere)
             {
@@ -55,7 +56,7 @@ public class SlideDetection : MonoBehaviour
             globalMenu.DOAnchorMax(new Vector2(2, globalMenu.anchorMax.y),0.25f);
             globalMenu.DOAnchorMin(new Vector2(1, globalMenu.anchorMin.y),0.25f);
         }
-        if (_delta.x < -1f)
+        if (_delta.x <= -sensibility)
         {
             if (hereImage.sprite != spriteHere)
             {
