@@ -34,7 +34,6 @@ public class ZombieProgression : MonoBehaviour
 
     private IEnumerator Progress() {
         _slider.value = CurrentSpeed - RoadsManager.CurrentSpeed;
-        Debug.Log("Value : " + _slider.value);
         if(IsCloseOfMax() && _tweener is not { active: true }) ColorAnimation();
         else if(!IsCloseOfMax()) _tweener?.Kill();
         if (IsDead()) GameOver?.Invoke(this, EventArgs.Empty);
