@@ -88,7 +88,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 18, y: 3, z: 2}
+  m_Size: {x: 18, y: 39.58, z: 2}
   m_Center: {x: 0, y: 0, z: -24}
 --- !u!114 &2238992823603649659
 MonoBehaviour:
@@ -1080,7 +1080,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: -876546973899608171, guid: 0bad14cec151a224895f0feee62d9a79,
+      objectReference: {fileID: -876546973899608171, guid: a036ba6fabe3a7b4483eb05bf94c808b,
         type: 3}
     - target: {fileID: 3519106585513242059, guid: 82c3130b6c1621b4aae8b6cb1a103911,
         type: 3}
@@ -2052,7 +2052,7 @@ PrefabInstance:
     - target: {fileID: 7482091281490175607, guid: 02b61d2dbd56dae4d8affff0cee41d45,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2587,7 +2587,7 @@ PrefabInstance:
     - target: {fileID: 7482091281490175607, guid: 02b61d2dbd56dae4d8affff0cee41d45,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
