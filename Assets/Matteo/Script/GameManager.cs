@@ -3,17 +3,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private ZombieProgression zombieProgression;
+    public static int beerCount = 0;
     private void Awake() {
         DontDestroyOnLoad(transform.gameObject);
-        zombieProgression.GameOver += OnGameOver;
     }
-
-    private void OnGameOver(object sender, EventArgs e) {
-        
-    }
-
-    public static int beerCount = 1000;
     public static float GetArmeStat()
     {
         return 20f * Mathf.Pow(1.5f,UpgradeArmeSysteme.Current.GetItem().level);
@@ -29,4 +22,3 @@ public class GameManager : MonoBehaviour
         return 10f * Mathf.Pow(1.5f, UpgradeCravateSysteme.Current.GetItem().level);
     }
 }
- 
