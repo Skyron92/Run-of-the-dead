@@ -16,8 +16,8 @@ public class RoadsManager : MonoBehaviour
     public static Road currentRoad;
     [SerializeField] private Road StartRoad;
 
+    public static float BaseSpeed = 15f;
     public static float CurrentSpeed = BaseSpeed;
-    private const float BaseSpeed = 15f;
 
     private void Awake() {
         // Initialize the current road
@@ -32,7 +32,8 @@ public class RoadsManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) CurrentSpeed++;
-        if (Input.GetKeyDown(KeyCode.DownArrow)) CurrentSpeed--;
+        if (Input.GetKeyDown(KeyCode.DownArrow)) CurrentSpeed--; 
+        Debug.Log(CurrentSpeed);
     }
 
     /// <summary>

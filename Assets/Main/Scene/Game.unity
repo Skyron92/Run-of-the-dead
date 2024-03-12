@@ -971,6 +971,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initRoadsList:
   - {fileID: 1898036718682135656, guid: 9047fe05bf2007d4ab34195c3ad59be0, type: 3}
+  - {fileID: 1898036718682135656, guid: 0a05d162224222d4f8404fa810ff7e64, type: 3}
+  - {fileID: 1898036718682135656, guid: 762cad26b1b44fc498949ff4aeae7d98, type: 3}
   StartRoad: {fileID: 6427663809059908677, guid: b9f3d55a7624b6444b088680dda9d94b,
     type: 3}
 --- !u!4 &1545550611
