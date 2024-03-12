@@ -49,8 +49,6 @@ public class Character : MonoBehaviour
     // True if the character is switching of position
     private bool IsMoving => !(Vector3.Distance(transform.position, spots[_actualSpot].position) < 0.01f);
     
-    private bool _isGrounded = true;
-
     private void Awake() {
         // Set the initial value at 1, the middle spot point index
         ActualSpot = 1;
@@ -112,10 +110,9 @@ public class Character : MonoBehaviour
 
     public void Jump() {
         _canMove = false;
-        _isGrounded = false;
        transform.DOMoveY(6.5f, .2f, true).onComplete += () => {
            _canMove = true;
-           transform.DOMoveY(1.8f, .2f, true).onComplete += () => _isGrounded = true;
+           transform.DOMoveY(1.8f, .2f, true);
        };
     }
 

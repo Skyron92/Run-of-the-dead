@@ -19,9 +19,9 @@ public class UpgradeChaussureSysteme : MonoBehaviour
 
     void Update()
     {
-        beerCountText.text = "" + GameManager.beerCount;
+        beerCountText.text = "" + GameManager.BeerCount;
         
-        if (GameManager.beerCount >= GetUpgradeCost())
+        if (GameManager.BeerCount >= GetUpgradeCost())
         {
             button.interactable = true;
         }
@@ -33,9 +33,9 @@ public class UpgradeChaussureSysteme : MonoBehaviour
 
     public void OnButtonClicked()
     {
-        if (GameManager.beerCount >= GetUpgradeCost())
+        if (GameManager.BeerCount >= GetUpgradeCost())
         {
-            GameManager.beerCount -= (int)GetUpgradeCost();
+            GameManager.BeerCount -= (int)GetUpgradeCost();
             
             _item.level++;
             
