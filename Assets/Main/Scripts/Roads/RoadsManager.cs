@@ -33,7 +33,6 @@ public class RoadsManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) CurrentSpeed++;
         if (Input.GetKeyDown(KeyCode.DownArrow)) CurrentSpeed--;
-        Debug.Log(CurrentSpeed);
     }
 
     /// <summary>
