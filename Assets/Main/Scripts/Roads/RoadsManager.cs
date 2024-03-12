@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
-using Update = Unity.VisualScripting.Update;
 
 /// <summary>
 /// Manages the roads spawn
