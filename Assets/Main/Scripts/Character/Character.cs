@@ -12,7 +12,6 @@ public class Character : MonoBehaviour
 {
     // List of the spots available for the player movement
     [SerializeField] private List<Transform> spots = new List<Transform> ();
-
     // Speed of the right-left slide character
     [SerializeField, Range(0, 1)] private float offsetSpeed;
 
