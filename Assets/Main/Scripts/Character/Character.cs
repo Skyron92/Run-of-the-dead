@@ -1,8 +1,8 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
-using UnityEditor;
+using TMPro;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -19,15 +19,17 @@ public class Character : MonoBehaviour
     [SerializeField] private InputActionReference slideInputActionReference;
     [SerializeField] private InputActionReference tapInputActionReference;
     private InputAction SlideInputAction => slideInputActionReference.action;
+    private InputAction TapInputAction => tapInputActionReference.action;
     private Vector2 SlideInputValue => SlideInputAction.ReadValue<Vector2>();
+    private Vector2 _swipeDirection;
+
+    private float _minimumSwipeMagnitude;
     
     // Current position index
     private int _actualSpot = 1;
     // Properties for the actual spot, allows us to keep the value between 0 and 2
     private int ActualSpot {
-        get {
-            return _actualSpot;
-        }
+        get => _actualSpot;
         set {
             _actualSpot = value switch {
                 < 0 => 0,
@@ -43,9 +45,10 @@ public class Character : MonoBehaviour
     public delegate void MgStartedEvent(object sender, MgStartedEventArgs e);
 
     public event MgStartedEvent MgStarted;
+    
 
     // True if the character is switching of position
-    private bool _isMoving;
+    private bool IsMoving => !(Vector3.Distance(transform.position, spots[_actualSpot].position) < 0.01f);
     
     private bool _isGrounded = true;
 
@@ -53,30 +56,38 @@ public class Character : MonoBehaviour
         // Set the initial value at 1, the middle spot point index
         ActualSpot = 1;
         Current = this;
-        SlideInputAction.Enable();
-        SlideInputAction.started += context => {
-            OnSlide();
-        };
-       /* SlideInputAction.started += context => {
-            Debug.Log("Slide");
-           if(!_isGrounded) Jump();
-        };*/
+        //SlideInputAction.Enable();
+        //TapInputAction.Enable();
+        SlideInputAction.started += ProcessSwipeDelta;
+        TapInputAction.canceled += ProcessTouchComplete;
     }
 
-    private void OnSlide() {
+    private void ProcessTouchComplete(InputAction.CallbackContext context) {
+        if(Mathf.Abs(_swipeDirection.magnitude) < _minimumSwipeMagnitude) return;
+        if (_swipeDirection.x > 0) SetDestination(1);
+        if (_swipeDirection.x < 0) SetDestination(-1);
+        if (_swipeDirection.y > 0) Jump();
+    }
+
+    private void ProcessSwipeDelta(InputAction.CallbackContext context) {
+        _swipeDirection = context.ReadValue<Vector2>();
+    }
+    
+   /* private void OnSlide() {
         if(!_canMove) return;
+        debugText.text = SlideInputValue.ToString();
         // To the left
-        if (Mathf.Abs(SlideInputValue.y) >= Mathf.Abs(SlideInputValue.x) && _isGrounded && SlideInputValue.y >= .4f) {
+        if (Mathf.Abs(SlideInputValue.y) >= Mathf.Abs(SlideInputValue.x) && _isGrounded && SlideInputValue.y == 1) {
             Jump();
+            TapInputAction.Disable();
             return;
         }
-        if(_canMove) { 
-            if (SlideInputValue.x <= -.6f) {
-                SetDestination(-1);
-            }
-            if(SlideInputValue.x >= .6f) SetDestination(1);
+        if(_canMove) {
+            TapInputAction.Disable();
+            if (SlideInputValue.x < 0) SetDestination(-1);
+            if (SlideInputValue.x > 0) SetDestination(1);
         }
-    }
+    }*/
 
     /// <summary>
     /// The character movement start by calling this method.
@@ -100,13 +111,13 @@ public class Character : MonoBehaviour
         transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true).onComplete += () => _canMove = true;
     }
 
-    private void Jump() {
+    public void Jump() {
         _canMove = false;
+        _isGrounded = false;
        transform.DOMoveY(6.5f, .2f, true).onComplete += () => {
            _canMove = true;
            transform.DOMoveY(1.8f, .2f, true).onComplete += () => _isGrounded = true;
        };
-       _isGrounded = false;
     }
 
     private void OnTriggerEnter(Collider other) {
