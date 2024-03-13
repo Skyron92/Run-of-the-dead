@@ -63,6 +63,11 @@ public class Character : MonoBehaviour
         TapInputAction.canceled += ProcessTouchComplete;
     }
 
+    private void Update()
+    {
+        Debug.Log("Player");
+    }
+
     private void ProcessTouchComplete(InputAction.CallbackContext context) {
         if(Mathf.Abs(_swipeDirection.magnitude) < _minimumSwipeMagnitude) return;
         if (_swipeDirection.x > 0) SetDestination(1);
@@ -73,8 +78,13 @@ public class Character : MonoBehaviour
     private void ProcessSwipeDelta(InputAction.CallbackContext context) {
         _swipeDirection = context.ReadValue<Vector2>();
     }
-    
-   /* private void OnSlide() {
+
+    private void OnDestroy()
+    {
+        Debug.Log("WTF");
+    }
+
+    /* private void OnSlide() {
         if(!_canMove) return;
         debugText.text = SlideInputValue.ToString();
         // To the left
