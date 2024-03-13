@@ -3716,7 +3716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: -277}
+  m_AnchoredPosition: {x: 0.000015259, y: -315.22}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1273680989
@@ -4522,6 +4522,7 @@ MonoBehaviour:
     CravateLevel: 0
     ArmeLevel: 0
     ChaussureLevel: 0
+    Score: 0
 --- !u!1 &1737669182
 GameObject:
   m_ObjectHideFlags: 0
