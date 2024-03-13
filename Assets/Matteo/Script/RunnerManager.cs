@@ -9,7 +9,6 @@ public class RunnerManager : MonoBehaviour
     [SerializeField] private ZombieProgression zombieProgression;
 
     [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private TextMeshProUGUI scoreDisplayText;
 
     private float _incrementDelay;
 
@@ -17,8 +16,13 @@ public class RunnerManager : MonoBehaviour
 
     private static int _beers;
 
-    private void Awake() {
+    private void Start() {
         zombieProgression.GameOver += OnGameOver;
+        Character.Current.BeerCollected += OnBeerCollected;
+    }
+
+    private void OnBeerCollected(object sender, EventArgs e) {
+        _beers++;
     }
 
     private void Update() {
@@ -27,6 +31,8 @@ public class RunnerManager : MonoBehaviour
 
     private void OnGameOver(object sender, EventArgs e) {
         gameOverPanel.SetActive(true); 
+        GameManager.SetBeerCount(_beers);
+        GameManager.SetScore(_score);
     }
 
     //////////////////////////////////////////////////////////

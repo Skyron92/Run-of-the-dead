@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
@@ -44,8 +45,11 @@ public class Character : MonoBehaviour
     public delegate void MgStartedEvent(object sender, MgStartedEventArgs e);
 
     public event MgStartedEvent MgStarted;
-    
 
+    public delegate void EventHandler(object sender, EventArgs e);
+
+    public event EventHandler BeerCollected;
+    
     // True if the character is switching of position
     private bool IsMoving => !(Vector3.Distance(transform.position, spots[_actualSpot].position) < 0.01f);
     
@@ -121,5 +125,6 @@ public class Character : MonoBehaviour
             PNJ pnj = other.gameObject.GetComponent<PNJ>();
             MgStarted?.Invoke(this, new MgStartedEventArgs(pnj.GetMGPrefab(), pnj.GetDiologBox()));
         }
+        if(other.CompareTag("Beer")) BeerCollected?.Invoke(this, EventArgs.Empty);
     }
 }

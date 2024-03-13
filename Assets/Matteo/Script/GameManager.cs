@@ -1,8 +1,4 @@
-using System;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,7 +23,7 @@ public class GameManager : MonoBehaviour
     public static void SetCravateLevel(int value) => _cravateLevel += value;
     public static void SetArmelevel(int value) => _armeLevel += value;
     public static void SetChaussureLevel(int value) => _chaussureLevel += value;
-    
+
     // Method
     private void Awake()
     {
