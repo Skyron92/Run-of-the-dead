@@ -9,7 +9,6 @@ public class DisplayBeer : MonoBehaviour
 {
     [Header("Level ended settings")] 
     [SerializeField] private TextMeshProUGUI beerTMP;
-    public int beerWin;
     private int _countFPS = 30;
     private float _duration = 1f;
     private int _value;

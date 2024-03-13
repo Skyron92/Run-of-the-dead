@@ -1,34 +1,39 @@
+using System;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
+[Serializable]
 public class PlayerData 
 {
-    public readonly int BeerCount;
-    public readonly int CravateLevel;
-    public readonly int ArmeLevel;
-    public readonly int ChaussureLevel;
+    public  int BeerCount;
+    public  int CravateLevel;
+    public  int ArmeLevel;
+    public  int ChaussureLevel;
+    public  int Score;
 
-    internal PlayerData(int beerCount, int cravateLevel, int armeLevel, int chaussureLevel)
+    internal PlayerData(int beerCount, int cravateLevel, int armeLevel, int chaussureLevel, int score)
     {
         BeerCount = beerCount;
         CravateLevel = cravateLevel;
         ArmeLevel = armeLevel;
         ChaussureLevel = chaussureLevel;
+        Score = score;
     }
 }
-
 
 public class GameManager : MonoBehaviour
 {
     //Declaration
     private static int _beerCount;
-    private static int _cravateLevel;
-    private static int _armeLevel;
-    private static int _chaussureLevel;
+    private static int _cravateLevel = 1;
+    private static int _armeLevel = 1;
+    private static int _chaussureLevel = 1;
+    private static int _score = 0;
     public delegate void Eventhandler();
     public static event Eventhandler BeerCountChanged;
-    private PlayerData _playerData;
+    public PlayerData _playerData;
     private string saveFilePath;
     
     // Getter
@@ -36,6 +41,8 @@ public class GameManager : MonoBehaviour
     public static int GetCravateLevel() => _cravateLevel;
     public static int GetArmeLevel() => _armeLevel;
     public static int GetChaussureLevel() => _chaussureLevel;
+
+    public static int GetScore() => _score;
     // Setter
     public static void SetBeerCount(int value)
     {
@@ -45,51 +52,41 @@ public class GameManager : MonoBehaviour
     public static void SetCravateLevel(int value) => _cravateLevel += value;
     public static void SetArmelevel(int value) => _armeLevel += value;
     public static void SetChaussureLevel(int value) => _chaussureLevel += value;
-    
+    public static void SetScore(int value) => _score += value;
     // Method
     private void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
-        SetBeerCount(0);
-        Debug.Log("ABeer + " + GetBeerCount());
-        Debug.Log("ACravate + " + GetCravateLevel());
-        Debug.Log("AArme + " + GetArmeLevel());
-        Debug.Log("AChaussure + " + GetChaussureLevel());
-    }
-
-    void Update()
-    {
-        if (Input.GetButtonDown("Jump"))
-            SavePlayerData();
-        if (Input.GetKeyDown(KeyCode.L))
+        saveFilePath = Application.persistentDataPath + "/PlayerData.json";
+        if (File.Exists(saveFilePath))
             LoadPlayerData();
     }
-    private void SavePlayerData()
+    
+    public void SavePlayerData()
     {
-        Debug.Log("SaveFilePath = " + saveFilePath);
-        SetBeerCount(500);
-        SetChaussureLevel(1);
-        SetCravateLevel(1);
-        SetArmelevel(1);
-        _playerData = new PlayerData(_beerCount, _cravateLevel, _armeLevel, _chaussureLevel);
-        saveFilePath = Application.persistentDataPath + "/PlayerData.json";
+        _playerData = new PlayerData(_beerCount, _cravateLevel, _armeLevel, _chaussureLevel, _score);
         string savePlayerData = JsonUtility.ToJson(_playerData);
         File.WriteAllText(saveFilePath, savePlayerData);
         _playerData = null;
     }
 
-    private void LoadPlayerData()
+    public void LoadPlayerData()
     {
         if (File.Exists(saveFilePath))
         {
             string loadPlayerData = File.ReadAllText(saveFilePath);
             _playerData = JsonUtility.FromJson<PlayerData>(loadPlayerData);
+            _beerCount = _playerData.BeerCount;
+            _armeLevel = _playerData.ArmeLevel;
+            _chaussureLevel = _playerData.ChaussureLevel;
+            _cravateLevel = _playerData.CravateLevel;
+            _score = _playerData.Score;
         }
+    }
 
-        Debug.Log("Beer + " + GetBeerCount());
-        Debug.Log("Cravate + " + GetCravateLevel());
-        Debug.Log("Arme + " + GetArmeLevel());
-        Debug.Log("Chaussure + " + GetChaussureLevel());
-
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if(!hasFocus) SavePlayerData();
+        else if (hasFocus) LoadPlayerData();
     }
 }
