@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,11 +5,6 @@ public class Obstacle : MonoBehaviour
 {
     bool isInvuln = false;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !isInvuln)
@@ -25,11 +17,5 @@ public class Obstacle : MonoBehaviour
             DOTween.To(() => RoadsManager.CurrentSpeed, x => RoadsManager.CurrentSpeed = x, RoadsManager.BaseSpeed, 1.5f)
                 .OnComplete(() => isInvuln = false);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
