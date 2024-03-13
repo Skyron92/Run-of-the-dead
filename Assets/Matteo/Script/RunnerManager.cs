@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Tayx.Graphy.Utils.NumString;
+using TMPro;
 using UnityEngine;
 
 public class RunnerManager : MonoBehaviour
@@ -8,6 +9,9 @@ public class RunnerManager : MonoBehaviour
     [SerializeField] private ZombieProgression zombieProgression;
 
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TextMeshProUGUI scoreDisplayText;
+
+    private float _incrementDelay;
 
     private int _score;
 
@@ -23,8 +27,11 @@ public class RunnerManager : MonoBehaviour
         gameOverPanel.SetActive(true); 
     }
 
+    //////////////////////////////////////////////////////////
+    // !!!! Ajouter les stats du perso !!!!!!!!!!!!!!!!!!!!!!!
+    //////////////////////////////////////////////////////////
     private IEnumerator CountScore() {
-        _score += RoadsManager.CurrentSpeed.ToInt();
-        yield return new WaitForSeconds(.1f);
+        _score += (RoadsManager.CurrentSpeed.ToInt() * _incrementDelay).ToInt();
+        yield return new WaitForSeconds(_incrementDelay);
     }
 }
