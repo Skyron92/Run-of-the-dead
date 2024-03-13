@@ -15,6 +15,8 @@ public class RunnerManager : MonoBehaviour
 
     private int _score;
 
+    private static int _beers;
+
     private void Awake() {
         zombieProgression.GameOver += OnGameOver;
     }
