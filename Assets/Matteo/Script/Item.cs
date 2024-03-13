@@ -1,16 +1,22 @@
+using System;
 using UnityEngine;
 
 public class Item
 {
-    public string name;
-    public float baseStat;
-    public float upgradeCost;
-    public int level;
-    
-    public Item(string name,int level, float baseStat, float upgradeCost)
+    public static float GetCost(ItemType type)
     {
-        this.name = name;
-        this.baseStat = baseStat;
-        this.upgradeCost = upgradeCost;
+        switch (type)
+        {
+            case ItemType.Arme:
+                return 20f * Mathf.Pow(1.5f, GameManager.GetArmeLevel());
+            case ItemType.Chaussure:
+                return 15f * Mathf.Pow(1.5f, GameManager.GetChaussureLevel());
+            case ItemType.Cravate:
+                return 10f * Mathf.Pow(1.5f, GameManager.GetCravateLevel());
+            default:
+                return -1;
+        }
     }
 }
+
+
