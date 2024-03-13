@@ -643,6 +643,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Biere (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
+      objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1209,6 +1214,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Biere (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
+      objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1584,6 +1594,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Biere (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
       objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
@@ -2059,6 +2074,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Biere (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
+      objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2361,6 +2381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Biere (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
+      objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2520,6 +2545,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Biere (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
       objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
@@ -2692,6 +2722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Biere (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
       objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
@@ -2919,6 +2954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Biere (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
       objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
@@ -3332,6 +3372,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Biere
       objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
+      objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3627,6 +3672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Biere (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 969962626732520250, guid: 62ac97613469419448ba684fd5ed1217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beer
       objectReference: {fileID: 0}
     - target: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
         type: 3}
