@@ -342,7 +342,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 77511579}
-        m_TargetAssemblyTypeName: UpgradeEquipementSysteme, Assembly-CSharp
+        m_TargetAssemblyTypeName: ButtonUpgrade, Assembly-CSharp
         m_MethodName: OnButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -400,11 +400,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 77511574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375c63b62c217eb42be47dcf744e918f, type: 3}
+  m_Script: {fileID: 11500000, guid: fa8fc2d40b4588f4da883ceb637149f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   beerCountText: {fileID: 836267109}
   button: {fileID: 77511576}
+  type: 1
 --- !u!1 &84712043
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beerCountText: {fileID: 836267109}
   button: {fileID: 84712046}
+  type: 0
 --- !u!114 &84712046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4098,7 +4100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7442ece7e4b064b4ca956c11bda5d808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieProgression: {fileID: 0}
 --- !u!4 &1692114354
 Transform:
   m_ObjectHideFlags: 0
@@ -4871,7 +4872,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2032985875}
-        m_TargetAssemblyTypeName: UpgradeCravateSysteme, Assembly-CSharp
+        m_TargetAssemblyTypeName: ButtonUpgrade, Assembly-CSharp
         m_MethodName: OnButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -4929,11 +4930,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2032985869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08ec3bef14e7240419019a7531d856c4, type: 3}
+  m_Script: {fileID: 11500000, guid: fa8fc2d40b4588f4da883ceb637149f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   beerCountText: {fileID: 836267109}
   button: {fileID: 2032985872}
+  type: 2
 --- !u!1001 &2105380230
 PrefabInstance:
   m_ObjectHideFlags: 0
