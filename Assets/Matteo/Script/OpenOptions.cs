@@ -2,24 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenOptions : MonoBehaviour {
+public class OpenOptions : MonoBehaviour
+{
 
-    public GameObject Panel;
+    [SerializeField] private SlideDetection slideDetection;
 
-    public void OpenPanel()
-    {
-        SlideDetection slideDetection = FindObjectOfType<SlideDetection>();
-        slideDetection.DisableSlideInputAction();
-        Debug.Log(slideDetection);
-        if (Panel != null)
-        {
-            if (Panel.activeSelf)
-            {
+    public void OpenPanel(GameObject Panel) {
+        if (Panel != null) {
+            if (Panel.activeSelf) {
                 Panel.SetActive(false);
                 slideDetection.EnableSlideIpuntAction();
             }
-            else
-            {
+            else {
+                slideDetection.DisableSlideInputAction();
                 Panel.SetActive(true);
             }
         }
