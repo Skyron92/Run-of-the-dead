@@ -23,6 +23,22 @@ MonoBehaviour:
     m_Key: SFX
     m_Metadata:
       m_Items: []
+  - m_Id: 23181436121088
+    m_Key: Credit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40779599048704
+    m_Key: Dev
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42452643999744
+    m_Key: Art
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44881523503104
+    m_Key: UI
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

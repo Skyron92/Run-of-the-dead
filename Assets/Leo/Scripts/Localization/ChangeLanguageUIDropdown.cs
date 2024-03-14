@@ -46,6 +46,7 @@ public class ChangeLanguageUIDropdown : MonoBehaviour
         {
             options.Add("No Locales Available");
             dropdown.interactable = false;
+
         }
         else
         {
