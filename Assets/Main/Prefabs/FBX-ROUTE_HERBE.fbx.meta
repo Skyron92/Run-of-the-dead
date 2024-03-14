@@ -3,7 +3,13 @@ guid: 016717f6d39f45f4bb789db16ec6cdd6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HERBE
+    second: {fileID: -876546973899608171, guid: 0031382b9fb7f094eb97805e4716aab8,
+      type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
