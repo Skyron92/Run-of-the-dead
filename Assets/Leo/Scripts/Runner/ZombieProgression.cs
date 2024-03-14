@@ -16,7 +16,7 @@ public class ZombieProgression : MonoBehaviour
     public delegate void EventHandler(object sender, EventArgs e);
     public event EventHandler GameOver;
     [SerializeField] private AnimationCurve progressSpeedCurve;
-    // public TensorFloat Sigmoid(TensorFloat X);
+    //  public TensorFloat Sigmoid(TensorFloat X);
     private void Awake() {
         _slider = GetComponent<Slider>();
     }
@@ -24,8 +24,13 @@ public class ZombieProgression : MonoBehaviour
     private void Update() {
         StartCoroutine(Progress());
     }
-    
-    
+
+    private float mySigmoid(float x)
+    {
+        float result;
+        float scale = 1;
+        return result = 3 / (1 + Mathf.Exp((-x + 2)/ scale));
+    }
     private IEnumerator Progress() {
         _slider.value = CurrentSpeed - RoadsManager.CurrentSpeed;
         if(IsCloseOfMax() && _tweener is not { active: true }) ColorAnimation();
