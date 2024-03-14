@@ -9,7 +9,7 @@ public class ObstacleFatal : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isInvuln)
         {
-            RoadsManager.CurrentSpeed = 0;
+            //RoadsManager.CurrentSpeed = 0;
             Handheld.Vibrate();
             Debug.Log("You died");
         }
