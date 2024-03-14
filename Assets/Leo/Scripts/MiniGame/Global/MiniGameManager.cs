@@ -25,6 +25,7 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="e"></param>
     private void OnMGStarted(object sender, MgStartedEventArgs e) {
         runnerButtons.SetActive(false);
+        Character.Current.enabled = false;
         RoadsManager.StopMovement();
         SpawnDialogBox(e.DialogBoxPrefab);
         _miniGamePrefab = e.MgPrefab;
@@ -77,6 +78,7 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="e"></param>
     private void OnSuccess(object sender, MiniGameEventArgs e) {
         runnerButtons.SetActive(true);
+        Character.Current.enabled = true;
         RoadsManager.StartMovement();
         StartBonus(e.Bonus);
         UnBindEvent();

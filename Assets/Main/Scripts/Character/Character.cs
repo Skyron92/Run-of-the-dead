@@ -125,6 +125,10 @@ public class Character : MonoBehaviour
             PNJ pnj = other.gameObject.GetComponent<PNJ>();
             MgStarted?.Invoke(this, new MgStartedEventArgs(pnj.GetMGPrefab(), pnj.GetDiologBox()));
         }
-        if(other.CompareTag("Beer")) BeerCollected?.Invoke(this, EventArgs.Empty);
+
+        if (other.CompareTag("Beer")) {
+            Destroy(other.gameObject);
+            BeerCollected?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
