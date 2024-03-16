@@ -21,7 +21,7 @@ public class RunnerManager : MonoBehaviour
         Character.Current.BeerCollected += OnBeerCollected;
     }
 
-    private void OnBeerCollected(object sender, EventArgs e) {
+    private void OnBeerCollected() {
         _beers++;
     }
 

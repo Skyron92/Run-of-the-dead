@@ -47,7 +47,7 @@ public class Character : MonoBehaviour
 
     public event MgStartedEvent MgStarted;
 
-    public delegate void EventHandler(object sender, EventArgs e);
+    public delegate void EventHandler();
 
     public event EventHandler BeerCollected;
     
@@ -116,7 +116,7 @@ public class Character : MonoBehaviour
 
         if (other.CompareTag("Beer")) {
             Destroy(other.gameObject);
-            BeerCollected?.Invoke(this, EventArgs.Empty);
+            BeerCollected?.Invoke();
         }
     }
 }
