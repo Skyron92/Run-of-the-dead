@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObstacleFatal : MonoBehaviour
 {
-    bool isInvuln = false;
+    /*bool isInvuln = false;
     // Start is called before the first frame update
 
     private void OnTriggerEnter(Collider other)
@@ -13,5 +13,5 @@ public class ObstacleFatal : MonoBehaviour
             Handheld.Vibrate();
             Debug.Log("You died");
         }
-    }
+    }*/
 }

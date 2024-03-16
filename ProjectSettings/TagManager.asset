@@ -9,6 +9,7 @@ TagManager:
   - SpawnPoint
   - Beer
   - Obstacle
+  - Fatal
   layers:
   - Default
   - TransparentFX

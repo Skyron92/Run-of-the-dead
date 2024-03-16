@@ -18,8 +18,11 @@ public class RunnerManager : MonoBehaviour
 
     private void Start() {
         zombieProgression.GameOver += OnGameOver;
+        Character.Current.Dead += OnGameOver;
         Character.Current.BeerCollected += OnBeerCollected;
     }
+
+    
 
     private void OnBeerCollected() {
         _beers++;
@@ -28,9 +31,15 @@ public class RunnerManager : MonoBehaviour
     private void Update() {
         StartCoroutine(CountScore());
     }
+    
+    private void OnGameOver() {
+        Instantiate(gameOverPanel);
+        GameManager.SetBeerCount(_beers);
+        GameManager.SetScore(_score);
+    }
 
     private void OnGameOver(object sender, EventArgs e) {
-        gameOverPanel.SetActive(true); 
+        Instantiate(gameOverPanel);
         GameManager.SetBeerCount(_beers);
         GameManager.SetScore(_score);
     }

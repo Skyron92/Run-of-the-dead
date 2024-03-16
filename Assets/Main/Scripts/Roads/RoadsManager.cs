@@ -53,9 +53,26 @@ public class RoadsManager : MonoBehaviour
     public static void StopMovement() {
         DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, 0f, 1f);
     }
+    
+    public static void StopMovement(float decelerationDuration) {
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, 0f, decelerationDuration);
+    }
 
     public static void StartMovement() {
         DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, BaseSpeed, 1f);
+    }
+    public static void StartMovement(float accelerationDuration) {
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, BaseSpeed, accelerationDuration);
+    }
+
+    public static void SlowDown() {
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed - CurrentSpeed / 10, 1f);
+    }
+    public static void SlowDown(float target) {
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
+    }
+    public static void SlowDown(float target, float decelerationDuration) {
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, decelerationDuration);
     }
     
 }

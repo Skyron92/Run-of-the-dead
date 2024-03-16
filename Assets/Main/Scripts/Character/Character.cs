@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
-using TMPro;
-using UnityEditor.Animations;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -51,6 +48,7 @@ public class Character : MonoBehaviour
     public delegate void EventHandler();
 
     public event EventHandler BeerCollected;
+    public event EventHandler Dead;
     
     // True if the character is switching of position
     private bool IsMoving => !(Vector3.Distance(transform.position, spots[_actualSpot].position) < 0.01f);
@@ -126,11 +124,27 @@ public class Character : MonoBehaviour
         }
 
         if (other.CompareTag("Obstacle")) {
+            if(isInvincible) return;
+            RoadsManager.SlowDown();
+            Handheld.Vibrate();
             _animatorController.SetTrigger("Hurt");
+        }
+
+        if (other.CompareTag("Fatal")) {
+            if(isInvincible) return;
+            RoadsManager.StopMovement(.3f);
+            Handheld.Vibrate();
+            DisableInputs();
+            Dead?.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if(other.CompareTag("Obstacle")) _animatorController.ResetTrigger("Hurt");
+    }
+
+    void DisableInputs() {
+        TapInputAction.Disable();
+        SlideInputAction.Disable();
     }
 }
