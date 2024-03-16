@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         saveFilePath = Application.persistentDataPath + "/PlayerData.json";
         if (File.Exists(saveFilePath))
             LoadPlayerData();
+        BeerCountChanged?.Invoke();
     }
     
     public void SavePlayerData()
