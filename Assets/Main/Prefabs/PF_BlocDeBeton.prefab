@@ -47,7 +47,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -246,6 +246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_BlocDeBeton
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1a1ef8384472c99418a9a02cd9464719,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

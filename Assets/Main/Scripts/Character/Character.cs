@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -53,6 +54,10 @@ public class Character : MonoBehaviour
     
     // True if the character is switching of position
     private bool IsMoving => !(Vector3.Distance(transform.position, spots[_actualSpot].position) < 0.01f);
+
+    private Animator _animatorController;
+
+    public bool isInvincible;
     
     private void Awake() {
         // Set the initial value at 1, the middle spot point index
@@ -62,6 +67,7 @@ public class Character : MonoBehaviour
         TapInputAction.Enable();
         SlideInputAction.started += ProcessSwipeDelta;
         TapInputAction.canceled += ProcessTouchComplete;
+        _animatorController = GetComponent<Animator>();
     }
 
     private void ProcessTouchComplete(InputAction.CallbackContext context) {
@@ -118,5 +124,13 @@ public class Character : MonoBehaviour
             Destroy(other.gameObject);
             BeerCollected?.Invoke();
         }
+
+        if (other.CompareTag("Obstacle")) {
+            _animatorController.SetTrigger("Hurt");
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if(other.CompareTag("Obstacle")) _animatorController.ResetTrigger("Hurt");
     }
 }
