@@ -26,6 +26,10 @@ MonoBehaviour:
     m_Localized: "Bi\xE8res :"
     m_Metadata:
       m_Items: []
+  - m_Id: 1161941347774464
+    m_Localized: Nouveau record !
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

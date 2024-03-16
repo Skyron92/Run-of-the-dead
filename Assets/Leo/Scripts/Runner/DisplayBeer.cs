@@ -15,7 +15,7 @@ public class DisplayBeer : MonoBehaviour
 
     private void Awake()
     {
-        Value = Random.Range(50, 150);
+        Value = RunnerManager.GetBeerCollected();
     }
 
     private Coroutine _countingCoroutine;

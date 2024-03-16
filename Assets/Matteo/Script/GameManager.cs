@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     public static void SetCravateLevel(int value) => _cravateLevel += value;
     public static void SetArmelevel(int value) => _armeLevel += value;
     public static void SetChaussureLevel(int value) => _chaussureLevel += value;
-    public static void SetScore(int value) => _score += value;
+    public static void SetScore(int value) => _score = value;
     // Method
     private void Awake()
     {

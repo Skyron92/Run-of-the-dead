@@ -11,7 +11,7 @@ public class RunnerManager : MonoBehaviour
 
     private float _incrementDelay;
 
-    private int _score;
+    private static int _score;
 
     private static int _beers;
 
@@ -30,26 +30,36 @@ public class RunnerManager : MonoBehaviour
     private void Update() {
         StartCoroutine(CountScore());
     }
+
+    public static bool CompareScore() {
+        bool bestScore = _score > GameManager.GetScore();
+        if(bestScore) GameManager.SetScore(_score);
+        return bestScore;
+    }
     
     private void OnGameOver() {
         Instantiate(gameOverPanel);
         _isEnded = true;
         GameManager.SetBeerCount(_beers);
-        GameManager.SetScore(_score);
+        CompareScore();
     }
 
     private void OnGameOver(object sender, EventArgs e) {
         Instantiate(gameOverPanel);
         _isEnded = true;
         GameManager.SetBeerCount(_beers);
-        GameManager.SetScore(_score);
+        CompareScore();
     }
+
+    public static int GetBeerCollected() => _beers; 
+    public static int GetScoreReached() => _score; 
 
     //////////////////////////////////////////////////////////
     // !!!! Ajouter les stats du perso !!!!!!!!!!!!!!!!!!!!!!!
     //////////////////////////////////////////////////////////
     private IEnumerator CountScore() {
-        _score += (RoadsManager.CurrentSpeed * _incrementDelay).ToInt();
+        _score += (int)(RoadsManager.CurrentSpeed * _incrementDelay);
+        Debug.Log(_incrementDelay);
         yield return new WaitForSeconds(_incrementDelay);
     }
 }
