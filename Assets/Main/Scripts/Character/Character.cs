@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
     private Vector2 _swipeDirection;
 
     private float _minimumSwipeMagnitude;
+    private float _sensibility;
     
     // Current position index
     private int _actualSpot = 1;
@@ -57,38 +58,25 @@ public class Character : MonoBehaviour
         // Set the initial value at 1, the middle spot point index
         ActualSpot = 1;
         Current = this;
-        //SlideInputAction.Enable();
-        //TapInputAction.Enable();
+        SlideInputAction.Enable();
+        TapInputAction.Enable();
         SlideInputAction.started += ProcessSwipeDelta;
         TapInputAction.canceled += ProcessTouchComplete;
     }
 
     private void ProcessTouchComplete(InputAction.CallbackContext context) {
         if(Mathf.Abs(_swipeDirection.magnitude) < _minimumSwipeMagnitude) return;
-        if (_swipeDirection.x > 0) SetDestination(1);
-        if (_swipeDirection.x < 0) SetDestination(-1);
-        if (_swipeDirection.y > 0) Jump();
+        if (Math.Abs(_swipeDirection.x) > _swipeDirection.y) {
+            if(_swipeDirection.x > _sensibility) SetDestination(1);
+            if (_swipeDirection.x < _sensibility) SetDestination(-1);
+            return;
+        }
+        if (_swipeDirection.y > _sensibility) Jump();
     }
 
     private void ProcessSwipeDelta(InputAction.CallbackContext context) {
         _swipeDirection = context.ReadValue<Vector2>();
     }
-
-    /* private void OnSlide() {
-        if(!_canMove) return;
-        debugText.text = SlideInputValue.ToString();
-        // To the left
-        if (Mathf.Abs(SlideInputValue.y) >= Mathf.Abs(SlideInputValue.x) && _isGrounded && SlideInputValue.y == 1) {
-            Jump();
-            TapInputAction.Disable();
-            return;
-        }
-        if(_canMove) {
-            TapInputAction.Disable();
-            if (SlideInputValue.x < 0) SetDestination(-1);
-            if (SlideInputValue.x > 0) SetDestination(1);
-        }
-    }*/
 
     /// <summary>
     /// The character movement start by calling this method.
