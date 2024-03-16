@@ -126,12 +126,14 @@ public class Character : MonoBehaviour
         if (other.CompareTag("Obstacle")) {
             if(isInvincible) return;
             RoadsManager.SlowDown();
+            Camera.main.DOShakePosition(1f, Vector3.one * 0.1f);
             Handheld.Vibrate();
             _animatorController.SetTrigger("Hurt");
         }
 
         if (other.CompareTag("Fatal")) {
             if(isInvincible) return;
+            Camera.main.DOShakePosition(1f, Vector3.one * 0.8f);
             RoadsManager.StopMovement(.3f);
             Handheld.Vibrate();
             DisableInputs();
@@ -143,7 +145,7 @@ public class Character : MonoBehaviour
         if(other.CompareTag("Obstacle")) _animatorController.ResetTrigger("Hurt");
     }
 
-    void DisableInputs() {
+    public void DisableInputs() {
         TapInputAction.Disable();
         SlideInputAction.Disable();
     }

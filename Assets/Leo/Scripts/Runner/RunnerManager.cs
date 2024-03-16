@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using Tayx.Graphy.Utils.NumString;
-using TMPro;
 using UnityEngine;
 
 public class RunnerManager : MonoBehaviour
@@ -16,13 +15,13 @@ public class RunnerManager : MonoBehaviour
 
     private static int _beers;
 
+    private bool _isEnded;
+
     private void Start() {
         zombieProgression.GameOver += OnGameOver;
         Character.Current.Dead += OnGameOver;
         Character.Current.BeerCollected += OnBeerCollected;
     }
-
-    
 
     private void OnBeerCollected() {
         _beers++;
@@ -34,12 +33,14 @@ public class RunnerManager : MonoBehaviour
     
     private void OnGameOver() {
         Instantiate(gameOverPanel);
+        _isEnded = true;
         GameManager.SetBeerCount(_beers);
         GameManager.SetScore(_score);
     }
 
     private void OnGameOver(object sender, EventArgs e) {
         Instantiate(gameOverPanel);
+        _isEnded = true;
         GameManager.SetBeerCount(_beers);
         GameManager.SetScore(_score);
     }
@@ -48,7 +49,7 @@ public class RunnerManager : MonoBehaviour
     // !!!! Ajouter les stats du perso !!!!!!!!!!!!!!!!!!!!!!!
     //////////////////////////////////////////////////////////
     private IEnumerator CountScore() {
-        _score += (RoadsManager.CurrentSpeed.ToInt() * _incrementDelay).ToInt();
+        _score += (RoadsManager.CurrentSpeed * _incrementDelay).ToInt();
         yield return new WaitForSeconds(_incrementDelay);
     }
 }

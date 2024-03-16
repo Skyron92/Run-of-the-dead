@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -24,6 +25,7 @@ public class RoadsManager : MonoBehaviour
         for (int i = 0; i < initRoadsList.Count; i++) {
             RoadsList.Add(initRoadsList[i]);
         }
+        SceneManager.sceneLoaded += (arg0, mode) => StartMovement();
     }
 
     private void Update()
@@ -75,4 +77,13 @@ public class RoadsManager : MonoBehaviour
         DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, decelerationDuration);
     }
     
+    public static void SpeedUp() {
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed + CurrentSpeed / 10, 1f);
+    }
+    public static void SpeedUp(float target) {
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
+    }
+    public static void SpeedUp(float target, float accelerationDuration) {
+        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, accelerationDuration);
+    }
 }

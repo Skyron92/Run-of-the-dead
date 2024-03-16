@@ -25,7 +25,7 @@ public class ZombieProgression : MonoBehaviour
         StartCoroutine(Progress());
     }
 
-    private float mySigmoid(float x)
+    private float MySigmoid(float x)
     {
         float result;
         float scale = 1;
@@ -35,7 +35,10 @@ public class ZombieProgression : MonoBehaviour
         _slider.value = CurrentSpeed - RoadsManager.CurrentSpeed;
         if(IsCloseOfMax() && _tweener is not { active: true }) ColorAnimation();
         else if(!IsCloseOfMax()) _tweener?.Kill();
-        if (IsDead()) GameOver?.Invoke(this, EventArgs.Empty);
+        if (IsDead()) {
+            Character.Current.DisableInputs();
+            GameOver?.Invoke(this, EventArgs.Empty);
+        }
         yield return new WaitForSeconds(0.1f);
     }
     
