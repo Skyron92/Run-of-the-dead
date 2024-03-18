@@ -39,6 +39,18 @@ MonoBehaviour:
     m_Key: UI
     m_Metadata:
       m_Items: []
+  - m_Id: 1489411670011904
+    m_Key: Shoes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1489524576481280
+    m_Key: Tie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1489643795378176
+    m_Key: Weapon
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
