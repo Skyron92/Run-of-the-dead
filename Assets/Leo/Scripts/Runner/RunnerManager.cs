@@ -9,7 +9,7 @@ public class RunnerManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverPanel;
 
-    private float _incrementDelay;
+    private float _incrementDelay = 0.1f;
 
     private static int _score;
 

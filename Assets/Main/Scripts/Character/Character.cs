@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -56,6 +58,9 @@ public class Character : MonoBehaviour
     private Animator _animatorController;
 
     public bool isInvincible;
+
+    private TweenerCore<Vector3, Vector3, VectorOptions> jumpTweener;
+    private TweenerCore<Vector3, Vector3, VectorOptions> moveTweener;
     
     private void Awake() {
         // Set the initial value at 1, the middle spot point index
@@ -101,12 +106,14 @@ public class Character : MonoBehaviour
     private void Move() {
         if(!_canMove) return;
         _canMove = false;
-        transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true).onComplete += () => _canMove = true;
+        moveTweener = transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true);
+        moveTweener.onComplete += () => _canMove = true;
     }
 
     public void Jump() {
         _canMove = false;
-       transform.DOMoveY(6.5f, .2f, true).onComplete += () => {
+       jumpTweener = transform.DOMoveY(6.5f, .2f, true);
+        jumpTweener.onComplete += () => {
            _canMove = true;
            transform.DOMoveY(1.8f, .2f, true);
        };
@@ -125,20 +132,22 @@ public class Character : MonoBehaviour
 
         if (other.CompareTag("Obstacle")) {
             if(isInvincible) return;
+            Debug.Log("Hurt");
             RoadsManager.SlowDown();
-            Camera.main.DOShakePosition(1f, Vector3.one * 0.1f);
-            Handheld.Vibrate();
             _animatorController.SetTrigger("Hurt");
+            Camera.main.DOShakePosition(1f, Vector3.one * 0.1f);
+            if(GameManager.GetVibration()) Handheld.Vibrate();
         }
 
         if (other.CompareTag("Fatal")) {
             if(isInvincible) return;
             Camera.main.DOShakePosition(1f, Vector3.one * 0.8f);
             RoadsManager.StopMovement(.3f);
-            Handheld.Vibrate();
+            if(GameManager.GetVibration()) Handheld.Vibrate();
             DisableInputs();
             Dead?.Invoke();
         }
+        Debug.Log(isInvincible);
     }
 
     private void OnTriggerExit(Collider other) {
@@ -148,5 +157,11 @@ public class Character : MonoBehaviour
     public void DisableInputs() {
         TapInputAction.Disable();
         SlideInputAction.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        moveTweener?.Kill();
+        jumpTweener?.Kill();
     }
 }
