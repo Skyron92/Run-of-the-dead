@@ -26,6 +26,7 @@ public class VibrationToggle : MonoBehaviour
             handleTransform.DOAnchorMin(Vector2.zero, duration).SetEase(Ease.OutBack);
             handleTransform.DOAnchorMax(_startAnchorMax, duration).SetEase(Ease.OutBack);
             background.DOColor(colorOn, duration);
+            Handheld.Vibrate();
         }
         else {
             handleTransform.DOAnchorMin(_endAnchorMin, duration).SetEase(Ease.OutBack);
@@ -41,6 +42,7 @@ public class VibrationToggle : MonoBehaviour
             handleTransform.DOAnchorMin(Vector2.zero, duration).SetEase(Ease.OutBack);
             handleTransform.DOAnchorMax(_startAnchorMax, duration).SetEase(Ease.OutBack);
             background.DOColor(colorOn, duration);
+            Handheld.Vibrate();
         }
         else {
             handleTransform.DOAnchorMin(_endAnchorMin, duration).SetEase(Ease.OutBack);

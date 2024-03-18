@@ -51,6 +51,14 @@ MonoBehaviour:
     m_Key: Weapon
     m_Metadata:
       m_Items: []
+  - m_Id: 1591920170364928
+    m_Key: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1592481166913536
+    m_Key: No
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
