@@ -25,12 +25,6 @@ public class ZombieProgression : MonoBehaviour
         StartCoroutine(Progress());
     }
 
-    private float MySigmoid(float x)
-    {
-        float result;
-        float scale = 1;
-        return result = 3 / (1 + Mathf.Exp((-x + 2)/ scale));
-    }
     private IEnumerator Progress() {
         _slider.value = CurrentSpeed - RoadsManager.CurrentSpeed;
         if(IsCloseOfMax() && _tweener is not { active: true }) ColorAnimation();
