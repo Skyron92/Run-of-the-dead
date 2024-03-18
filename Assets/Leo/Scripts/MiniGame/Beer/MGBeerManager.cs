@@ -1,10 +1,8 @@
-using System;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -24,15 +22,23 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
 
     [SerializeField] private Image rightLimitImage;
     [SerializeField] private Image leftLimitImage;
+
+    private int _goal;
+    private int Goal {
+        get => _goal;
+        set {
+            if(value <= 0) MiniGameSuccess?.Invoke(this, new MiniGameEventArgs());
+            _goal = value;
+        }
+    }
     private void Awake() {
         _limit = Random.Range(30f, maxLimit);
-        Debug.Log(_limit);
+        Goal = Random.Range(2, 3);
         SetPicture();
         TouchInputAction.Enable();
         TouchInputAction.started += context => {
-            Debug.Log(CheckRotation());
             if (!CheckRotation()) return;
-            Debug.Log("Glouglou");
+            Goal--;
             MiniGameSuccess?.Invoke(this, new MiniGameEventArgs());
         };
         Rotate(out TweenerCore<Quaternion, Vector3, QuaternionOptions> tweener);
@@ -42,10 +48,6 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
     private void SetPicture() {
         rightLimitImage.fillAmount = (_limit + 90f) / 180;
         leftLimitImage.fillAmount = (-_limit + 90f) / 180;
-    }
-
-    private void Update() {
-        Debug.Log(CheckRotation());
     }
 
     private bool CheckRotation() {
@@ -61,7 +63,5 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
         marker.DORotate(_rotationTarget, rotationSpeed).onComplete += () => 
             marker.DORotate(-_rotationTarget, rotationSpeed).onComplete += () => Rotate();
     }
-
-
     public event IMiniGame.MiniGameSuccessEvent MiniGameSuccess;
 }

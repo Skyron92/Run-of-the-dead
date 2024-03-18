@@ -11,9 +11,6 @@ public class MiniGameManager : MonoBehaviour
     private GameObject _miniGameInstance;
     private GameObject _dialogBoxInstance;
 
-    // Gameplay buttons of the runner
-    [SerializeField] private GameObject runnerButtons;
-
     private void Start() {
         // Subscribe to the MGStarted event
         Character.Current.MgStarted += OnMGStarted;
@@ -24,7 +21,6 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnMGStarted(object sender, MgStartedEventArgs e) {
-        runnerButtons.SetActive(false);
         Character.Current.enabled = false;
         RoadsManager.StopMovement();
         SpawnDialogBox(e.DialogBoxPrefab);
@@ -77,12 +73,11 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnSuccess(object sender, MiniGameEventArgs e) {
-        runnerButtons.SetActive(true);
-        Character.Current.enabled = true;
+        Character.Current.EnableInputs();
+        Destroy(_miniGameInstance);
         RoadsManager.StartMovement();
         StartBonus(e.Bonus);
         UnBindEvent();
-        Destroy(_miniGameInstance);
     }
     
     /// <summary>
