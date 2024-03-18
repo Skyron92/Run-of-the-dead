@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -13,9 +17,11 @@ public class RoadsManager : MonoBehaviour
     [SerializeField] private List<GameObject> initRoadsList = new List<GameObject>();
     public static Road currentRoad;
     [SerializeField] private Road StartRoad;
-
+    private float SpeedIncr= 0;
     public static float BaseSpeed = 15f;
     public static float CurrentSpeed = BaseSpeed;
+    private static TweenerCore<float, float, FloatOptions> isSpeeding;
+    private static float maxSpeed = 100;
 
     private void Awake() {
         // Initialize the current road
@@ -33,7 +39,12 @@ public class RoadsManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow)) CurrentSpeed++;
-        if (Input.GetKeyDown(KeyCode.DownArrow)) CurrentSpeed--; 
+        if (Input.GetKeyDown(KeyCode.DownArrow)) CurrentSpeed--;
+    }
+
+    private void Start()
+    {
+        SpeedUp();
     }
 
     /// <summary>
@@ -53,46 +64,65 @@ public class RoadsManager : MonoBehaviour
         // Update the new current road
         currentRoad = myRoad;
     }
-
-    public static void StopMovement() {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, 0f, 1f);
+    public static void StopMovement()
+    {
+        isSpeeding?.Kill();
+        isSpeeding = DOTween.To(() => CurrentSpeed, f => CurrentSpeed = f, 0f, 1f);
     }
     
     public static void StopMovement(float decelerationDuration) {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, 0f, decelerationDuration);
+        isSpeeding?.Kill();
+        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, 0f, decelerationDuration);
     }
 
     public static void StartMovement() {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, BaseSpeed, 1f);
+        isSpeeding?.Kill();
+        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, BaseSpeed, 1f);
     }
     public static void StartMovement(float accelerationDuration) {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, BaseSpeed, accelerationDuration);
+        isSpeeding?.Kill();
+        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, BaseSpeed, accelerationDuration);
     }
 
     public static void SlowDown() {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed - CurrentSpeed / 10, 1f);
+        isSpeeding?.Kill();
+        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed - CurrentSpeed / 10, 10f);
     }
     public static void SlowDown(float target) {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
+        isSpeeding?.Kill();
+        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
+        isSpeeding.onComplete += () => SpeedUp();
     }
     public static void SlowDown(float target, float decelerationDuration) {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, decelerationDuration);
+        isSpeeding?.Kill();
+        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, decelerationDuration);
+        isSpeeding.onComplete += () => SpeedUp();
     }
     
     public static void SpeedUp() {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed + CurrentSpeed / 10, 1f);
-    }
-    public static void SpeedUp(float target) {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
-    }
-    public static void SpeedUp(float target, float accelerationDuration) {
-        DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, accelerationDuration);
+        isSpeeding?.Kill();
+        if (CurrentSpeed <= maxSpeed)
+        {
+            isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed + CurrentSpeed / 10, 1f);
+            isSpeeding.onComplete += () => SpeedUp();
+        }
     }
     
-    private float MySigmoid(float x)
-    {
-        float result;
-        float scale = 1;
-        return result = 10 / (1 + Mathf.Exp((-x/2 + 2.2f)/ scale));
+    public static void SpeedUp(float target) {
+        isSpeeding?.Kill();
+        if (CurrentSpeed <= maxSpeed)
+        {
+            isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
+            isSpeeding.onComplete += () => SpeedUp(target);
+        }
     }
+    public static void SpeedUp(float target, float accelerationDuration) {
+        isSpeeding?.Kill();
+        if (CurrentSpeed <= maxSpeed)
+        {
+            isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, accelerationDuration);
+            isSpeeding.onComplete += () => SpeedUp(target, accelerationDuration);
+        }
+    }
+    
 }
