@@ -796,8 +796,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Options
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f37df1d75fd866b4d8ab8bb3b003af31, type: 2}
+  m_sharedMaterial: {fileID: 801841152917818613, guid: f37df1d75fd866b4d8ab8bb3b003af31,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2530,8 +2531,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f37df1d75fd866b4d8ab8bb3b003af31, type: 2}
+  m_sharedMaterial: {fileID: 801841152917818613, guid: f37df1d75fd866b4d8ab8bb3b003af31,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2797,6 +2799,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2541636986967862071}
     m_Modifications:
+    - target: {fileID: 352553336451516143, guid: 3b83662971c174f4892b3b4b47fbde0f,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f37df1d75fd866b4d8ab8bb3b003af31,
+        type: 2}
+    - target: {fileID: 352553336451516143, guid: 3b83662971c174f4892b3b4b47fbde0f,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 801841152917818613, guid: f37df1d75fd866b4d8ab8bb3b003af31,
+        type: 2}
     - target: {fileID: 566022419460878044, guid: 3b83662971c174f4892b3b4b47fbde0f,
         type: 3}
       propertyPath: m_Pivot.x

@@ -17,6 +17,7 @@ public class VibrationToggle : MonoBehaviour
 
     private void Start() {
         _startAnchorMax = handleTransform.anchorMax;
+        OnValueChanged(GameManager.GetVibration());
     }
 
     public void OnValueChanged() {
@@ -31,6 +32,7 @@ public class VibrationToggle : MonoBehaviour
             handleTransform.DOAnchorMax(Vector2.one, duration).SetEase(Ease.OutBack);
             background.DOColor(colorOff, duration);
         }
+        GameManager.SetVibration(isOn);
     }
     
     public void OnValueChanged(bool IsOn) {
@@ -45,5 +47,6 @@ public class VibrationToggle : MonoBehaviour
             handleTransform.DOAnchorMax(Vector2.one, duration).SetEase(Ease.OutBack);
             background.DOColor(colorOff, duration);
         }
+        GameManager.SetVibration(isOn);
     }
 }

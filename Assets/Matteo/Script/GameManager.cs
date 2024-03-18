@@ -7,11 +7,11 @@ using UnityEngine;
 [Serializable]
 public class PlayerData 
 {
-    public  int BeerCount;
-    public  int CravateLevel;
-    public  int ArmeLevel;
-    public  int ChaussureLevel;
-    public  int Score;
+    public int BeerCount;
+    public int CravateLevel;
+    public int ArmeLevel;
+    public int ChaussureLevel;
+    public int Score;
 
     internal PlayerData(int beerCount, int cravateLevel, int armeLevel, int chaussureLevel, int score)
     {
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private static int _armeLevel = 1;
     private static int _chaussureLevel = 1;
     private static int _score = 0;
+    private static bool _vibrationIsActive = true;
     public delegate void Eventhandler();
     public static event Eventhandler BeerCountChanged;
     public PlayerData _playerData;
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
     public static int GetChaussureLevel() => _chaussureLevel;
 
     public static int GetScore() => _score;
+    
+    public static bool GetVibration() => _vibrationIsActive;
     // Setter
     public static void SetBeerCount(int value)
     {
@@ -53,9 +56,15 @@ public class GameManager : MonoBehaviour
     public static void SetArmelevel(int value) => _armeLevel += value;
     public static void SetChaussureLevel(int value) => _chaussureLevel += value;
     public static void SetScore(int value) => _score = value;
+    public static void SetVibration(bool value) => _vibrationIsActive = value;
+
+    private GameManager _instance;
+    
     // Method
     private void Awake()
     {
+        if(_instance != null && _instance != this) Destroy(this);
+        else _instance = this;
         DontDestroyOnLoad(transform.gameObject);
         saveFilePath = Application.persistentDataPath + "/PlayerData.json";
         if (File.Exists(saveFilePath))

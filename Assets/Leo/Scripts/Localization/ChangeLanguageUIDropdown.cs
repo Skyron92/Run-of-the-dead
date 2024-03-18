@@ -56,7 +56,7 @@ public class ChangeLanguageUIDropdown : MonoBehaviour
         dropdown.ClearOptions();
         dropdown.AddOptions(options);
         dropdown.SetValueWithoutNotify(selectedOption);
-
+        
         LocalizationSettings.SelectedLocaleChanged += LocalizationSettings_SelectedLocaleChanged;
     }
 
