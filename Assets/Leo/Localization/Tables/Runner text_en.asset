@@ -30,6 +30,18 @@ MonoBehaviour:
     m_Localized: Best score !
     m_Metadata:
       m_Items: []
+  - m_Id: 1855396558139392
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1857716960358400
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1860354925916160
+    m_Localized: Quit and go back to menu ?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

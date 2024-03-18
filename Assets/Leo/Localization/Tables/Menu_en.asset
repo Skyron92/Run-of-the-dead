@@ -54,6 +54,14 @@ MonoBehaviour:
     m_Localized: Weapon
     m_Metadata:
       m_Items: []
+  - m_Id: 1591920170364928
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1592481166913536
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

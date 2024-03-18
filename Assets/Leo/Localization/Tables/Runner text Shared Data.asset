@@ -27,6 +27,18 @@ MonoBehaviour:
     m_Key: Best score
     m_Metadata:
       m_Items: []
+  - m_Id: 1855396558139392
+    m_Key: Cotinue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1857716960358400
+    m_Key: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1860354925916160
+    m_Key: Confirmation
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
