@@ -27,6 +27,8 @@ public class RoadsManager : MonoBehaviour
         // Initialize the current road
         currentRoad = StartRoad;
 
+        Character.Current.MgStarted += (sender, args) => StopMovement(1);
+
         // Initiialize the road list
         for (int i = 0; i < initRoadsList.Count; i++) {
             RoadsList.Add(initRoadsList[i]);

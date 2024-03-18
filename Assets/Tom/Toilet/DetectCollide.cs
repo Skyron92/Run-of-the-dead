@@ -6,29 +6,23 @@ public class DetectCollide : MonoBehaviour, IMiniGame
 {
     public event IMiniGame.MiniGameSuccessEvent MiniGameSuccess;
     [SerializeField] private Slider progressbar;
-    private int _goal = 0;
-    private int _score = 0;
+    private int _goal;
+    private int _score;
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         _goal = Random.Range(2, 9);
         progressbar.maxValue = _goal;
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
-    {
+    private void OnTriggerEnter2D(Collider2D other) {
         // Victoire du mini-jeu
-        if (_score >= _goal)
-        {
+        if (_score >= _goal - 1) {
             MiniGameSuccess?.Invoke(this, MiniGameEventArgs.Empty);
         }
-        else
-        {
+        else {
             _score++;
             progressbar.value++;
         }
-
-        Debug.Log("collided");
     }
 }

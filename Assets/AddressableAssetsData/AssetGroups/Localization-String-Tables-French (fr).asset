@@ -35,6 +35,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-fr
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bd6f97ecb1de6048a2af80af2988ea3
+    m_Address: MGDialog_Beer_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c55ce68fbe0bb6428167ebf91e977d2
+    m_Address: MGDialog_zombie_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e91fdfbb1bfa03249b3ea123235ce078
+    m_Address: MGDialog_Toilet_fr
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: fb5b6d6ac5da8e24ba8fd4fcd9075306, type: 2}
   m_SchemaSet:

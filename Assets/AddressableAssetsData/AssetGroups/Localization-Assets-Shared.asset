@@ -32,6 +32,21 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c8e384752cbbf344a9d97fe3cfeb084
+    m_Address: Assets/Leo/Localization/Tables/MGDialog_Beer Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d33ee1762e6fb2f428fde50d118b35df
+    m_Address: Assets/Leo/Localization/Tables/MGDialog_zombie Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dde356590926026498c3feb7dcbc58bb
+    m_Address: Assets/Leo/Localization/Tables/MGDialog_Toilet Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: fb5b6d6ac5da8e24ba8fd4fcd9075306, type: 2}
   m_SchemaSet:
