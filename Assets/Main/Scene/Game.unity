@@ -961,7 +961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38031b24f29e42a59df993684eba8edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runnerButtons: {fileID: 1057012615}
 --- !u!1 &1219603981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,7 +1680,7 @@ Transform:
   m_GameObject: {fileID: 2097506134}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 17, z: -11.83}
+  m_LocalPosition: {x: -0.7, y: 17, z: -11.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
