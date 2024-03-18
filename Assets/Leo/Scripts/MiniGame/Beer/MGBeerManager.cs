@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 public class MGBeerManager : MonoBehaviour, IMiniGame
 {
     [SerializeField] private RectTransform marker;
+    [SerializeField] private RectTransform beerTransform;
+    [SerializeField] private Image beerPicture;
 
     [SerializeField, Range(0f, 10f)] private float rotationSpeed;
     private Vector3 _rotationTarget = new Vector3(0, 0, 89f);
@@ -33,16 +35,23 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
     }
     private void Awake() {
         _limit = Random.Range(30f, maxLimit);
-        Goal = Random.Range(2, 3);
+        Goal = Random.Range(2, 6);
         SetPicture();
         TouchInputAction.Enable();
         TouchInputAction.started += context => {
             if (!CheckRotation()) return;
-            Goal--;
-            MiniGameSuccess?.Invoke(this, new MiniGameEventArgs());
+            Progress();
         };
         Rotate(out TweenerCore<Quaternion, Vector3, QuaternionOptions> tweener);
         _tweener = tweener;
+    }
+
+    private void Progress() {
+        Goal--;
+        Vector3 target = new Vector3(0, 0, beerTransform.eulerAngles.z + 110f / Goal);
+        beerTransform.DORotate(target, .5f);
+        DOTween.To(() => beerPicture.fillAmount, f => beerPicture.fillAmount = f,
+            beerPicture.fillAmount - beerPicture.fillAmount / Goal, .5f);
     }
 
     private void SetPicture() {

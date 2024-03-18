@@ -229,6 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marker: {fileID: 5343754269239324263}
+  beerTransform: {fileID: 3907855820711424683}
+  beerPicture: {fileID: 7816757589970318226}
   rotationSpeed: 1
   maxLimit: 60
   touchInputActionReference: {fileID: 5995424857095566631, guid: cc918b61496069342bf8e299f2c4f8aa,
