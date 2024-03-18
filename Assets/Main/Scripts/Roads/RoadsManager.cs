@@ -86,4 +86,11 @@ public class RoadsManager : MonoBehaviour
     public static void SpeedUp(float target, float accelerationDuration) {
         DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, accelerationDuration);
     }
+    
+    private float MySigmoid(float x)
+    {
+        float result;
+        float scale = 1;
+        return result = 10 / (1 + Mathf.Exp((-x/2 + 2.2f)/ scale));
+    }
 }
