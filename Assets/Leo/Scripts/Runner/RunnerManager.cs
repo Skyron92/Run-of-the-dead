@@ -53,7 +53,7 @@ public class RunnerManager : MonoBehaviour
 
     public static int GetBeerCollected() => _beers; 
     public static int GetScoreReached() => _score; 
-
+    
     //////////////////////////////////////////////////////////
     // !!!! Ajouter les stats du perso !!!!!!!!!!!!!!!!!!!!!!!
     //////////////////////////////////////////////////////////
