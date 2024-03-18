@@ -5365,11 +5365,27 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 570139161924324311, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 47c137712b0b43e45804a1d3f631cd65,
+        type: 3}
+    - target: {fileID: 1407949335622754086, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4156951862109351308, guid: 125f49615f311994397334480d684fe7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 321829829}
+    - target: {fileID: 5045956581906182107, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5250809480927208175, guid: 125f49615f311994397334480d684fe7,
         type: 3}
       propertyPath: m_Name
@@ -5380,6 +5396,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 321829829}
+    - target: {fileID: 7470629653234820745, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 8915945744054244025, guid: 125f49615f311994397334480d684fe7,
         type: 3}
       propertyPath: m_Pivot.x
