@@ -133,7 +133,6 @@ public class Character : MonoBehaviour
 
         if (other.CompareTag("Obstacle")) {
             if(isInvincible) return;
-            Debug.Log("Hurt");
             RoadsManager.SlowDown();
             _animatorController.SetTrigger("Hurt");
             Camera.main.DOShakePosition(1f, Vector3.one * 0.1f);
@@ -148,7 +147,6 @@ public class Character : MonoBehaviour
             DisableInputs();
             Dead?.Invoke();
         }
-        Debug.Log(isInvincible);
     }
 
     private void OnTriggerExit(Collider other) {

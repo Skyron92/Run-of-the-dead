@@ -27,8 +27,6 @@ public class RoadsManager : MonoBehaviour
         // Initialize the current road
         currentRoad = StartRoad;
 
-        Character.Current.MgStarted += (sender, args) => StopMovement(1);
-
         // Initiialize the road list
         for (int i = 0; i < initRoadsList.Count; i++) {
             RoadsList.Add(initRoadsList[i]);
@@ -36,24 +34,24 @@ public class RoadsManager : MonoBehaviour
         SceneManager.sceneLoaded += (arg0, mode) => StartMovement();
     }
 
-    private void Update()
-    {
+    private void Update() {
         if (Input.GetKeyDown(KeyCode.UpArrow)) CurrentSpeed++;
         if (Input.GetKeyDown(KeyCode.DownArrow)) CurrentSpeed--;
     }
 
-    private void Start()
-    {
+    private void Start() {
         SpeedUp();
+        Character.Current.MgStarted += (sender, args) => StopMovement(1);
     }
 
     /// <summary>
     /// Spawn a random road next to the current road
     /// </summary>
-    public static void SpawnNextRoad()
-    {
+    public static void SpawnNextRoad() {
         // Get a random index in the range of the RoadsList
         int index = Random.Range(0, RoadsList.Count);
+        Debug.Log(RoadsList.Count);
+        Debug.Log(index);
 
         // Instantiate a road and save it in a variable
         var instance = Instantiate(RoadsList[index]);
