@@ -15,8 +15,7 @@ public class ZombieProgression : MonoBehaviour
     private TweenerCore<Color, Color, ColorOptions> _tweener;
     public delegate void EventHandler(object sender, EventArgs e);
     public event EventHandler GameOver;
-    [SerializeField] private AnimationCurve progressSpeedCurve;
-    //  public TensorFloat Sigmoid(TensorFloat X);
+    //[SerializeField] private AnimationCurve progressSpeedCurve;
     private void Awake() {
         _slider = GetComponent<Slider>();
     }
