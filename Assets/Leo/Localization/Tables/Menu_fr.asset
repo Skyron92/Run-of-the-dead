@@ -44,6 +44,18 @@ MonoBehaviour:
     m_Localized: UI Designer
     m_Metadata:
       m_Items: []
+  - m_Id: 1489411670011904
+    m_Localized: Chaussures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1489524576481280
+    m_Localized: Cravate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1489643795378176
+    m_Localized: Arme
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
