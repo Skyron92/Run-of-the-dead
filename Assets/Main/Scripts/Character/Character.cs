@@ -122,6 +122,7 @@ public class Character : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PNJ")) {
             PNJ pnj = other.gameObject.GetComponent<PNJ>();
+            DisableInputs();
             MgStarted?.Invoke(this, new MgStartedEventArgs(pnj.GetMGPrefab(), pnj.GetDiologBox()));
         }
 
@@ -157,6 +158,11 @@ public class Character : MonoBehaviour
     public void DisableInputs() {
         TapInputAction.Disable();
         SlideInputAction.Disable();
+    }
+    
+    public void EnableInputs() {
+        TapInputAction.Enable();
+        SlideInputAction.Enable();
     }
 
     private void OnDestroy()
