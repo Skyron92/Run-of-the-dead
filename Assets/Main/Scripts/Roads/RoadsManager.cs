@@ -22,6 +22,7 @@ public class RoadsManager : MonoBehaviour
     public static float CurrentSpeed = BaseSpeed;
     private static TweenerCore<float, float, FloatOptions> isSpeeding;
     private static float maxSpeed = 100;
+    private static int lastindex;
 
     private void Awake() {
         // Initialize the current road
@@ -50,17 +51,23 @@ public class RoadsManager : MonoBehaviour
     public static void SpawnNextRoad() {
         // Get a random index in the range of the RoadsList
         int index = Random.Range(0, RoadsList.Count);
-        Debug.Log(RoadsList.Count);
-        Debug.Log(index);
+        if (lastindex != index)
+        {
+            Debug.Log(RoadsList.Count);
+            Debug.Log(index);
 
-        // Instantiate a road and save it in a variable
-        var instance = Instantiate(RoadsList[index]);
-        Road myRoad = instance.GetComponent<Road>();
-        // Set the position of the road
-        instance.transform.position = myRoad.GetNextPosition();
+            // Instantiate a road and save it in a variable
+            var instance = Instantiate(RoadsList[index]);
+            Road myRoad = instance.GetComponent<Road>();
+            // Set the position of the road
+            instance.transform.position = myRoad.GetNextPosition();
 
-        // Update the new current road
-        currentRoad = myRoad;
+            // Update the new current road
+            currentRoad = myRoad;
+            lastindex = index;
+        }
+        else if (lastindex == index)
+            SpawnNextRoad();
     }
     public static void StopMovement()
     {
@@ -101,7 +108,7 @@ public class RoadsManager : MonoBehaviour
         isSpeeding?.Kill();
         if (CurrentSpeed <= maxSpeed)
         {
-            isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed + CurrentSpeed / 10, 1f);
+            isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed + BaseSpeed * 1.05f, 1f);
             isSpeeding.onComplete += () => SpeedUp();
         }
     }
