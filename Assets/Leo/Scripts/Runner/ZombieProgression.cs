@@ -11,8 +11,8 @@ public class ZombieProgression : MonoBehaviour
     private Slider _slider;
     [SerializeField] private Image fillPicture;
     [SerializeField, Range(0, 1)] private float fadeDuration;
-    private static float baseZSpeed = 10;
-    public static double zombieSpeed = baseZSpeed;
+    private static float speedIncr = 2;
+    public static double zombieSpeed = 10;
     private static float maxZombieSpeed = 130;
     private TweenerCore<Color, Color, ColorOptions> _tweener;
     public delegate void EventHandler(object sender, EventArgs e);
@@ -28,7 +28,7 @@ public class ZombieProgression : MonoBehaviour
 
     private IEnumerator Progress()
     {
-        zombieSpeed = zombieSpeed + baseZSpeed * 1.15;
+        zombieSpeed = zombieSpeed + speedIncr;
         if(IsCloseOfMax() && _tweener is not { active: true }) ColorAnimation();
         else if(!IsCloseOfMax()) _tweener?.Kill();
         // if (IsDead()) {
