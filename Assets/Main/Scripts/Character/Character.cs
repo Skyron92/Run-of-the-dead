@@ -112,10 +112,10 @@ public class Character : MonoBehaviour
 
     public void Jump() {
         _canMove = false;
-       jumpTweener = transform.DOMoveY(6.5f, .2f, true);
+       jumpTweener = transform.DOMoveY(6.5f, .4f, true);
         jumpTweener.onComplete += () => {
            _canMove = true;
-           transform.DOMoveY(1.8f, .2f, true);
+           transform.DOMoveY(1.8f, .4f, true);
        };
     }
 
@@ -163,8 +163,7 @@ public class Character : MonoBehaviour
         SlideInputAction.Enable();
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         moveTweener?.Kill();
         jumpTweener?.Kill();
     }
