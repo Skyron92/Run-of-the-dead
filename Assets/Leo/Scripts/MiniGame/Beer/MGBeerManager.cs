@@ -29,7 +29,7 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
     private int Goal {
         get => _goal;
         set {
-            if(value <= 0) MiniGameSuccess?.Invoke(this, new MiniGameEventArgs());
+            if(value <= 0) MiniGameSuccess?.Invoke(this, new MiniGameEventArgs(new Bike()));
             _goal = value;
         }
     }

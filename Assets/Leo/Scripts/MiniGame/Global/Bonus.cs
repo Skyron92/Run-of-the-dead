@@ -23,7 +23,7 @@ public abstract class Bonus
 public class Bike : Bonus
 {
     public override void Do() {
-        Debug.Log("ça va tarpin vite !");
+        RoadsManager.SpeedUp(RoadsManager.CurrentSpeed + 20);
     }
 
     public override Type GetType() {

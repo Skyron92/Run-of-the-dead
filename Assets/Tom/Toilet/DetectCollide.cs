@@ -8,6 +8,8 @@ public class DetectCollide : MonoBehaviour, IMiniGame
     [SerializeField] private Slider progressbar;
     private int _goal;
     private int _score;
+
+    private Bike bonus = new Bike();
     
     // Start is called before the first frame update
     void Start() {
@@ -18,7 +20,7 @@ public class DetectCollide : MonoBehaviour, IMiniGame
     private void OnTriggerEnter2D(Collider2D other) {
         // Victoire du mini-jeu
         if (_score >= _goal - 1) {
-            MiniGameSuccess?.Invoke(this, MiniGameEventArgs.Empty);
+            MiniGameSuccess?.Invoke(this, new MiniGameEventArgs(bonus));
         }
         else {
             _score++;
