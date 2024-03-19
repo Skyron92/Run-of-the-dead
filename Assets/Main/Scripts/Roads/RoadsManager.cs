@@ -27,17 +27,13 @@ public class RoadsManager : MonoBehaviour
     private void Awake() {
         // Initialize the current road
         currentRoad = StartRoad;
+        CurrentSpeed = BaseSpeed;
 
         // Initiialize the road list
         for (int i = 0; i < initRoadsList.Count; i++) {
             RoadsList.Add(initRoadsList[i]);
         }
         SceneManager.sceneLoaded += (arg0, mode) => StartMovement();
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) CurrentSpeed++;
-        if (Input.GetKeyDown(KeyCode.DownArrow)) CurrentSpeed--;
     }
 
     private void Start() {
@@ -53,9 +49,6 @@ public class RoadsManager : MonoBehaviour
         int index = Random.Range(0, RoadsList.Count);
         if (lastindex != index)
         {
-            Debug.Log(RoadsList.Count);
-            Debug.Log(index);
-
             // Instantiate a road and save it in a variable
             var instance = Instantiate(RoadsList[index]);
             Road myRoad = instance.GetComponent<Road>();
@@ -106,19 +99,29 @@ public class RoadsManager : MonoBehaviour
     
     public static void SpeedUp() {
         isSpeeding?.Kill();
+        Character.Current.isBoosted = false;
         if (CurrentSpeed <= maxSpeed)
         {
             isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed + SpeedIncr, 1f);
+            Debug.Log("PlayerSpeed = " + CurrentSpeed);
             isSpeeding.onComplete += () => SpeedUp();
         }
     }
     
     public static void SpeedUp(float target) {
         isSpeeding?.Kill();
-        if (CurrentSpeed <= maxSpeed)
+        float time = 5f;
+        if (CurrentSpeed <= maxSpeed + target)
         {
             isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
-            isSpeeding.onComplete += () => SpeedUp(target);
+            isSpeeding.onComplete += () =>
+            {
+                while (time > 0)
+                {
+                    time -= Time.deltaTime;
+                }
+                SpeedUp();
+            };
         }
     }
     public static void SpeedUp(float target, float accelerationDuration) {

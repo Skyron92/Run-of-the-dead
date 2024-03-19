@@ -1342,6 +1342,10 @@ PrefabInstance:
         type: 3}
       insertIndex: 40
       addedObject: {fileID: 710604860}
+    - targetCorrespondingSourceObject: {fileID: 5774502767721553885, guid: 2ee6f713833a87c4d95cd38a7cec4588,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 723386462}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1898036718682135656, guid: 2ee6f713833a87c4d95cd38a7cec4588,
         type: 3}
@@ -1472,6 +1476,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1457992272153549293, guid: 62ac97613469419448ba684fd5ed1217,
     type: 3}
   m_PrefabInstance: {fileID: 710604859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &723386462 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1356395110}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &777126778
 GameObject:
@@ -3012,7 +3022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.1}
   m_AnchorMax: {x: 0.9, y: 0.9}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.0000038146973}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1151345620
@@ -3031,7 +3041,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:35c40339bfac13c4297458409138e9b5
     m_TableEntryReference:
-      m_KeyId: 6698561536
+      m_KeyId: 1919663927980032
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -3041,8 +3051,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1151345621}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: BroadcastMessage
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3830,6 +3840,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354666315}
   m_CullTransparentMesh: 1
+--- !u!1001 &1356395110
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1778905525}
+    m_Modifications:
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407454234194306062, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503183652367610504, guid: 84cd890a467040345956eb37a48b03b2,
+        type: 3}
+      propertyPath: m_Name
+      value: PNJ_Beer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 84cd890a467040345956eb37a48b03b2, type: 3}
 --- !u!1 &1394214581
 GameObject:
   m_ObjectHideFlags: 0
@@ -5386,8 +5464,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1985835632}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: BroadcastMessage
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
