@@ -162,16 +162,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 352553336451516143, guid: 3b83662971c174f4892b3b4b47fbde0f,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: f37df1d75fd866b4d8ab8bb3b003af31,
-        type: 2}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 352553336451516143, guid: 3b83662971c174f4892b3b4b47fbde0f,
         type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 801841152917818613, guid: f37df1d75fd866b4d8ab8bb3b003af31,
-        type: 2}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 566022419460878044, guid: 3b83662971c174f4892b3b4b47fbde0f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -297,6 +295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.28235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174906045831771307, guid: 3b83662971c174f4892b3b4b47fbde0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9093813123718830750, guid: 3b83662971c174f4892b3b4b47fbde0f,
         type: 3}
