@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 using UnityEngine.TextCore.LowLevel;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class SlideDetection : MonoBehaviour
     private InputAction SlideInputAction => myInput.action; 
     Vector2 _delta => SlideInputAction.ReadValue<Vector2>();
 
-    private float sensibility = .5f;
+    private float sensibility = .6f;
 
     public void DisableSlideInputAction()
     {
@@ -45,22 +46,18 @@ public class SlideDetection : MonoBehaviour
         if(globalMenu == null) return;
         if (_delta.x > 0 && globalMenu.anchorMax.x == 2)return;
         if (_delta.x < 0 && globalMenu.anchorMax.x == 1) return;
-        if (_delta.y>0.5 && _delta.y<-0.5)return;
-       
-        if (_delta.x >= sensibility)
-        {
-            if (hereImage.sprite != spriteNotHere)
-            {
+        if (_delta.y > 0.5f && _delta.y < -0.5f)return;
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (_delta.x >= sensibility) {
+            if (hereImage.sprite != spriteNotHere) {
                 ExchangeImages();
             }
             
             globalMenu.DOAnchorMax(new Vector2(2, globalMenu.anchorMax.y),0.25f);
             globalMenu.DOAnchorMin(new Vector2(1, globalMenu.anchorMin.y),0.25f);
         }
-        if (_delta.x <= -sensibility)
-        {
-            if (hereImage.sprite != spriteHere)
-            {
+        if (_delta.x <= -sensibility) {
+            if (hereImage.sprite != spriteHere) {
                 ExchangeImages();
             }
             
@@ -69,8 +66,7 @@ public class SlideDetection : MonoBehaviour
         }
     }
     
-    public void ExchangeImages()
-    {
+    public void ExchangeImages() {
         Sprite temp = hereImage.sprite;
         hereImage.sprite = notHerImage.sprite;
         notHerImage.sprite = temp;
