@@ -113,6 +113,27 @@ PrefabInstance:
       propertyPath: localizedStringTable.m_TableReference.m_TableCollectionName
       value: GUID:2c8e384752cbbf344a9d97fe3cfeb084
       objectReference: {fileID: 0}
+    - target: {fileID: 2733929389440748872, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733929389440748872, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733929389440748872, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253516557564908858, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fed7dae45065cf142ab6ff669b4370c7,
+        type: 3}
     - target: {fileID: 9222759601367522330, guid: e13ddef727eb58f43970ae228310a834,
         type: 3}
       propertyPath: m_Name
