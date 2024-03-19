@@ -113,6 +113,26 @@ PrefabInstance:
       propertyPath: localizedStringTable.m_TableReference.m_TableCollectionName
       value: GUID:d33ee1762e6fb2f428fde50d118b35df
       objectReference: {fileID: 0}
+    - target: {fileID: 2164001478278359339, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164001478278359339, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164001478278359339, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164001478278359339, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 9222759601367522330, guid: e13ddef727eb58f43970ae228310a834,
         type: 3}
       propertyPath: m_Name

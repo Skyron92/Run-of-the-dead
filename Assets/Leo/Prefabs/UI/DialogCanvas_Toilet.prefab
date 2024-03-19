@@ -113,6 +113,32 @@ PrefabInstance:
       propertyPath: localizedStringTable.m_TableReference.m_TableCollectionName
       value: GUID:dde356590926026498c3feb7dcbc58bb
       objectReference: {fileID: 0}
+    - target: {fileID: 2164001478278359339, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733929389440748872, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733929389440748872, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733929389440748872, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253516557564908858, guid: e13ddef727eb58f43970ae228310a834,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d596258fce5cf6b458db2936492b3ec8,
+        type: 3}
     - target: {fileID: 9222759601367522330, guid: e13ddef727eb58f43970ae228310a834,
         type: 3}
       propertyPath: m_Name
