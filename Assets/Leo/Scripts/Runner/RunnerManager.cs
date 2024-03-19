@@ -41,6 +41,9 @@ public class RunnerManager : MonoBehaviour
         Instantiate(gameOverPanel);
         _isEnded = true;
         GameManager.SetBeerCount(_beers);
+        GameManager.SetScore(_score);
+        _beers = 0;
+        _score = 0;
         CompareScore();
     }
 
@@ -48,6 +51,9 @@ public class RunnerManager : MonoBehaviour
         Instantiate(gameOverPanel);
         _isEnded = true;
         GameManager.SetBeerCount(_beers);
+        GameManager.SetScore(_score);
+        _beers = 0;
+        _score = 0;
         CompareScore();
     }
 
