@@ -59,6 +59,7 @@ public class Character : MonoBehaviour
 
     public bool isInvincible;
     public bool isBoosted;
+    public bool hasReleased = true;
 
     private TweenerCore<Vector3, Vector3, VectorOptions> jumpTweener;
     private TweenerCore<Vector3, Vector3, VectorOptions> moveTweener;
@@ -70,11 +71,11 @@ public class Character : MonoBehaviour
         SlideInputAction.Enable();
         TapInputAction.Enable();
         SlideInputAction.started += ProcessSwipeDelta;
-        TapInputAction.canceled += ProcessTouchComplete;
+        TapInputAction.canceled += context => hasReleased = true;
         _animatorController = GetComponent<Animator>();
     }
 
-    private void ProcessTouchComplete(InputAction.CallbackContext context) {
+    private void ProcessTouchComplete() {
         if(Mathf.Abs(_swipeDirection.magnitude) < _minimumSwipeMagnitude) return;
         if (Math.Abs(_swipeDirection.x) > _swipeDirection.y) {
             if(_swipeDirection.x > _sensibility) SetDestination(1);
@@ -85,7 +86,11 @@ public class Character : MonoBehaviour
     }
 
     private void ProcessSwipeDelta(InputAction.CallbackContext context) {
+        if(!hasReleased) return;
         _swipeDirection = context.ReadValue<Vector2>();
+        hasReleased = false;
+        ProcessTouchComplete();
+        
     }
 
     /// <summary>
