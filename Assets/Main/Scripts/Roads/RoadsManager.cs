@@ -84,7 +84,8 @@ public class RoadsManager : MonoBehaviour
 
     public static void SlowDown() {
         isSpeeding?.Kill();
-        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed - CurrentSpeed / 10, 10f);
+        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed * 0.9f, 10f);
+        isSpeeding.onComplete += () => SpeedUp();
     }
     public static void SlowDown(float target) {
         isSpeeding?.Kill();
