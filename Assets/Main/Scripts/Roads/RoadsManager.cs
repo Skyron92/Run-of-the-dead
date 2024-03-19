@@ -109,10 +109,18 @@ public class RoadsManager : MonoBehaviour
     
     public static void SpeedUp(float target) {
         isSpeeding?.Kill();
-        if (CurrentSpeed <= maxSpeed)
+        float time = 5f;
+        if (CurrentSpeed <= maxSpeed + target)
         {
             isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
-            isSpeeding.onComplete += () => SpeedUp(target);
+            isSpeeding.onComplete += () =>
+            {
+                while (time > 0)
+                {
+                    time -= Time.deltaTime;
+                }
+                SpeedUp();
+            };
         }
     }
     public static void SpeedUp(float target, float accelerationDuration) {
