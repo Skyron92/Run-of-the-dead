@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the mini games
@@ -10,6 +11,8 @@ public class MiniGameManager : MonoBehaviour
     private GameObject _miniGamePrefab;
     private GameObject _miniGameInstance;
     private GameObject _dialogBoxInstance;
+
+    [SerializeField] private Button pauseButton;
 
     private void Start() {
         // Subscribe to the MGStarted event
@@ -25,6 +28,7 @@ public class MiniGameManager : MonoBehaviour
         RoadsManager.StopMovement();
         SpawnDialogBox(e.DialogBoxPrefab);
         _miniGamePrefab = e.MgPrefab;
+        pauseButton.interactable = false;
     }
 
     /// <summary>
@@ -78,6 +82,7 @@ public class MiniGameManager : MonoBehaviour
         RoadsManager.StartMovement();
         StartBonus(e.Bonus);
         UnBindEvent();
+        pauseButton.interactable = true;
     }
     
     /// <summary>

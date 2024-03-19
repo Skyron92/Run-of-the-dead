@@ -62,13 +62,15 @@ namespace MiniGame.Zombie {
         // Event when the player win
         public event IMiniGame.MiniGameSuccessEvent MiniGameSuccess;
 
+        [SerializeField] private Sprite deadBirdSprite;
+
         private void Awake() {
             CheckIfVariablesIsAssigned();
             _selfRectTransform = GetComponent<RectTransform>();
             Debug.Log(detectionAreaTransform);
             SetupInputs();
             Life = Random.Range(1, 3);
-            _image = GetComponent<Image>();
+            _image = GetComponentInChildren<Image>();
         }
 
         private void CheckIfVariablesIsAssigned() {
@@ -137,6 +139,7 @@ namespace MiniGame.Zombie {
         /// </summary>
         private void Die() {
             _isDead = true;
+            _image.sprite = deadBirdSprite;
             GetComponent<BirdMovement>().StopMoving();
             Fall();
         }
