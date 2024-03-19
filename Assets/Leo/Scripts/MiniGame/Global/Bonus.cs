@@ -10,11 +10,6 @@ public abstract class Bonus
     /// Effects of the bonus
     /// </summary>
     public abstract void Do();
-    /// <summary>
-    /// Get the direct type of the bonus child
-    /// </summary>
-    /// <returns></returns>
-    public abstract Type GetType();
 }
 
 /// <summary>
@@ -24,9 +19,10 @@ public class Bike : Bonus
 {
     public override void Do() {
         RoadsManager.SpeedUp(RoadsManager.CurrentSpeed + 20);
+        Character.Current.isBoosted = true;
     }
 
-    public override Type GetType() {
+    public Type GetType() {
         return typeof(Bike);
     }
 }

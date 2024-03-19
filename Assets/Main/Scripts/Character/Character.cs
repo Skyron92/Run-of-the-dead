@@ -58,6 +58,7 @@ public class Character : MonoBehaviour
     private Animator _animatorController;
 
     public bool isInvincible;
+    public bool isBoosted;
 
     private TweenerCore<Vector3, Vector3, VectorOptions> jumpTweener;
     private TweenerCore<Vector3, Vector3, VectorOptions> moveTweener;
@@ -121,6 +122,7 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PNJ")) {
+            if(isBoosted) return;
             PNJ pnj = other.gameObject.GetComponent<PNJ>();
             DisableInputs();
             MgStarted?.Invoke(this, new MgStartedEventArgs(pnj.GetMGPrefab(), pnj.GetDiologBox()));
