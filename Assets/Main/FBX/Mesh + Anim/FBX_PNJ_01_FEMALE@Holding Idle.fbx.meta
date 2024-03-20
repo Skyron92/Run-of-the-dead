@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a34971c9e0d264d46834f492b705db59
+guid: f4908d5e3e4a91d49b366d5fdfad625e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,25 +8,19 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: EYES1
-    second: {fileID: -876546973899608171, guid: b532a211c488ffe4b8268ae7d0a02478,
+    second: {fileID: -876546973899608171, guid: ff9f864c78bb3c044b07d05a528b7198,
       type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ZOMBIE_PANT
-    second: {fileID: -876546973899608171, guid: 056e63baffa4fe84e9fbde023665cfd8,
+      name: PNJ_PANT
+    second: {fileID: -876546973899608171, guid: 95ae72965c564d94483b26f7d3715cb4,
       type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ZOMBIE_SKIN
-    second: {fileID: -876546973899608171, guid: 964051fc741b0e34199a2e70f2a1aa63,
-      type: 3}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ZOMBIE_TEETH
-    second: {fileID: -876546973899608171, guid: a20a5a4b4da2c174b803dfbdba4eb729,
+      name: PNJ_SKIN
+    second: {fileID: -876546973899608171, guid: 8d073c915509a1e4e96529f11a878ef7,
       type: 3}
   materials:
     materialImportMode: 2

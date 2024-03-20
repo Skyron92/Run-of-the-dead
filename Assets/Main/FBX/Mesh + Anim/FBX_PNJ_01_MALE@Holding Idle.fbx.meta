@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 48b2d12817260ef48a300743fd802e47
+guid: da8c9397dbfdedf40b63007acb6b3467
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,20 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: punk_merge_lowMat
-    second: {fileID: -876546973899608171, guid: 46bb64e9f4499c84f935d2d68760e200,
+      name: EYES1
+    second: {fileID: -876546973899608171, guid: 0ac9b22a9e7fbb4438864ff3958e3764,
+      type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PNJ_PANT
+    second: {fileID: -876546973899608171, guid: 617410eb3c86a304289c5ba382937afb,
+      type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PNJ_SKIN
+    second: {fileID: -876546973899608171, guid: 8826ce3f55ccc96429c19f8b3d8a7f5d,
       type: 3}
   materials:
     materialImportMode: 2
@@ -41,7 +53,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.025
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -96,7 +108,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.025
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
