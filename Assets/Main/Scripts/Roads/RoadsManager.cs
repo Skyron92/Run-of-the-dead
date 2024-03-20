@@ -21,7 +21,7 @@ public class RoadsManager : MonoBehaviour
     public static float BaseSpeed = 15f;
     public static float CurrentSpeed = BaseSpeed;
     private static TweenerCore<float, float, FloatOptions> isSpeeding;
-    private static float maxSpeed = 100;
+    public static float maxSpeed = 100;
     private static int lastindex;
 
     private void Awake() {
