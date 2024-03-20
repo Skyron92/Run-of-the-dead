@@ -6,6 +6,7 @@ public class DetectCollide : MonoBehaviour, IMiniGame
 {
     public event IMiniGame.MiniGameSuccessEvent MiniGameSuccess;
     [SerializeField] private Slider progressbar;
+    [SerializeField] private ParticleSystem waterDropEffect;
     private int _goal;
     private int _score;
 
@@ -18,6 +19,8 @@ public class DetectCollide : MonoBehaviour, IMiniGame
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
+        if(waterDropEffect.isPlaying) waterDropEffect.Stop();
+        waterDropEffect.Play();
         // Victoire du mini-jeu
         if (_score >= _goal - 1) {
             MiniGameSuccess?.Invoke(this, new MiniGameEventArgs(bonus));

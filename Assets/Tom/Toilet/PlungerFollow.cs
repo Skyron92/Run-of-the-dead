@@ -31,9 +31,7 @@ public class PlungerFollow : MonoBehaviour
     }
     
     private bool IsEverythingAssigned() {
-        if (myInputPosition && myInputTouch && plunger && myPlayZone && touchzone)
-            return true;
-        return false;
+        return myInputPosition && myInputTouch && plunger && myPlayZone && touchzone;
     }
     /// <summary>
     /// Permet de verifier si le déplacement de l'objet est valide dans l'espace de jeu.
