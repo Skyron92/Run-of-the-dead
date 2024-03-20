@@ -8,6 +8,7 @@ public class PNJ : MonoBehaviour
     [SerializeField] private GameObject mGPrefab;
     [SerializeField] private GameObject dialogBox;
     
+    
     public GameObject GetMGPrefab() {
         return mGPrefab;
     }
