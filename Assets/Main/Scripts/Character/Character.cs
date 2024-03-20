@@ -150,7 +150,6 @@ public class Character : MonoBehaviour
 
         if (other.CompareTag("Fatal")) {
             if(isInvincible) return;
-            Collided?.Invoke();
             Camera.main.DOShakePosition(1f, Vector3.one * 0.8f);
             RoadsManager.StopMovement(.3f);
             if(GameManager.GetVibration()) Handheld.Vibrate();
