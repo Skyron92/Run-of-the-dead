@@ -40,18 +40,12 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
         Goal = Random.Range(3, 6);
         SetPicture();
         TouchInputAction.Enable();
-        TouchInputAction.started += context => { 
-            Debug.Log(CheckRotation());
-            if (!CheckRotation()) return;
-            Progress();
+        TouchInputAction.started += context => {
+            if (CheckRotation()) Progress();
+            else RedFade();
         };
         Rotate(out TweenerCore<Quaternion, Vector3, QuaternionOptions> tweener);
         _tweener = tweener;
-    }
-
-    private void Update()
-    {
-        Debug.Log(CheckRotation());
     }
 
     private void Progress() {
@@ -80,6 +74,11 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
     private void Rotate() {
         marker.DORotate(_rotationTarget, rotationSpeed).onComplete += () => 
             marker.DORotate(-_rotationTarget, rotationSpeed).onComplete += () => Rotate();
+    }
+
+    private void RedFade() {
+        beerPicture.DOColor(Color.red, 0.5f).onComplete += () => beerPicture.DOColor(Color.white, 0.5f);
+        beerTransform.DOShakePosition(1f, Vector3.one);
     }
     public event IMiniGame.MiniGameSuccessEvent MiniGameSuccess;
 }
