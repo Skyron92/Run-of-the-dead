@@ -3,6 +3,7 @@ using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MiniGame.Zombie {
@@ -37,7 +38,7 @@ namespace MiniGame.Zombie {
             set => _life = _life < 0 ? 0 : value;
         }
 
-        private Image _image;
+        [SerializeField] private Image image;
         [SerializeField, Range(0.1f, 1f)] private float fadeDuration;
         
         [Header("Move settings")]
@@ -70,7 +71,6 @@ namespace MiniGame.Zombie {
             Debug.Log(detectionAreaTransform);
             SetupInputs();
             Life = Random.Range(1, 3);
-            _image = GetComponentInChildren<Image>();
         }
 
         private void CheckIfVariablesIsAssigned() {
@@ -129,7 +129,7 @@ namespace MiniGame.Zombie {
         }
 
         void Hit() {
-            _image.DOColor(Color.red, fadeDuration).onComplete += () => _image.DOColor(Color.white, fadeDuration);
+            image.DOColor(Color.red, fadeDuration).onComplete += () => image.DOColor(Color.white, fadeDuration);
             Life--;
             if(Life == 0) Die();
         }
@@ -139,7 +139,7 @@ namespace MiniGame.Zombie {
         /// </summary>
         private void Die() {
             _isDead = true;
-            _image.sprite = deadBirdSprite;
+            image.sprite = deadBirdSprite;
             GetComponent<BirdMovement>().StopMoving();
             Fall();
         }
