@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 82f599e15b81121488df4540757aed24
-  m_SerializeEntries:
-  - m_GUID: 099380296160b76488f1d74a9f8923bf
-    m_Address: Assets/Matteo/utomp3.com - Subway Surfers Main Theme Music OFFICIAL.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: fb5b6d6ac5da8e24ba8fd4fcd9075306, type: 2}
   m_SchemaSet:

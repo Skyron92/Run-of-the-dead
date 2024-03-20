@@ -5,6 +5,7 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages the player character
@@ -69,8 +70,7 @@ public class Character : MonoBehaviour
         // Set the initial value at 1, the middle spot point index
         ActualSpot = 1;
         Current = this;
-        SlideInputAction.Enable();
-        TapInputAction.Enable();
+        SceneManager.sceneLoaded += (arg0, mode) => EnableInputs();
         SlideInputAction.started += ProcessSwipeDelta;
         TapInputAction.canceled += context => hasReleased = true;
         _animatorController = GetComponent<Animator>();
