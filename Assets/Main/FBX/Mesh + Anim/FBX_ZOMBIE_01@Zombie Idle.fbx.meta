@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a742cee1844580a469084eb2a1b7082b
+guid: 07f38f0fb4de53744927f05e92d928b5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,19 +8,25 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: EYES1
-    second: {fileID: -876546973899608171, guid: ff9f864c78bb3c044b07d05a528b7198,
+    second: {fileID: -876546973899608171, guid: bd2bdb80082b15642ae0cea3bb3b8bf2,
       type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: PNJ_PANT
-    second: {fileID: -876546973899608171, guid: 95ae72965c564d94483b26f7d3715cb4,
+      name: ZOMBIE_PANT
+    second: {fileID: -876546973899608171, guid: e1b2709154558d443a627240c63cd8ba,
       type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: PNJ_SKIN
-    second: {fileID: -876546973899608171, guid: 8d073c915509a1e4e96529f11a878ef7,
+      name: ZOMBIE_SKIN
+    second: {fileID: -876546973899608171, guid: 8208f3a030224464dbb8aafb503b0368,
+      type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ZOMBIE_TEETH
+    second: {fileID: -876546973899608171, guid: 7901d099e7255af4b9f74f42f12f0455,
       type: 3}
   materials:
     materialImportMode: 2
@@ -53,7 +59,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 2.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -108,7 +114,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.024999999
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
