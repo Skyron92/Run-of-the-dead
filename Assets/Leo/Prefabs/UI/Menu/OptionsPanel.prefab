@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2776055110256028833
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1137,13 +1137,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3942201517893831658, guid: 4d368deb1011e6845a116217c8864f3b,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942201517893831658, guid: 4d368deb1011e6845a116217c8864f3b,
+        type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942201517893831658, guid: 4d368deb1011e6845a116217c8864f3b,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8107082848087323775, guid: 4d368deb1011e6845a116217c8864f3b,
         type: 3}
       propertyPath: m_Name
       value: Sounds
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871641945315061338, guid: 4d368deb1011e6845a116217c8864f3b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8871641945315061338, guid: 4d368deb1011e6845a116217c8864f3b,
         type: 3}
