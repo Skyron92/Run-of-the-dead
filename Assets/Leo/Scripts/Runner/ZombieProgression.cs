@@ -15,7 +15,7 @@ public class ZombieProgression : MonoBehaviour
     private static float speedIncr = 1.5f;
     public static float zombieSpeed = 10;
     public static float basezombieSpeed = 10;
-    private static float maxZombieSpeed = 130;
+    private static float maxZombieSpeed = 120;
     private static float _distance = 1000;
     private static float _baseDistance = 1000;
     private TweenerCore<Color, Color, ColorOptions> _tweener;
