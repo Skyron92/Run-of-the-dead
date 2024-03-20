@@ -51,6 +51,7 @@ public class Character : MonoBehaviour
 
     public event EventHandler BeerCollected;
     public event EventHandler Dead;
+    public event EventHandler Collided;
     
     // True if the character is switching of position
     private bool IsMoving => !(Vector3.Distance(transform.position, spots[_actualSpot].position) < 0.01f);
@@ -140,6 +141,7 @@ public class Character : MonoBehaviour
 
         if (other.CompareTag("Obstacle")) {
             if(isInvincible) return;
+            Collided?.Invoke();
             RoadsManager.SlowDown();
             _animatorController.SetTrigger("Hurt");
             Camera.main.DOShakePosition(1f, Vector3.one * 0.1f);
@@ -148,6 +150,7 @@ public class Character : MonoBehaviour
 
         if (other.CompareTag("Fatal")) {
             if(isInvincible) return;
+            Collided?.Invoke();
             Camera.main.DOShakePosition(1f, Vector3.one * 0.8f);
             RoadsManager.StopMovement(.3f);
             if(GameManager.GetVibration()) Handheld.Vibrate();
