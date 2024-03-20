@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
@@ -10,6 +11,7 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
 {
     [SerializeField] private RectTransform marker;
     [SerializeField] private RectTransform beerTransform;
+    [SerializeField] private RectTransform target;
     [SerializeField] private Image beerPicture;
 
     [SerializeField, Range(0f, 10f)] private float rotationSpeed;
@@ -35,15 +37,21 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
     }
     private void Awake() {
         _limit = Random.Range(30f, maxLimit);
-        Goal = Random.Range(2, 6);
+        Goal = Random.Range(3, 6);
         SetPicture();
         TouchInputAction.Enable();
-        TouchInputAction.started += context => {
+        TouchInputAction.started += context => { 
+            Debug.Log(CheckRotation());
             if (!CheckRotation()) return;
             Progress();
         };
         Rotate(out TweenerCore<Quaternion, Vector3, QuaternionOptions> tweener);
         _tweener = tweener;
+    }
+
+    private void Update()
+    {
+        Debug.Log(CheckRotation());
     }
 
     private void Progress() {
@@ -60,7 +68,8 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
     }
 
     private bool CheckRotation() {
-        return marker.eulerAngles.z < _limit && marker.eulerAngles.z > -_limit;
+        return marker.eulerAngles.z is > 90 or < - 90 ? marker.eulerAngles.z - 360 < _limit && marker.eulerAngles.z -360 > -_limit 
+            : marker.eulerAngles.z < _limit && marker.eulerAngles.z> -_limit;
     }
 
     private void Rotate(out TweenerCore<Quaternion, Vector3, QuaternionOptions> tweener) {
