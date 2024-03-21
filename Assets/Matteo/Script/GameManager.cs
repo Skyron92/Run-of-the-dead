@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
     public static void SetBeerCount(int value)
     {
         _beerCount += value;
-        BeerCountChanged?.Invoke();
     }
     public static void SetCravateLevel(int value) => _cravateLevel += value;
     public static void SetArmelevel(int value) => _armeLevel += value;
@@ -58,6 +57,10 @@ public class GameManager : MonoBehaviour
     public static void SetScore(int value) => _score = value;
     public static void SetVibration(bool value) => _vibrationIsActive = value;
 
+    public static void InvokeBeerCountChanged()
+    {
+        BeerCountChanged?.Invoke();
+    }
     private GameManager _instance;
     
     // Method

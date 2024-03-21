@@ -11,7 +11,7 @@ public class RunnerManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI beerTMP;
 
-    private float _incrementDelay = 0.1f;
+    private float _incrementDelay = 0.5f;
 
     private static int _score;
 
@@ -26,16 +26,14 @@ public class RunnerManager : MonoBehaviour
         zombieProgression.GameOver += OnGameOver;
         Character.Current.Dead += OnGameOver;
         Character.Current.BeerCollected += OnBeerCollected;
+        StartCoroutine(CountScore());
     }
 
     private void OnBeerCollected() {
         _beers++;
         beerTMP.text = _beers.ToString();
     }
-
-    private void Update() {
-        StartCoroutine(CountScore());
-    }
+    
 
     public static bool CompareScore() {
         bool bestScore = _score > GameManager.GetScore();
@@ -47,20 +45,20 @@ public class RunnerManager : MonoBehaviour
         Instantiate(gameOverPanel);
         _isEnded = true;
         GameManager.SetBeerCount(_beers);
-        GameManager.SetScore(_score);
+        CompareScore();
         _beers = 0;
         _score = 0;
-        CompareScore();
+        GameManager.InvokeBeerCountChanged();
     }
 
     private void OnGameOver(object sender, EventArgs e) {
         Instantiate(gameOverPanel);
         _isEnded = true;
         GameManager.SetBeerCount(_beers);
-        GameManager.SetScore(_score);
+        CompareScore();
         _beers = 0;
         _score = 0;
-        CompareScore();
+        GameManager.InvokeBeerCountChanged();
     }
 
     public static int GetBeerCollected() => _beers; 
@@ -71,6 +69,6 @@ public class RunnerManager : MonoBehaviour
     //////////////////////////////////////////////////////////
     private IEnumerator CountScore() {
         _score += (int)(RoadsManager.CurrentSpeed * _incrementDelay);
-        yield return new WaitForSeconds(_incrementDelay);
+        yield return new WaitForSeconds(1);
     }
 }

@@ -2384,6 +2384,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1039894805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1048566608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2592332126104564881, guid: 125f49615f311994397334480d684fe7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7558954549138183481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1060348992 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3982180697918462859, guid: 125f49615f311994397334480d684fe7,
@@ -5537,6 +5549,16 @@ PrefabInstance:
       propertyPath: musicParameterName
       value: VolumeParamater
       objectReference: {fileID: 0}
+    - target: {fileID: 3999931581837464294, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.223816
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999931581837464294, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4132062753485762613, guid: 125f49615f311994397334480d684fe7,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5629,6 +5651,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
         type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5687,6 +5714,21 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 5633235100215033770, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633235100215033770, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633235100215033770, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5796500295704658611, guid: 125f49615f311994397334480d684fe7,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5722,6 +5764,12 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6784155537654513811, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 54af913f67a891b4e810cc82d462fa7c,
+        type: 3}
     - target: {fileID: 6799487483504144162, guid: 125f49615f311994397334480d684fe7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -5792,6 +5840,11 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 8365612036890614989, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: levelDisplay
+      value: 
+      objectReference: {fileID: 1048566608}
     - target: {fileID: 8464835656066590766, guid: 125f49615f311994397334480d684fe7,
         type: 3}
       propertyPath: m_fontSize
