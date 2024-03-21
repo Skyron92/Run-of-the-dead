@@ -15,8 +15,10 @@ public class RunnerManager : MonoBehaviour
 
     private static int _beers;
 
-    private bool _isEnded;
+    private static bool _isEnded;
 
+    public static bool IsEnded() => _isEnded;
+    
     private void Start() {
         zombieProgression.GameOver += OnGameOver;
         Character.Current.Dead += OnGameOver;
