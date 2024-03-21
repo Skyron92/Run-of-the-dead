@@ -109,6 +109,10 @@ MonoBehaviour:
   isInvincible: 0
   isBoosted: 0
   hasReleased: 1
+  skin: {fileID: 4649024441768099694, guid: 140590b144bbf01459b01af4e7d755cf, type: 3}
+  clothes: {fileID: 1776304566014977030, guid: 140590b144bbf01459b01af4e7d755cf, type: 3}
+  shirt: {fileID: 7219782088286875839, guid: 140590b144bbf01459b01af4e7d755cf, type: 3}
+  meshGO: {fileID: 4069018852484705507}
 --- !u!1001 &8540254100690838848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -991,6 +995,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 84137020060426271}
   m_SourcePrefab: {fileID: 100100000, guid: 140590b144bbf01459b01af4e7d755cf, type: 3}
+--- !u!1 &4069018852484705507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5691737172168133027, guid: 140590b144bbf01459b01af4e7d755cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 8540254100690838848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8146917882052035243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 140590b144bbf01459b01af4e7d755cf,

@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using UnityEditor.ShaderGraph;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -58,16 +60,27 @@ public class Character : MonoBehaviour
     // True if the character is switching of position
     private bool IsMoving => !(Vector3.Distance(transform.position, spots[_actualSpot].position) < 0.01f);
 
-    private Animator _animatorController;
-
     [HideInInspector] public bool isInvincible;
     [HideInInspector] public bool isBoosted;
     [HideInInspector] public bool hasReleased = true;
 
-    private TweenerCore<Vector3, Vector3, VectorOptions> jumpTweener;
-    private TweenerCore<Vector3, Vector3, VectorOptions> moveTweener;
+    private TweenerCore<Vector3, Vector3, VectorOptions> _jumpTweener;
+    private TweenerCore<Vector3, Vector3, VectorOptions> _moveTweener;
+
+    [Header("Animation properties")] 
+    [SerializeField] private Material skin;
+    [SerializeField] private Material clothes;
+    [SerializeField] private Material shirt;
+    [SerializeField] private GameObject meshGO;
+    private float _timer;
+    private float _targetTimer;
+    private float _maxTimer = 2f;
+    private bool _isHurt;
     
     private void Awake() {
+        _moveTweener?.Kill();
+        _jumpTweener?.Kill();
+        ResetMaterial();
         // Set the initial value at 1, the middle spot point index
         ActualSpot = 1;
         Current = this;
@@ -77,7 +90,16 @@ public class Character : MonoBehaviour
             DeterminesDirection();
         };
         TapInputAction.canceled += context => hasReleased = true;
-        _animatorController = GetComponentInChildren<Animator>();
+    }
+
+    private void ResetMaterial() {
+        skin.color = Color.white;
+        shirt.color = Color.white;
+        clothes.color = Color.white;
+    }
+
+    private void Update() {
+        if(_isHurt) HideAndShow();
     }
 
     private void DeterminesDirection() {
@@ -110,19 +132,19 @@ public class Character : MonoBehaviour
     private void Move() {
         if(!_canMove) return;
         _canMove = false;
-        moveTweener = transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true);
-        moveTweener.onComplete += () => {
+        _moveTweener = transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true);
+        _moveTweener.onComplete += () => {
             _canMove = true;
-            moveTweener.Kill();
+            _moveTweener.Kill();
         };
     }
 
     public void Jump() {
         _canMove = false;
-       jumpTweener = transform.DOMoveY(6f, .3f, true);
-        jumpTweener.onComplete += () => {
+       _jumpTweener = transform.DOMoveY(6f, .3f, true);
+        _jumpTweener.onComplete += () => {
            _canMove = true;
-           transform.DOMoveY(1.8f, .3f, true).onComplete += () => jumpTweener.Kill();
+           transform.DOMoveY(1.8f, .3f, true).onComplete += () => _jumpTweener.Kill();
        };
     }
 
@@ -144,7 +166,7 @@ public class Character : MonoBehaviour
             if(isInvincible) return;
             Collided?.Invoke();
             RoadsManager.SlowDown();
-            _animatorController.SetTrigger(_animatorController.GetParameter(0).name);
+            HurtAnimation();
             Camera.main.DOShakePosition(1f, Vector3.one * 0.1f);
             if(GameManager.GetVibration()) Handheld.Vibrate();
         }
@@ -160,13 +182,39 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if(other.CompareTag("Obstacle")) _animatorController.ResetTrigger("Hurt");
+    private void HurtAnimation() {
+        _isHurt = true;
+        isInvincible = false;
+        // Color fade
+        Fade(skin);
+        Fade(clothes);
+        Fade(shirt);
+    }
+    
+    private void Fade(Material m) {
+        m.DOColor(Color.red, 0).onComplete += () => m.DOColor(Color.white, 1f).onComplete += () => Debug.Log("Clean");
+    }
+
+    private void HideAndShow() {
+        _timer += Time.deltaTime;
+        // every 0.25f second
+        if(_timer < _targetTimer + 0.25f) return;
+        _targetTimer += 0.25f;
+        meshGO.SetActive(!meshGO.activeSelf);
+        if (_timer < _maxTimer) return;
+        // Reset value
+        meshGO.SetActive(true);
+        isInvincible = false;
+        _timer = 0;
+        _targetTimer = 0f;
+        _isHurt = false;
     }
 
     public void DisableInputs() {
         TapInputAction.Disable();
         SlideInputAction.Disable();
+        _moveTweener?.Kill();
+        _jumpTweener?.Kill();
     }
     
     public void EnableInputs() {
@@ -175,7 +223,7 @@ public class Character : MonoBehaviour
     }
 
     private void OnDestroy() {
-        moveTweener?.Kill();
-        jumpTweener?.Kill();
+        _moveTweener?.Kill();
+        _jumpTweener?.Kill();
     }
 }
