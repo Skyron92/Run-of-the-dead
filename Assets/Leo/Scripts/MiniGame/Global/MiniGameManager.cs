@@ -27,7 +27,7 @@ public class MiniGameManager : MonoBehaviour
         if(RunnerManager.IsEnded()) return;
         Character.Current.enabled = false;
         RoadsManager.StopMovement();
-        SpawnDialogBox(e.DialogBoxPrefab);
+        SpawnDialogBox(e.DialogBoxPrefab, e.Headsprite);
         _miniGamePrefab = e.MgPrefab;
         pauseButton.interactable = false;
     }
@@ -36,9 +36,11 @@ public class MiniGameManager : MonoBehaviour
     /// Display the PNJ dialog
     /// </summary>
     /// <param name="dialogBox"></param>
-    private void SpawnDialogBox(GameObject dialogBox) {
+    private void SpawnDialogBox(GameObject dialogBox, Sprite headSprite) {
         _dialogBoxInstance = Instantiate(dialogBox);
-        _dialogBoxInstance.GetComponentInChildren<Dialog>().DisplayEnded += OnDisplayEnded;
+        var dialog = _dialogBoxInstance.GetComponent<Dialog>();
+        dialog.DisplayEnded += OnDisplayEnded;
+        dialog.SetSprite(headSprite);
     }
 
     /// <summary>

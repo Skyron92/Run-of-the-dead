@@ -16,6 +16,10 @@ public class Dialog : MonoBehaviour
 
     private TextMeshProUGUI _tmpDialog;
 
+    [SerializeField] private Sprite headSprite;
+
+    public void SetSprite(Sprite sprite) => headSprite = sprite;
+
     // Write only variable
     private string DisplayedText {
         set => _tmpDialog.text = value;
