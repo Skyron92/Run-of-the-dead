@@ -155,7 +155,7 @@ public class Character : MonoBehaviour
             if(isBoosted) return;
             PNJ pnj = other.gameObject.GetComponent<PNJ>();
             DisableInputs();
-            MgStarted?.Invoke(this, new MgStartedEventArgs(pnj.GetMGPrefab(), pnj.GetDiologBox()));
+            MgStarted?.Invoke(this, new MgStartedEventArgs(pnj.GetMGPrefab(), pnj.GetDialogBox(), pnj.GetSprite()));
         }
 
         if (other.CompareTag("Beer")) {

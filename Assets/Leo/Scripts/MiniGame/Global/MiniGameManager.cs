@@ -24,9 +24,10 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnMGStarted(object sender, MgStartedEventArgs e) {
+        if(RunnerManager.IsEnded()) return;
         Character.Current.enabled = false;
         RoadsManager.StopMovement();
-        SpawnDialogBox(e.DialogBoxPrefab);
+        SpawnDialogBox(e.DialogBoxPrefab, e.Headsprite);
         _miniGamePrefab = e.MgPrefab;
         pauseButton.interactable = false;
     }
@@ -35,9 +36,11 @@ public class MiniGameManager : MonoBehaviour
     /// Display the PNJ dialog
     /// </summary>
     /// <param name="dialogBox"></param>
-    private void SpawnDialogBox(GameObject dialogBox) {
+    private void SpawnDialogBox(GameObject dialogBox, Sprite headSprite) {
         _dialogBoxInstance = Instantiate(dialogBox);
-        _dialogBoxInstance.GetComponentInChildren<Dialog>().DisplayEnded += OnDisplayEnded;
+        var dialog = _dialogBoxInstance.GetComponent<Dialog>();
+        dialog.DisplayEnded += OnDisplayEnded;
+        dialog.SetSprite(headSprite);
     }
 
     /// <summary>
@@ -57,6 +60,10 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="miniGame">Mini game prefab</param>
     /// <param name="instance">Instance of the mini game to harvest</param>
     private void SpawnMiniGame(GameObject miniGame, out GameObject instance) {
+        if (RunnerManager.IsEnded()) {
+            instance = null;
+            return;
+        }
         instance = Instantiate(miniGame);
         _miniGameReference = (IMiniGame)GameObject.FindGameObjectWithTag("MiniGame").GetComponent(typeof(IMiniGame));
         if (_miniGameReference == null) Debug.LogError("No mini-game reference found. Check if the script managing the mini-game is assigned " +
@@ -77,7 +84,7 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnSuccess(object sender, MiniGameEventArgs e) {
-        Invoke("EnablePlayerInput", 1f);
+        Invoke("EnablePlayerInput", 0.2f);
         Destroy(_miniGameInstance);
         RoadsManager.StartMovement();
         StartBonus(e.Bonus);
