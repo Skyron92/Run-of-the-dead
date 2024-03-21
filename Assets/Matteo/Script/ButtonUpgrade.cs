@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -11,22 +8,25 @@ public class ButtonUpgrade : MonoBehaviour
     public TMP_Text beerCountText;
     public Button button;
     [SerializeField] private ItemType type;
+    [SerializeField] private GameObject indicator;
     
-    private void Awake()
-    {
+    private void Awake() {
         Current = this;
         GameManager.BeerCountChanged += () => OnBeerCountChanged();
+        DisplayIndicator();
+        beerCountText.text = GameManager.GetBeerCount().ToString();
+        Debug.Log(GameManager.GetBeerCount());
     }
 
-    private void OnBeerCountChanged()
-    {
-        //Debug.Log("Item = " + type + "Cost = " + Item.GetCost(type));
-        if (GameManager.GetBeerCount() >= Item.GetCost(type)) button.interactable = true;
-        else button.interactable = false;
+    private void DisplayIndicator() {
+        indicator.SetActive(GameManager.GetBeerCount() >= Item.GetCost(type));
     }
-    void Update()
-    {
-        beerCountText.text = "" + GameManager.GetBeerCount();
+
+    private void OnBeerCountChanged() {
+        button.interactable = GameManager.GetBeerCount() >= Item.GetCost(type);
+    }
+    void Update() {
+        beerCountText.text = GameManager.GetBeerCount().ToString();
     }
     
     public void OnButtonClicked()
@@ -47,6 +47,7 @@ public class ButtonUpgrade : MonoBehaviour
                     break;
             }
         }
+        DisplayIndicator();
     }
 }
 
