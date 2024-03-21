@@ -5154,8 +5154,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1407949335622754086, guid: 125f49615f311994397334480d684fe7,
         type: 3}
+      propertyPath: m_text
+      value: '1
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407949335622754086, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
       propertyPath: m_fontSize
-      value: 27.45
+      value: 57.7
       objectReference: {fileID: 0}
     - target: {fileID: 1407949335622754086, guid: 125f49615f311994397334480d684fe7,
         type: 3}
@@ -5197,6 +5204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3051138652456410283, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 2621618740523008
       objectReference: {fileID: 0}
     - target: {fileID: 4132062753485762613, guid: 125f49615f311994397334480d684fe7,
         type: 3}
@@ -5463,9 +5475,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9193993055571251572, guid: 125f49615f311994397334480d684fe7,
+        type: 3}
+      propertyPath: m_Name
+      value: UpgradeLevel
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3051138652456410283, guid: 125f49615f311994397334480d684fe7, type: 3}
     m_RemovedGameObjects:
     - {fileID: 9030169641826826261, guid: 125f49615f311994397334480d684fe7, type: 3}
+    - {fileID: 5368798272857419610, guid: 125f49615f311994397334480d684fe7, type: 3}
+    - {fileID: 2100696143763572332, guid: 125f49615f311994397334480d684fe7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 125f49615f311994397334480d684fe7, type: 3}
