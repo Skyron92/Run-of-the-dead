@@ -67,13 +67,12 @@ public class GameManager : MonoBehaviour
         else _instance = this;
         DontDestroyOnLoad(transform.gameObject);
         saveFilePath = Application.persistentDataPath + "/PlayerData.json";
-        if (File.Exists(saveFilePath))
-            LoadPlayerData();
+        if (File.Exists(saveFilePath)) LoadPlayerData();
         BeerCountChanged?.Invoke();
+        BeerCountChanged += SavePlayerData; // TKT
     }
     
-    public void SavePlayerData()
-    {
+    public void SavePlayerData() {
         _playerData = new PlayerData(_beerCount, _cravateLevel, _armeLevel, _chaussureLevel, _score);
         string savePlayerData = JsonUtility.ToJson(_playerData);
         File.WriteAllText(saveFilePath, savePlayerData);

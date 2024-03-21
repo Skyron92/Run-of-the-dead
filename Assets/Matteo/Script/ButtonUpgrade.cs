@@ -1,13 +1,12 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class ButtonUpgrade : MonoBehaviour
 {
     public static ButtonUpgrade Current;
     public TMP_Text beerCountText;
+    public TMP_Text levelDisplay;
     public Button button;
     [SerializeField] private ItemType type;
     [SerializeField] private GameObject indicator;
@@ -18,19 +17,21 @@ public class ButtonUpgrade : MonoBehaviour
         DisplayIndicator();
     }
 
-    private void Start()
-    {
+    private void Start() {
         Debug.Log(Item.GetCost(type));
         beerCountText.text = GameManager.GetBeerCount().ToString();
     }
 
     private void DisplayIndicator() {
         indicator.SetActive(GameManager.GetBeerCount() >= Item.GetCost(type));
+        levelDisplay.text = GameManager.GetChaussureLevel().ToString();
     }
 
     private void OnBeerCountChanged() {
         button.interactable = GameManager.GetBeerCount() >= Item.GetCost(type);
         beerCountText.text = GameManager.GetBeerCount().ToString();
+        DisplayIndicator();
+        Debug.Log(GameManager.GetBeerCount());
     }
     void Update() {
         beerCountText.text = GameManager.GetBeerCount().ToString();
@@ -40,7 +41,7 @@ public class ButtonUpgrade : MonoBehaviour
     {
         if (GameManager.GetBeerCount() >= Item.GetCost(type))
         {
-            GameManager.SetBeerCount(-(int)Item.GetCost(type));
+            GameManager.SetBeerCount(-Item.GetCost(type));
             switch (type)
             {
                 case ItemType.Arme:
@@ -57,8 +58,7 @@ public class ButtonUpgrade : MonoBehaviour
         DisplayIndicator();
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         GameManager.BeerCountChanged -= OnBeerCountChanged;
     }
 }
