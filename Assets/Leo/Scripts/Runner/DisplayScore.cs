@@ -30,7 +30,6 @@ public class DisplayScore : MonoBehaviour
     private void Awake() {
         Value = RunnerManager.GetScoreReached();
         bestScore.SetActive(RunnerManager.CompareScore());
-        Debug.Log(RunnerManager.GetScoreReached());
     }
 
 

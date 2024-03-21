@@ -65,7 +65,7 @@ public class RunnerManager : MonoBehaviour
     //////////////////////////////////////////////////////////
     private IEnumerator CountScore() {
         _score += (int)(RoadsManager.CurrentSpeed * _incrementDelay);
-        Debug.Log(_incrementDelay);
+//        Debug.Log(_incrementDelay);
         yield return new WaitForSeconds(_incrementDelay);
     }
 }

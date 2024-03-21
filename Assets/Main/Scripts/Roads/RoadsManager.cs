@@ -104,7 +104,7 @@ public class RoadsManager : MonoBehaviour
         if (CurrentSpeed <= maxSpeed)
         {
             isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed + SpeedIncr, 1f);
-            Debug.Log("PlayerSpeed = " + CurrentSpeed);
+//            Debug.Log("PlayerSpeed = " + CurrentSpeed);
             isSpeeding.onComplete += () => SpeedUp();
         }
     }

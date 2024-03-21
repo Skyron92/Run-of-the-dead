@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-public class AnimRun : MonoBehaviour
+public class AnimRun : StateMachineBehaviour
 {
-    public Animator drunkRunForward;
-    
-    private void Update()
-    {
+    private void Update() {
         float speedDifference = RoadsManager.CurrentSpeed / RoadsManager.maxSpeed;
     }
     

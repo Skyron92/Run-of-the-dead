@@ -77,13 +77,15 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnSuccess(object sender, MiniGameEventArgs e) {
-        Character.Current.EnableInputs();
+        Invoke("EnablePlayerInput", 1f);
         Destroy(_miniGameInstance);
         RoadsManager.StartMovement();
         StartBonus(e.Bonus);
         UnBindEvent();
         pauseButton.interactable = true;
     }
+
+    private void EnablePlayerInput() => Character.Current.EnableInputs();
     
     /// <summary>
     /// Unsubscribe to the success event

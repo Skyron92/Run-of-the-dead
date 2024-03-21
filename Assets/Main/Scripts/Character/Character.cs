@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -59,9 +60,9 @@ public class Character : MonoBehaviour
 
     private Animator _animatorController;
 
-    public bool isInvincible;
-    public bool isBoosted;
-    public bool hasReleased = true;
+    [HideInInspector] public bool isInvincible;
+    [HideInInspector] public bool isBoosted;
+    [HideInInspector] public bool hasReleased = true;
 
     private TweenerCore<Vector3, Vector3, VectorOptions> jumpTweener;
     private TweenerCore<Vector3, Vector3, VectorOptions> moveTweener;
@@ -71,27 +72,23 @@ public class Character : MonoBehaviour
         ActualSpot = 1;
         Current = this;
         SceneManager.sceneLoaded += (arg0, mode) => EnableInputs();
-        SlideInputAction.started += ProcessSwipeDelta;
+        SlideInputAction.started += context => {
+            if(EventSystem.current.IsPointerOverGameObject()) return;
+            DeterminesDirection();
+        };
         TapInputAction.canceled += context => hasReleased = true;
-        _animatorController = GetComponent<Animator>();
+        _animatorController = GetComponentInChildren<Animator>();
     }
 
-    private void ProcessTouchComplete() {
-        if(Mathf.Abs(_swipeDirection.magnitude) < _minimumSwipeMagnitude) return;
-        if (Math.Abs(_swipeDirection.x) > _swipeDirection.y) {
-            if(_swipeDirection.x > _sensibility) SetDestination(1);
-            if (_swipeDirection.x < _sensibility) SetDestination(-1);
+    private void DeterminesDirection() {
+        if(Mathf.Abs(SlideInputValue.magnitude) < _minimumSwipeMagnitude || !hasReleased) return;
+        hasReleased = false;
+        if (Math.Abs(SlideInputValue.x) > _swipeDirection.y) {
+            if(SlideInputValue.x > _sensibility) SetDestination(1);
+            if (SlideInputValue.x < _sensibility) SetDestination(-1);
             return;
         }
-        if (_swipeDirection.y > _sensibility) Jump();
-    }
-
-    private void ProcessSwipeDelta(InputAction.CallbackContext context) {
-        if(!hasReleased) return;
-        _swipeDirection = context.ReadValue<Vector2>();
-        hasReleased = false;
-        ProcessTouchComplete();
-        
+        if (SlideInputValue.y > _sensibility) Jump();
     }
 
     /// <summary>
@@ -114,15 +111,18 @@ public class Character : MonoBehaviour
         if(!_canMove) return;
         _canMove = false;
         moveTweener = transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true);
-        moveTweener.onComplete += () => _canMove = true;
+        moveTweener.onComplete += () => {
+            _canMove = true;
+            moveTweener.Kill();
+        };
     }
 
     public void Jump() {
         _canMove = false;
-       jumpTweener = transform.DOMoveY(6.5f, .4f, true);
+       jumpTweener = transform.DOMoveY(6f, .3f, true);
         jumpTweener.onComplete += () => {
            _canMove = true;
-           transform.DOMoveY(1.8f, .4f, true);
+           transform.DOMoveY(1.8f, .3f, true).onComplete += () => jumpTweener.Kill();
        };
     }
 
@@ -136,6 +136,7 @@ public class Character : MonoBehaviour
 
         if (other.CompareTag("Beer")) {
             Destroy(other.gameObject);
+           // Debug.Log("Beer : " + RunnerManager.GetBeerCollected());
             BeerCollected?.Invoke();
         }
 
@@ -143,15 +144,16 @@ public class Character : MonoBehaviour
             if(isInvincible) return;
             Collided?.Invoke();
             RoadsManager.SlowDown();
-            _animatorController.SetTrigger("Hurt");
+            _animatorController.SetTrigger(_animatorController.GetParameter(0).name);
             Camera.main.DOShakePosition(1f, Vector3.one * 0.1f);
             if(GameManager.GetVibration()) Handheld.Vibrate();
         }
 
         if (other.CompareTag("Fatal")) {
             if(isInvincible) return;
+            isInvincible = true;
             Camera.main.DOShakePosition(1f, Vector3.one * 0.8f);
-            RoadsManager.StopMovement(.3f);
+            RoadsManager.StopMovement(0);
             if(GameManager.GetVibration()) Handheld.Vibrate();
             DisableInputs();
             Dead?.Invoke();

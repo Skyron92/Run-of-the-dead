@@ -47,7 +47,7 @@ public class ZombieProgression : MonoBehaviour
             var delta = RoadsManager.CurrentSpeed - zombieSpeed;
             _distance = Math.Clamp(_distance+=delta, 0, _baseDistance);
             UpdateSlider( _distance / _baseDistance);
-            Debug.Log("Pouet = " + delta);
+           // Debug.Log("Pouet = " + delta);
             yield return new WaitForSeconds(1f);
         }
     }
@@ -56,7 +56,7 @@ public class ZombieProgression : MonoBehaviour
     {
         if (distance > 0.08) {
             _slider.value = distance;
-            Debug.Log("Ptitpouet");
+//            Debug.Log("Ptitpouet");
         }
 
         if (IsCloseOfMax()) {
