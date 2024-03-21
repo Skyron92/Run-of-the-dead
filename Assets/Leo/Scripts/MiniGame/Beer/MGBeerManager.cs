@@ -4,6 +4,7 @@ using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -26,6 +27,8 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
 
     [SerializeField] private Image rightLimitImage;
     [SerializeField] private Image leftLimitImage;
+    [SerializeField] private GameObject finger;
+    private static bool _isFirstTime;
 
     private int _goal;
     private int Goal {
@@ -39,6 +42,9 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
         }
     }
     private void Awake() {
+        finger.SetActive(_isFirstTime);
+        _isFirstTime = false;
+        SceneManager.sceneLoaded += (arg0, mode) => _isFirstTime = true;  
         _limit = Random.Range(30f, maxLimit);
         Goal = Random.Range(3, 6);
         SetPicture();

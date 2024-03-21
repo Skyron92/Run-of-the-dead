@@ -3,6 +3,7 @@ using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -64,8 +65,14 @@ namespace MiniGame.Zombie {
         public event IMiniGame.MiniGameSuccessEvent MiniGameSuccess;
 
         [SerializeField] private Sprite deadBirdSprite;
+        
+        [SerializeField] private GameObject finger;
+        private static bool _isFirstTime;
 
         private void Awake() {
+            finger.SetActive(_isFirstTime);
+            _isFirstTime = false;
+            SceneManager.sceneLoaded += (arg0, mode) => _isFirstTime = true;  
             CheckIfVariablesIsAssigned();
             _selfRectTransform = GetComponent<RectTransform>();
             Debug.Log(detectionAreaTransform);

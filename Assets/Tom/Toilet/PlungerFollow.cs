@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlungerFollow : MonoBehaviour
 {
@@ -10,10 +11,15 @@ public class PlungerFollow : MonoBehaviour
     [SerializeField] private RectTransform myPlayZone;
     [SerializeField] private RectTransform touchzone;
     private bool isTracking = false;
+    [SerializeField] private GameObject finger;
+    private static bool _isFirstTime;
     
     private Vector2 InputPosition => myInputPosition.action.ReadValue<Vector2>();
     
     void Start() {
+        finger.SetActive(_isFirstTime);
+        _isFirstTime = false;
+        SceneManager.sceneLoaded += (arg0, mode) => _isFirstTime = true;  
         // Verification si les variable serializefield son assignée dans l'éditeur
         if (!IsEverythingAssigned())
             Debug.LogError("Unassigned Serialized Variable in PlungerScript");
