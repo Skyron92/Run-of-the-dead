@@ -65,7 +65,7 @@ public class RoadsManager : MonoBehaviour
     public static void StopMovement()
     {
         isSpeeding?.Kill();
-        isSpeeding = DOTween.To(() => CurrentSpeed, f => CurrentSpeed = f, 0f, 1f);
+        isSpeeding = DOTween.To(() => CurrentSpeed, f => CurrentSpeed = f, 0f, 0.2f);
     }
     
     public static void StopMovement(float decelerationDuration) {

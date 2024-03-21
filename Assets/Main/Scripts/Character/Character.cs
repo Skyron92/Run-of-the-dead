@@ -129,7 +129,7 @@ public class Character : MonoBehaviour
     /// Executes the character movement
     /// </summary>
     private void Move() {
-        if(!_canMove) return;
+        if(!_canMove && this == null) return;
         _canMove = false;
         _moveTweener = transform.DOMoveX(spots[_actualSpot].position.x, offsetSpeed, true);
         _moveTweener.onComplete += () => {
@@ -139,9 +139,9 @@ public class Character : MonoBehaviour
     }
 
     public void Jump() {
-        if(!_isGrounded) return;
+        if(!_isGrounded && this == null) return;
         _isGrounded = false;
-       _jumpTweener = transform.DOMoveY(6f, .3f, true);
+       _jumpTweener = transform.DOMoveY(5.5f, .3f, true);
         _jumpTweener.onComplete += () => {
            transform.DOMoveY(1.8f, .3f, true).onComplete += () => {
                _isGrounded = true;
