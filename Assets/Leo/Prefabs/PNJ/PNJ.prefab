@@ -58,6 +58,7 @@ MonoBehaviour:
   prefabList:
   - {fileID: 1100061739155265112}
   - {fileID: 5867766415035554029}
+  bubble: {fileID: 5784682915917070412}
 --- !u!65 &4102585398998074959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f4908d5e3e4a91d49b366d5fdfad625e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -262,6 +263,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 007765a2d9c8ddc4ea8d31b7964818b2, type: 3}
+--- !u!1 &5784682915917070412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 007765a2d9c8ddc4ea8d31b7964818b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 6667081887914081565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6560762631046716150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 007765a2d9c8ddc4ea8d31b7964818b2,
