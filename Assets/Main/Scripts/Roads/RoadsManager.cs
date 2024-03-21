@@ -17,7 +17,7 @@ public class RoadsManager : MonoBehaviour
     [SerializeField] private List<GameObject> initRoadsList = new List<GameObject>();
     public static Road currentRoad;
     [SerializeField] private Road StartRoad;
-    private static float SpeedIncr= 1;
+    private static float SpeedIncr= 0.2f;
     public static float BaseSpeed = 15f;
     public static float CurrentSpeed = BaseSpeed;
     private static TweenerCore<float, float, FloatOptions> isSpeeding;
@@ -65,7 +65,7 @@ public class RoadsManager : MonoBehaviour
     public static void StopMovement()
     {
         isSpeeding?.Kill();
-        isSpeeding = DOTween.To(() => CurrentSpeed, f => CurrentSpeed = f, 0f, 1f);
+        isSpeeding = DOTween.To(() => CurrentSpeed, f => CurrentSpeed = f, 0f, 0.2f);
     }
     
     public static void StopMovement(float decelerationDuration) {

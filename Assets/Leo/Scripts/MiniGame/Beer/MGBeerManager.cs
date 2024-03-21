@@ -31,7 +31,10 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
     private int Goal {
         get => _goal;
         set {
-            if(value <= 1) MiniGameSuccess?.Invoke(this, new MiniGameEventArgs(new Bike()));
+            if (value <= 1) {
+                TouchInputAction.Disable();
+                MiniGameSuccess?.Invoke(this, new MiniGameEventArgs(new Bike()));
+            }
             _goal = value;
         }
     }

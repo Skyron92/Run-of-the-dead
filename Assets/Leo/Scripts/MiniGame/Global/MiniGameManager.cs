@@ -17,16 +17,27 @@ public class MiniGameManager : MonoBehaviour
     private void Start() {
         // Subscribe to the MGStarted event
         Character.Current.MgStarted += OnMGStarted;
+        Character.Current.Dead += OnDead;
     }
+
+    private void OnDead() {
+        if(_miniGameInstance) Destroy(_miniGameInstance);
+        if(_dialogBoxInstance) Destroy(_dialogBoxInstance);
+    }
+
     /// <summary>
     /// Called when a PNJ is triggered
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnMGStarted(object sender, MgStartedEventArgs e) {
+        Debug.Log("Start");
         if(RunnerManager.IsEnded()) return;
+        Debug.Log("Ended true");
         Character.Current.enabled = false;
+        Debug.Log("Character okay");
         RoadsManager.StopMovement();
+        Debug.Log("Road stop Okay");
         SpawnDialogBox(e.DialogBoxPrefab, e.Headsprite);
         _miniGamePrefab = e.MgPrefab;
         pauseButton.interactable = false;
@@ -37,10 +48,11 @@ public class MiniGameManager : MonoBehaviour
     /// </summary>
     /// <param name="dialogBox"></param>
     private void SpawnDialogBox(GameObject dialogBox, Sprite headSprite) {
+        Debug.Log(dialogBox);
         _dialogBoxInstance = Instantiate(dialogBox);
-        var dialog = _dialogBoxInstance.GetComponent<Dialog>();
-        dialog.DisplayEnded += OnDisplayEnded;
+        var dialog = _dialogBoxInstance.GetComponentInChildren<Dialog>();
         dialog.SetSprite(headSprite);
+        dialog.DisplayEnded += OnDisplayEnded;
     }
 
     /// <summary>
@@ -84,7 +96,7 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnSuccess(object sender, MiniGameEventArgs e) {
-        Invoke("EnablePlayerInput", 0.2f);
+        Invoke("EnablePlayerInput", 0.1f);
         Destroy(_miniGameInstance);
         RoadsManager.StartMovement();
         StartBonus(e.Bonus);

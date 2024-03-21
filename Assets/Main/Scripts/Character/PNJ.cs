@@ -14,8 +14,7 @@ public class PNJ : MonoBehaviour
     [SerializeField] private List<Sprite> headSprite;
     [SerializeField] private List<GameObject> prefabList;
     private int _index;
-    private void Awake()
-    {
+    private void Awake() {
         _index = Random.Range(0, prefabList.Count);
         prefabList[_index].SetActive(true);
     }
