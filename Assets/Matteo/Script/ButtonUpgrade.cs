@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class ButtonUpgrade : MonoBehaviour
 {
@@ -14,8 +16,12 @@ public class ButtonUpgrade : MonoBehaviour
         Current = this;
         GameManager.BeerCountChanged += () => OnBeerCountChanged();
         DisplayIndicator();
+    }
+
+    private void Start()
+    {
+        Debug.Log(Item.GetCost(type));
         beerCountText.text = GameManager.GetBeerCount().ToString();
-        Debug.Log(GameManager.GetBeerCount());
     }
 
     private void DisplayIndicator() {
@@ -24,6 +30,7 @@ public class ButtonUpgrade : MonoBehaviour
 
     private void OnBeerCountChanged() {
         button.interactable = GameManager.GetBeerCount() >= Item.GetCost(type);
+        beerCountText.text = GameManager.GetBeerCount().ToString();
     }
     void Update() {
         beerCountText.text = GameManager.GetBeerCount().ToString();
@@ -48,6 +55,11 @@ public class ButtonUpgrade : MonoBehaviour
             }
         }
         DisplayIndicator();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.BeerCountChanged -= OnBeerCountChanged;
     }
 }
 
