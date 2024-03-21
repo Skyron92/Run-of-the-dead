@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Tayx.Graphy.Utils.NumString;
+using TMPro;
 using UnityEngine;
 
 public class RunnerManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class RunnerManager : MonoBehaviour
     [SerializeField] private ZombieProgression zombieProgression;
 
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TextMeshProUGUI beerTMP;
 
     private float _incrementDelay = 0.1f;
 
@@ -28,6 +30,7 @@ public class RunnerManager : MonoBehaviour
 
     private void OnBeerCollected() {
         _beers++;
+        beerTMP.text = _beers.ToString();
     }
 
     private void Update() {

@@ -4,7 +4,6 @@ using TMPro;
 
 public class ButtonUpgrade : MonoBehaviour
 {
-    public static ButtonUpgrade Current;
     public TMP_Text beerCountText;
     public TMP_Text levelDisplay;
     public Button button;
@@ -12,7 +11,6 @@ public class ButtonUpgrade : MonoBehaviour
     [SerializeField] private GameObject indicator;
     
     private void Awake() {
-        Current = this;
         GameManager.BeerCountChanged += () => OnBeerCountChanged();
         DisplayIndicator();
     }
