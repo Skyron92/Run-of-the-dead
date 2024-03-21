@@ -20,6 +20,7 @@ public class RunnerManager : MonoBehaviour
     public static bool IsEnded() => _isEnded;
     
     private void Start() {
+        _isEnded = false;
         zombieProgression.GameOver += OnGameOver;
         Character.Current.Dead += OnGameOver;
         Character.Current.BeerCollected += OnBeerCollected;
@@ -67,7 +68,6 @@ public class RunnerManager : MonoBehaviour
     //////////////////////////////////////////////////////////
     private IEnumerator CountScore() {
         _score += (int)(RoadsManager.CurrentSpeed * _incrementDelay);
-//        Debug.Log(_incrementDelay);
         yield return new WaitForSeconds(_incrementDelay);
     }
 }
