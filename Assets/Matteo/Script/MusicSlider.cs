@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class VolumeSlider : MonoBehaviour
+public class MusicSlider : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Slider volumeSlider;
@@ -18,6 +18,7 @@ public class VolumeSlider : MonoBehaviour
     
     public void SetVolumeLevel()
     {
+        Debug.Log(volumeSlider.value);
         audioMixer.SetFloat(volumeParameterName, volumeSlider.value);
         PlayerPrefs.SetFloat(volumeParameterName, volumeSlider.value);
     }
