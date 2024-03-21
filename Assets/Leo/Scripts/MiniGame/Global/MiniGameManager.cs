@@ -38,9 +38,9 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="dialogBox"></param>
     private void SpawnDialogBox(GameObject dialogBox, Sprite headSprite) {
         _dialogBoxInstance = Instantiate(dialogBox);
-        var dialog = _dialogBoxInstance.GetComponent<Dialog>();
-        dialog.DisplayEnded += OnDisplayEnded;
+        var dialog = _dialogBoxInstance.GetComponentInChildren<Dialog>();
         dialog.SetSprite(headSprite);
+        dialog.DisplayEnded += OnDisplayEnded;
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnSuccess(object sender, MiniGameEventArgs e) {
-        Invoke("EnablePlayerInput", 0.2f);
+        Invoke("EnablePlayerInput", 0.1f);
         Destroy(_miniGameInstance);
         RoadsManager.StartMovement();
         StartBonus(e.Bonus);

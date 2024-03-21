@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Tables;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 /// <summary>
 /// Dialog of the PNJ
@@ -16,9 +18,9 @@ public class Dialog : MonoBehaviour
 
     private TextMeshProUGUI _tmpDialog;
 
-    [SerializeField] private Sprite headSprite;
+    [SerializeField] private Image headPicture;
 
-    public void SetSprite(Sprite sprite) => headSprite = sprite;
+    public void SetSprite(Sprite sprite) => headPicture.sprite = sprite;
 
     // Write only variable
     private string DisplayedText {
