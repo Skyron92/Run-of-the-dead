@@ -4992,8 +4992,38 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 96008284489071862, guid: 99e318887a78dde42b0971fe3f4ea7de,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 96008284489071862, guid: 99e318887a78dde42b0971fe3f4ea7de,
+        type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 96008284489071862, guid: 99e318887a78dde42b0971fe3f4ea7de,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 280026472401097854, guid: 99e318887a78dde42b0971fe3f4ea7de,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 304782239944473779, guid: 99e318887a78dde42b0971fe3f4ea7de,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 304782239944473779, guid: 99e318887a78dde42b0971fe3f4ea7de,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 304782239944473779, guid: 99e318887a78dde42b0971fe3f4ea7de,
+        type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1284058066038977273, guid: 99e318887a78dde42b0971fe3f4ea7de,
         type: 3}
@@ -5102,8 +5132,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3705253212443401191, guid: 99e318887a78dde42b0971fe3f4ea7de,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705253212443401191, guid: 99e318887a78dde42b0971fe3f4ea7de,
+        type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705253212443401191, guid: 99e318887a78dde42b0971fe3f4ea7de,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555253220139080546, guid: 99e318887a78dde42b0971fe3f4ea7de,
+        type: 3}
+      propertyPath: fadeDuration
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -54,11 +54,11 @@ public class ZombieProgression : MonoBehaviour
 
     private void UpdateSlider(float distance)
     {
-        if (distance > 0.08) {
+        if (distance > 0.08)
+        {
             _slider.value = distance;
-//            Debug.Log("Ptitpouet");
+            Debug.Log("Ptitpouet = " + distance);
         }
-
         if (IsCloseOfMax()) {
             Character.Current.Collided += () => GameOver?.Invoke(this, EventArgs.Empty);
         }
