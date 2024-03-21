@@ -217,6 +217,8 @@ Transform:
   - {fileID: 4975100338600532419}
   - {fileID: 3524165555927602615}
   - {fileID: 6231538719426888163}
+  - {fileID: 5962904812728363275}
+  - {fileID: 1831242253914795367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4099499961889521862
@@ -1335,6 +1337,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beerSound: {fileID: 3862631038775689385}
+--- !u!1001 &2225719800879614604
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5774502767721553885}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.17
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.08
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+        type: 3}
+      propertyPath: m_Name
+      value: FBX_ZOMBIE_02@Zombie Idle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc, type: 3}
+--- !u!4 &1831242253914795367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eb1c4ae8652373d4fb9d7c52e8b68bdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2225719800879614604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2362042583222884061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3940,6 +4016,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 016717f6d39f45f4bb789db16ec6cdd6,
     type: 3}
   m_PrefabInstance: {fileID: 5659747866298388192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6145943619981889248
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5774502767721553885}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.575293
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3614859
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6281325
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.77810633
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 102.175
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07f38f0fb4de53744927f05e92d928b5,
+        type: 3}
+      propertyPath: m_Name
+      value: FBX_ZOMBIE_01@Zombie Idle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 07f38f0fb4de53744927f05e92d928b5, type: 3}
+--- !u!4 &5962904812728363275 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 07f38f0fb4de53744927f05e92d928b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6145943619981889248}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6226068622097820919
 PrefabInstance:
