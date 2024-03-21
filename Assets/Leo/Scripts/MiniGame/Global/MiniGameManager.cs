@@ -24,6 +24,7 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnMGStarted(object sender, MgStartedEventArgs e) {
+        if(RunnerManager.IsEnded()) return;
         Character.Current.enabled = false;
         RoadsManager.StopMovement();
         SpawnDialogBox(e.DialogBoxPrefab);
@@ -57,6 +58,10 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="miniGame">Mini game prefab</param>
     /// <param name="instance">Instance of the mini game to harvest</param>
     private void SpawnMiniGame(GameObject miniGame, out GameObject instance) {
+        if (RunnerManager.IsEnded()) {
+            instance = null;
+            return;
+        }
         instance = Instantiate(miniGame);
         _miniGameReference = (IMiniGame)GameObject.FindGameObjectWithTag("MiniGame").GetComponent(typeof(IMiniGame));
         if (_miniGameReference == null) Debug.LogError("No mini-game reference found. Check if the script managing the mini-game is assigned " +
@@ -77,7 +82,7 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnSuccess(object sender, MiniGameEventArgs e) {
-        Invoke("EnablePlayerInput", 1f);
+        Invoke("EnablePlayerInput", 0.2f);
         Destroy(_miniGameInstance);
         RoadsManager.StartMovement();
         StartBonus(e.Bonus);
