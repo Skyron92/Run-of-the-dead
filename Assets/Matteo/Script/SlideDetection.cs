@@ -51,7 +51,6 @@ public class SlideDetection : MonoBehaviour
         if (_delta.x > 0 && globalMenu.anchorMax.x == 2)return;
         if (_delta.x < 0 && globalMenu.anchorMax.x == 1) return;
         if (Mathf.Abs(_delta.y) > 0.5f)return;
-        //if(!_isLeft && EventSystem.current.IsPointerOverGameObject()) return;
         
         if (_delta.x > 0) {
             if (hereImage.sprite != spriteNotHere) {
