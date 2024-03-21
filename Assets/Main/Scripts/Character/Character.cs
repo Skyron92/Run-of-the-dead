@@ -155,6 +155,7 @@ public class Character : MonoBehaviour
             if(isBoosted) return;
             PNJ pnj = other.gameObject.GetComponent<PNJ>();
             DisableInputs();
+            Debug.Log(pnj.GetDialogBox());
             MgStarted?.Invoke(this, new MgStartedEventArgs(pnj.GetMGPrefab(), pnj.GetDialogBox(), pnj.GetSprite()));
         }
 
