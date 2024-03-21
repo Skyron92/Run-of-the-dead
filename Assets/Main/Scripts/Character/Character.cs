@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
-using UnityEditor.ShaderGraph;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -47,6 +45,7 @@ public class Character : MonoBehaviour
     public static Character Current;
 
     private bool _canMove = true;
+    private bool _isGrounded = true;
     public delegate void MgStartedEvent(object sender, MgStartedEventArgs e);
 
     public event MgStartedEvent MgStarted;
@@ -105,7 +104,7 @@ public class Character : MonoBehaviour
     private void DeterminesDirection() {
         if(Mathf.Abs(SlideInputValue.magnitude) < _minimumSwipeMagnitude || !hasReleased) return;
         hasReleased = false;
-        if (Math.Abs(SlideInputValue.x) > _swipeDirection.y) {
+        if (Math.Abs(SlideInputValue.x) > SlideInputValue.y) {
             if(SlideInputValue.x > _sensibility) SetDestination(1);
             if (SlideInputValue.x < _sensibility) SetDestination(-1);
             return;
@@ -140,11 +139,14 @@ public class Character : MonoBehaviour
     }
 
     public void Jump() {
-        _canMove = false;
+        if(!_isGrounded) return;
+        _isGrounded = false;
        _jumpTweener = transform.DOMoveY(6f, .3f, true);
         _jumpTweener.onComplete += () => {
-           _canMove = true;
-           transform.DOMoveY(1.8f, .3f, true).onComplete += () => _jumpTweener.Kill();
+           transform.DOMoveY(1.8f, .3f, true).onComplete += () => {
+               _isGrounded = true;
+               _jumpTweener.Kill();
+           };
        };
     }
 

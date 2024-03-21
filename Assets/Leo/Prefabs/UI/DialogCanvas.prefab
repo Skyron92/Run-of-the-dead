@@ -360,7 +360,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -435,7 +435,7 @@ MonoBehaviour:
   localizedStringTable:
     m_TableReference:
       m_TableCollectionName: GUID:90a68156d5d8a304a8df2b3a048b4219
-  delay: 0.05
+  delay: 0.02
 --- !u!1 &9222759601367522330
 GameObject:
   m_ObjectHideFlags: 0
