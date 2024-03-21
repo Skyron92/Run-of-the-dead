@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,8 @@ public class SlideDetection : MonoBehaviour
 
     private float sensibility = .6f;
 
+    private bool _isLeft;
+
     public void DisableSlideInputAction()
     {
         SlideInputAction.Disable();
@@ -41,26 +44,29 @@ public class SlideDetection : MonoBehaviour
         SlideInputAction.Enable();
         SlideInputAction.started += context => Slide(); 
     }
+
     private void Slide()
     {
         if(globalMenu == null) return;
         if (_delta.x > 0 && globalMenu.anchorMax.x == 2)return;
         if (_delta.x < 0 && globalMenu.anchorMax.x == 1) return;
-        if (_delta.y > 0.5f && _delta.y < -0.5f)return;
-        if (EventSystem.current.IsPointerOverGameObject()) return;
-        if (_delta.x >= sensibility) {
+        if (Mathf.Abs(_delta.y) > 0.5f)return;
+        //if(!_isLeft && EventSystem.current.IsPointerOverGameObject()) return;
+        
+        if (_delta.x > 0) {
             if (hereImage.sprite != spriteNotHere) {
                 ExchangeImages();
             }
-            
+            _isLeft = !_isLeft;
             globalMenu.DOAnchorMax(new Vector2(2, globalMenu.anchorMax.y),0.25f);
             globalMenu.DOAnchorMin(new Vector2(1, globalMenu.anchorMin.y),0.25f);
         }
-        if (_delta.x <= -sensibility) {
+        if (_delta.x < 0) {
             if (hereImage.sprite != spriteHere) {
                 ExchangeImages();
             }
-            
+
+            _isLeft = !_isLeft;
             globalMenu.DOAnchorMax(new Vector2(1, globalMenu.anchorMax.y),0.25f);
             globalMenu.DOAnchorMin(new Vector2(0, globalMenu.anchorMin.y),0.25f);
         }
