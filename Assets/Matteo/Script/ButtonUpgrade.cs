@@ -20,6 +20,7 @@ public class ButtonUpgrade : MonoBehaviour
 
     private void OnBeerCountChanged()
     {
+        //Debug.Log("Item = " + type + "Cost = " + Item.GetCost(type));
         if (GameManager.GetBeerCount() >= Item.GetCost(type)) button.interactable = true;
         else button.interactable = false;
     }
@@ -30,18 +31,21 @@ public class ButtonUpgrade : MonoBehaviour
     
     public void OnButtonClicked()
     {
-        GameManager.SetBeerCount(-(int)Item.GetCost(type));
-        switch (type)
+        if (GameManager.GetBeerCount() >= Item.GetCost(type))
         {
-            case ItemType.Arme:
-                GameManager.SetArmelevel(1);
-                break;
-            case ItemType.Chaussure:
-                GameManager.SetChaussureLevel(1);
-                break;
-            case ItemType.Cravate:
-                GameManager.SetCravateLevel(1);
-                break;
+            GameManager.SetBeerCount(-(int)Item.GetCost(type));
+            switch (type)
+            {
+                case ItemType.Arme:
+                    GameManager.SetArmelevel(1);
+                    break;
+                case ItemType.Chaussure:
+                    GameManager.SetChaussureLevel(1);
+                    break;
+                case ItemType.Cravate:
+                    GameManager.SetCravateLevel(1);
+                    break;
+            }
         }
     }
 }
