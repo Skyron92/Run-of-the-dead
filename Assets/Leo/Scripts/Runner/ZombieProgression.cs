@@ -4,8 +4,6 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Pool;
 using UnityEngine.UI;
 public class ZombieProgression : MonoBehaviour
 {
@@ -51,20 +49,18 @@ public class ZombieProgression : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
-
     private void UpdateSlider(float distance)
     {
         if (distance > 0.08)
         {
             _slider.value = distance;
-            Debug.Log("Ptitpouet = " + distance);
+            //Debug.Log("Ptitpouet = " + distance);
         }
         if (IsCloseOfMax()) {
             Character.Current.Collided += () => GameOver?.Invoke(this, EventArgs.Empty);
         }
         else
             Character.Current.Collided -= () => GameOver?.Invoke(this, EventArgs.Empty);
-
     }
     private bool IsCloseOfMax() {
         return _slider.value <= 0.2f;
