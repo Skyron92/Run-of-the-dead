@@ -50,7 +50,7 @@ public class SlideDetection : MonoBehaviour
         if(globalMenu == null) return;
         if (_delta.x > 0 && globalMenu.anchorMax.x == 2)return;
         if (_delta.x < 0 && globalMenu.anchorMax.x == 1) return;
-        if (Mathf.Abs(_delta.y) > 0.5f)return;
+        if (Mathf.Abs(_delta.y) > Mathf.Abs(_delta.x))return;
         
         if (_delta.x > 0) {
             if (hereImage.sprite != spriteNotHere) {
@@ -60,15 +60,15 @@ public class SlideDetection : MonoBehaviour
             globalMenu.DOAnchorMax(new Vector2(2, globalMenu.anchorMax.y),0.25f);
             globalMenu.DOAnchorMin(new Vector2(1, globalMenu.anchorMin.y),0.25f);
         }
-        if (_delta.x < 0) {
-            if (hereImage.sprite != spriteHere) {
-                ExchangeImages();
-            }
 
-            _isLeft = !_isLeft;
-            globalMenu.DOAnchorMax(new Vector2(1, globalMenu.anchorMax.y),0.25f);
-            globalMenu.DOAnchorMin(new Vector2(0, globalMenu.anchorMin.y),0.25f);
+        if (!(_delta.x < 0)) return;
+        if (hereImage.sprite != spriteHere) {
+            ExchangeImages();
         }
+
+        _isLeft = !_isLeft;
+        globalMenu.DOAnchorMax(new Vector2(1, globalMenu.anchorMax.y),0.25f);
+        globalMenu.DOAnchorMin(new Vector2(0, globalMenu.anchorMin.y),0.25f);
     }
     
     public void ExchangeImages() {

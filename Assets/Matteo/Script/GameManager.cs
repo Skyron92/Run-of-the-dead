@@ -57,10 +57,7 @@ public class GameManager : MonoBehaviour
     public static void SetScore(int value) => _score = value;
     public static void SetVibration(bool value) => _vibrationIsActive = value;
 
-    public static void InvokeBeerCountChanged()
-    {
-        BeerCountChanged?.Invoke();
-    }
+
     private GameManager _instance;
     
     // Method
@@ -74,6 +71,10 @@ public class GameManager : MonoBehaviour
         BeerCountChanged += SavePlayerData; // TKT
     }
     
+    public static void InvokeBeerCountChanged()
+    {
+        BeerCountChanged?.Invoke();
+    }
     public void SavePlayerData() {
         _playerData = new PlayerData(_beerCount, _cravateLevel, _armeLevel, _chaussureLevel, _score);
         string savePlayerData = JsonUtility.ToJson(_playerData);
@@ -95,9 +96,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void DeleteSaveFile()
+    {
+        if (File.Exists(saveFilePath))
+        {
+            File.Delete(saveFilePath);
+        }
+    }
     private void OnApplicationFocus(bool hasFocus)
     {
         if(!hasFocus) SavePlayerData();
         else if (hasFocus) LoadPlayerData();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+            DeleteSaveFile();
     }
 }
