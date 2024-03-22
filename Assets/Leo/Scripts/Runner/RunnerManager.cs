@@ -10,6 +10,7 @@ public class RunnerManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI beerTMP;
+    [SerializeField] private TextMeshProUGUI scoreTMP;
 
     private float _incrementDelay = 0.5f;
 
@@ -34,7 +35,11 @@ public class RunnerManager : MonoBehaviour
         _beers++;
         beerTMP.text = _beers.ToString();
     }
-    
+
+    private void ScoreInGame()
+    {
+        scoreTMP.text = _score.ToString();
+    }
 
     public static bool CompareScore() {
         bool bestScore = _score > GameManager.GetScore();
@@ -71,6 +76,7 @@ public class RunnerManager : MonoBehaviour
     private IEnumerator CountScore() {
         while (true) {
             _score += (int)(RoadsManager.CurrentSpeed * _incrementDelay);
+            ScoreInGame();
             yield return new WaitForSeconds(1);
         }
     }
