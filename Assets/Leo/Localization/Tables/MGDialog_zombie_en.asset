@@ -17,7 +17,15 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: d33ee1762e6fb2f428fde50d118b35df, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 3640913920
+    m_Localized: Pigeon too high...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 571990077440
+    m_Localized: Human catch pigeon for me.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
