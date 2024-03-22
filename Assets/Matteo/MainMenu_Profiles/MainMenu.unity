@@ -4896,7 +4896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerData:
-    BeerCount: 0
+    BeerCount: 5
     CravateLevel: 0
     ArmeLevel: 0
     ChaussureLevel: 0
@@ -6333,44 +6333,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
         type: 3}
-      propertyPath: m_Colors.m_DisabledColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1088165120}
-    - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236237690844436729, guid: 125f49615f311994397334480d684fe7,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5250809480927208175, guid: 125f49615f311994397334480d684fe7,
         type: 3}
       propertyPath: m_Name
@@ -6388,13 +6353,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5533177996390474553, guid: 125f49615f311994397334480d684fe7,
         type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5533177996390474553, guid: 125f49615f311994397334480d684fe7,
-        type: 3}
       propertyPath: m_fontSize
-      value: 36
+      value: 68.7
       objectReference: {fileID: 0}
     - target: {fileID: 5633235100215033770, guid: 125f49615f311994397334480d684fe7,
         type: 3}

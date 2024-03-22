@@ -103,7 +103,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -125,6 +125,18 @@ MonoBehaviour:
       - m_Target: {fileID: 109424331362222923}
         m_TargetAssemblyTypeName: ButtonUpgrade, Assembly-CSharp
         m_MethodName: OnButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -926,7 +938,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926473916446064138, guid: edb2a4fbb0c858d46aef42cb11239419,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3781224794803745318}
   m_SourcePrefab: {fileID: 100100000, guid: edb2a4fbb0c858d46aef42cb11239419, type: 3}
 --- !u!114 &4131369967740599487 stripped
 MonoBehaviour:
@@ -934,7 +950,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6253185343605920794}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6969995288108198416}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -946,3 +962,21 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6253185343605920794}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6969995288108198416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926473916446064138, guid: edb2a4fbb0c858d46aef42cb11239419,
+    type: 3}
+  m_PrefabInstance: {fileID: 6253185343605920794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3781224794803745318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969995288108198416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201cfbe305df4274a96bb8ef8f279b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
