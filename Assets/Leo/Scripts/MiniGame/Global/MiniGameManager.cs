@@ -31,13 +31,9 @@ public class MiniGameManager : MonoBehaviour
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void OnMGStarted(object sender, MgStartedEventArgs e) {
-        Debug.Log("Start");
         if(RunnerManager.IsEnded()) return;
-        Debug.Log("Ended true");
         Character.Current.enabled = false;
-        Debug.Log("Character okay");
         RoadsManager.StopMovement();
-        Debug.Log("Road stop Okay");
         SpawnDialogBox(e.DialogBoxPrefab, e.Headsprite);
         _miniGamePrefab = e.MgPrefab;
         pauseButton.interactable = false;
