@@ -34,7 +34,11 @@ public class RunnerManager : MonoBehaviour
         _beers++;
         beerTMP.text = _beers.ToString();
     }
-    
+
+    private void ScoreInGame()
+    {
+        
+    }
 
     public static bool CompareScore() {
         bool bestScore = _score > GameManager.GetScore();
