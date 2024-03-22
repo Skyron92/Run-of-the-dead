@@ -12,7 +12,7 @@ public class ZombieProgression : MonoBehaviour
     private Slider _slider;
     [SerializeField] private Image fillPicture;
     [SerializeField, Range(0, 1)] private float fadeDuration;
-    private static float speedIncr = 0.75f;
+    private static float speedIncr = 0.5f;
     public static float zombieSpeed = 10;
     public static float basezombieSpeed = 10;
     private static float maxZombieSpeed = 120;
