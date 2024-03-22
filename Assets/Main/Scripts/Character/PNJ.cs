@@ -21,7 +21,7 @@ public class PNJ : MonoBehaviour
     private void Awake()
     {
         int randomindex = Random.Range(0, 10);
-        if (randomindex <= 1)
+        if (randomindex <= 9)
         {
             _index = Random.Range(0, prefabList.Count);
             prefabList[_index].SetActive(true);

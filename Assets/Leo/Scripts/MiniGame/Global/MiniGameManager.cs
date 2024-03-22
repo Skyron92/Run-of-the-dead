@@ -14,6 +14,10 @@ public class MiniGameManager : MonoBehaviour
 
     [SerializeField] private Button pauseButton;
 
+    public delegate void EventHandler();
+
+    public static event EventHandler Victory; 
+
     private void Start() {
         // Subscribe to the MGStarted event
         Character.Current.MgStarted += OnMGStarted;
@@ -98,6 +102,7 @@ public class MiniGameManager : MonoBehaviour
         StartBonus(e.Bonus);
         UnBindEvent();
         pauseButton.interactable = true;
+        Victory?.Invoke();
     }
 
     private void EnablePlayerInput() => Character.Current.EnableInputs();
