@@ -6111,29 +6111,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6555253220139080546, guid: 99e318887a78dde42b0971fe3f4ea7de,
         type: 3}
-      propertyPath: fadeDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684459632840408514, guid: 99e318887a78dde42b0971fe3f4ea7de,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684459632840408514, guid: 99e318887a78dde42b0971fe3f4ea7de,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684459632840408514, guid: 99e318887a78dde42b0971fe3f4ea7de,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.000015258789
-      objectReference: {fileID: 0}
-    - target: {fileID: 6684459632840408514, guid: 99e318887a78dde42b0971fe3f4ea7de,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.0000076293945
-      objectReference: {fileID: 0}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 1875671565}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6633,7 +6613,7 @@ Transform:
   m_GameObject: {fileID: 1875671564}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9758298, y: -27.153053, z: 30.621338}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -67,8 +67,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
         saveFilePath = Application.persistentDataPath + "/PlayerData.json";
         if (File.Exists(saveFilePath)) LoadPlayerData();
-        BeerCountChanged?.Invoke();
         BeerCountChanged += SavePlayerData; // TKT
+        BeerCountChanged?.Invoke();
+        
     }
     
     public static void InvokeBeerCountChanged()
