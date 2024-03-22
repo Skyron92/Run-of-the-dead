@@ -352,8 +352,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Bonjour
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f37df1d75fd866b4d8ab8bb3b003af31, type: 2}
-  m_sharedMaterial: {fileID: 801841152917818613, guid: f37df1d75fd866b4d8ab8bb3b003af31,
+  m_fontAsset: {fileID: 11400000, guid: a73a299517a9755488ef409c957ef31f, type: 2}
+  m_sharedMaterial: {fileID: 4807747016938052209, guid: a73a299517a9755488ef409c957ef31f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
