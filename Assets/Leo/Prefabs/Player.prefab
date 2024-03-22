@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1215535861724156796
 Transform:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4938,12 +4938,12 @@ MonoBehaviour:
   tapInputActionReference: {fileID: 5995424857095566631, guid: cc918b61496069342bf8e299f2c4f8aa,
     type: 3}
   isInvincible: 0
-  isBoosted: 0
   hasReleased: 1
   skin: {fileID: 4649024441768099694, guid: 140590b144bbf01459b01af4e7d755cf, type: 3}
   clothes: {fileID: 1776304566014977030, guid: 140590b144bbf01459b01af4e7d755cf, type: 3}
   shirt: {fileID: 7219782088286875839, guid: 140590b144bbf01459b01af4e7d755cf, type: 3}
   meshGO: {fileID: 4069018852484705507}
+  speedEffect: {fileID: 8692019508658516268}
 --- !u!1001 &8540254100690838848
 PrefabInstance:
   m_ObjectHideFlags: 0
