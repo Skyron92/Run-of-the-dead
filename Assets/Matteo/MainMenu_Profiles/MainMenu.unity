@@ -6528,7 +6528,7 @@ PrefabInstance:
         type: 3}
       propertyPath: beerCountText
       value: 
-      objectReference: {fileID: 814268650}
+      objectReference: {fileID: 1181467144}
     - target: {fileID: 8464835656066590766, guid: 125f49615f311994397334480d684fe7,
         type: 3}
       propertyPath: m_fontSize

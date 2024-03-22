@@ -6,27 +6,28 @@ public class ButtonUpgrade : MonoBehaviour
 {
     public TMP_Text beerCountText;
     public TMP_Text levelDisplay;
+    public TMP_Text costDisplay;
     public Button button;
     [SerializeField] private ItemType type;
     [SerializeField] private GameObject indicator;
     
     private void Awake() {
         GameManager.BeerCountChanged += () => OnBeerCountChanged();
-        DisplayIndicator();
     }
 
     private void Start() {
-        beerCountText.text = Item.GetCost(type).ToString();
+        DisplayIndicator();
     }
 
     private void DisplayIndicator() {
         indicator.SetActive(GameManager.GetBeerCount() >= Item.GetCost(type));
         levelDisplay.text = GameManager.GetChaussureLevel().ToString();
+        beerCountText.text = GameManager.GetBeerCount().ToString();
+        costDisplay.text = Item.GetCost(type).ToString();
     }
 
     private void OnBeerCountChanged() {
         button.interactable = GameManager.GetBeerCount() >= Item.GetCost(type);
-        beerCountText.text = Item.GetCost(type).ToString();
         DisplayIndicator();
     }
     
