@@ -428,7 +428,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillPicture: {fileID: 7544541046234039321}
-  fadeDuration: 0.5
+  fadeDuration: 1
+  volume: {fileID: 0}
 --- !u!1 &6712117398352239941
 GameObject:
   m_ObjectHideFlags: 0

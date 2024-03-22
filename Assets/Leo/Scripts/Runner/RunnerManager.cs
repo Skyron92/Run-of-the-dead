@@ -24,6 +24,7 @@ public class RunnerManager : MonoBehaviour
     private void Start() {
         _isEnded = false;
         zombieProgression.GameOver += OnGameOver;
+        zombieProgression.GameOver += (sender, args) => StopCoroutine(CountScore()); 
         Character.Current.Dead += OnGameOver;
         Character.Current.BeerCollected += OnBeerCollected;
         StartCoroutine(CountScore());
@@ -68,7 +69,9 @@ public class RunnerManager : MonoBehaviour
     // !!!! Ajouter les stats du perso !!!!!!!!!!!!!!!!!!!!!!!
     //////////////////////////////////////////////////////////
     private IEnumerator CountScore() {
-        _score += (int)(RoadsManager.CurrentSpeed * _incrementDelay);
-        yield return new WaitForSeconds(1);
+        while (true) {
+            _score += (int)(RoadsManager.CurrentSpeed * _incrementDelay);
+            yield return new WaitForSeconds(1);
+        }
     }
 }
