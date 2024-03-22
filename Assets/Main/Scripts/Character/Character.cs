@@ -167,11 +167,11 @@ public class Character : MonoBehaviour
 
         if (other.CompareTag("Obstacle")) {
             if(isInvincible) return;
-            Collided?.Invoke();
             RoadsManager.SlowDown();
             HurtAnimation();
             Camera.main.DOShakePosition(1f, Vector3.one * 0.1f);
             if(GameManager.GetVibration()) Handheld.Vibrate();
+            Collided?.Invoke();
         }
 
         if (other.CompareTag("Fatal")) {

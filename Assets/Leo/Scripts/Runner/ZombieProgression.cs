@@ -57,11 +57,18 @@ public class ZombieProgression : MonoBehaviour
             //Debug.Log("Ptitpouet = " + distance);
         }
         if (IsCloseOfMax()) {
-            Character.Current.Collided += () => GameOver?.Invoke(this, EventArgs.Empty);
+            Character.Current.Collided += OnCollided;
         }
         else
-            Character.Current.Collided -= () => GameOver?.Invoke(this, EventArgs.Empty);
+            Character.Current.Collided -= OnCollided;
     }
+
+    private void OnCollided() {
+        RoadsManager.StopMovement(0);
+        Character.Current.DisableInputs();
+        GameOver?.Invoke(this, EventArgs.Empty);
+    }
+
     private bool IsCloseOfMax() {
         return _slider.value <= 0.2f;
     }
