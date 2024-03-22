@@ -152,6 +152,7 @@ public class Character : MonoBehaviour
 
     public void Jump() {
         if(!_isGrounded && this == null) return;
+        _jumpTweener?.Kill();
         _isGrounded = false;
        _jumpTweener = transform.DOMoveY(6.5f, 0.2f, true);
         _jumpTweener.onComplete += () => {
