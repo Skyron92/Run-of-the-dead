@@ -18,11 +18,11 @@ public class RoadsManager : MonoBehaviour
     public static Road currentRoad;
     [SerializeField] private Road StartRoad;
     private static float SpeedIncr= 0.2f;
-    public static float BaseSpeed = 15f;
+    private static float BaseSpeed = 15f;
     public static float CurrentSpeed = BaseSpeed + GameManager.GetChaussureLevel() / 2;
     private static TweenerCore<float, float, FloatOptions> isSpeeding;
-    public static float maxSpeed = 100;
-    private static int lastindex;
+    private static float maxSpeed = 100;
+    private static int _lastindex;
 
     private void Awake() {
         // Initialize the current road
@@ -47,7 +47,7 @@ public class RoadsManager : MonoBehaviour
     public static void SpawnNextRoad() {
         // Get a random index in the range of the RoadsList
         int index = Random.Range(0, RoadsList.Count);
-        if (lastindex != index)
+        if (_lastindex != index)
         {
             // Instantiate a road and save it in a variable
             var instance = Instantiate(RoadsList[index]);
@@ -57,9 +57,9 @@ public class RoadsManager : MonoBehaviour
 
             // Update the new current road
             currentRoad = myRoad;
-            lastindex = index;
+            _lastindex = index;
         }
-        else if (lastindex == index)
+        else if (_lastindex == index)
             SpawnNextRoad();
     }
     public static void StopMovement()
@@ -104,7 +104,6 @@ public class RoadsManager : MonoBehaviour
         if (CurrentSpeed <= maxSpeed)
         {
             isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed + SpeedIncr, 1f);
-//            Debug.Log("PlayerSpeed = " + CurrentSpeed);
             isSpeeding.onComplete += () => SpeedUp();
         }
     }
@@ -112,26 +111,18 @@ public class RoadsManager : MonoBehaviour
     public static void SpeedUp(float target) {
         isSpeeding?.Kill();
         float time = 5f;
-        if (CurrentSpeed <= maxSpeed + target)
-        {
-            isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
-            isSpeeding.onComplete += () =>
-            {
-                while (time > 0)
-                {
-                    time -= Time.deltaTime;
-                }
-                SpeedUp();
-            };
-        }
+        if (!(CurrentSpeed <= maxSpeed + target)) return;
+        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, 1f);
+        isSpeeding.onComplete += () => {
+            while (time > 0) time -= Time.deltaTime;
+            SpeedUp();
+        };
     }
     public static void SpeedUp(float target, float accelerationDuration) {
         isSpeeding?.Kill();
-        if (CurrentSpeed <= maxSpeed)
-        {
-            isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, accelerationDuration);
-            isSpeeding.onComplete += () => SpeedUp(target, accelerationDuration);
-        }
+        if (!(CurrentSpeed <= maxSpeed)) return;
+        isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, target, accelerationDuration);
+        isSpeeding.onComplete += () => SpeedUp(target, accelerationDuration);
     }
     
 }
