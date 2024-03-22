@@ -24,6 +24,7 @@ public class ButtonUpgrade : MonoBehaviour
         levelDisplay.text = GameManager.GetChaussureLevel().ToString();
         beerCountText.text = GameManager.GetBeerCount().ToString();
         costDisplay.text = Item.GetCost(type).ToString();
+        Debug.Log(GameManager.GetBeerCount());
     }
 
     private void OnBeerCountChanged() {
