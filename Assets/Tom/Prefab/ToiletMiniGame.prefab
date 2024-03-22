@@ -5666,7 +5666,7 @@ RectTransform:
   - {fileID: 4429553251064284843}
   m_Father: {fileID: 2681393006924129071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0.1}
+  m_AnchorMin: {x: 0.1, y: 0.25}
   m_AnchorMax: {x: 0.9, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -5738,7 +5738,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.4, y: -623.5}
+  m_Offset: {x: 2.4, y: -762}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5799,7 +5799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -234}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8909717220711457394
@@ -6107,10 +6107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementType: 0
-  upTarget: 5
-  downTarget: -5
   verticalSpeed: 1
   target: {fileID: 0}
+  birdMovement: {fileID: 0}
 --- !u!224 &2429886412196039548 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7187936334988051110, guid: fad20f5699b8c2d4382970bc43eb6ee2,
