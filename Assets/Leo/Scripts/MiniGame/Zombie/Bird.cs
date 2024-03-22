@@ -67,7 +67,7 @@ namespace MiniGame.Zombie {
         [SerializeField] private Sprite deadBirdSprite;
         
         [SerializeField] private GameObject finger;
-        private static bool _isFirstTime;
+        private static bool _isFirstTime = true;
 
         private void Awake() {
             finger.SetActive(_isFirstTime);

@@ -12,7 +12,7 @@ public class PlungerFollow : MonoBehaviour
     [SerializeField] private RectTransform touchzone;
     private bool isTracking = false;
     [SerializeField] private GameObject finger;
-    private static bool _isFirstTime;
+    private static bool _isFirstTime = true;
     
     private Vector2 InputPosition => myInputPosition.action.ReadValue<Vector2>();
     

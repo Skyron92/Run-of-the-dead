@@ -27,6 +27,10 @@ namespace MiniGame.Zombie
         private RectTransform _selfRectTransform;
 
         private TweenerCore<Vector3, Vector3, VectorOptions> tweenerCore;
+
+        public delegate void EventHandler();
+
+        public event EventHandler Moved;
         private void Awake() {
             _selfRectTransform = GetComponent<RectTransform>();
         }
@@ -38,7 +42,10 @@ namespace MiniGame.Zombie
         private void Move() {
             SetUpDestination();
             tweenerCore = _selfRectTransform.DOMove(_destination, moveSpeed);
-            tweenerCore.onComplete += () => Move();
+            tweenerCore.onComplete += () => {
+                Move();
+                Moved?.Invoke();
+            };
         }
 
         public void StopMoving() {

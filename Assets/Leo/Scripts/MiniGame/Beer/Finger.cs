@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using MiniGame.Zombie;
 using UnityEngine;
 
 public class Finger : MonoBehaviour
@@ -13,8 +14,9 @@ public class Finger : MonoBehaviour
     [SerializeField, Range(0,1)] private float verticalSpeed;
 
     [Header("Follow settings")] [SerializeField]
-    private Transform target;
-    private void Start() {
+    private Transform target; [SerializeField]
+    private BirdMovement birdMovement;
+    private void OnEnable() {
         _rectTransform = GetComponent<RectTransform>();
         switch (movementType) {
             case MovementType.Vertical :
@@ -33,7 +35,7 @@ public class Finger : MonoBehaviour
     }
 
     private void Follow(Transform _target) {
-        _rectTransform.DOMove(_target.position, 1.2f).onComplete += () => Follow(_target);
+        _rectTransform.DOMove(_target.position, 1f).onComplete += () => Follow(_target);
     }
 }
 
