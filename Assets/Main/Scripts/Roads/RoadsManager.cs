@@ -19,7 +19,7 @@ public class RoadsManager : MonoBehaviour
     [SerializeField] private Road StartRoad;
     private static float SpeedIncr= 0.2f;
     public static float BaseSpeed = 15f;
-    public static float CurrentSpeed = BaseSpeed;
+    public static float CurrentSpeed = BaseSpeed + GameManager.GetChaussureLevel() / 2;
     private static TweenerCore<float, float, FloatOptions> isSpeeding;
     public static float maxSpeed = 100;
     private static int lastindex;
