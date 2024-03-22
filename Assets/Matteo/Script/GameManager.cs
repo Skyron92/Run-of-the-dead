@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public delegate void Eventhandler();
     public static event Eventhandler BeerCountChanged;
     public PlayerData _playerData;
-    private string saveFilePath;
+    private static string saveFilePath;
     
     // Getter
     public static int GetBeerCount() => _beerCount;
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DeleteSaveFile()
+    public static void DeleteSaveFile()
     {
         if (File.Exists(saveFilePath))
         {
@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-            DeleteSaveFile();
+        
+        Debug.Log(GetBeerCount());
     }
 }

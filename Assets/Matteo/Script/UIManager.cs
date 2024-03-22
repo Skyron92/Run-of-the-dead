@@ -1,20 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
-    public static TMP_Text beerCountText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public InputActionReference InputActionReference;
+    public InputAction InputAction => InputActionReference.action;
+    
+    [SerializeField] private TextMeshProUGUI beerTMP;
+
+    private void Start() {
+        InputAction.Enable();
+        InputAction.started += context => {
+            GameManager.SetBeerCount(1);
+            beerTMP.text = GameManager.GetBeerCount().ToString();
+        };
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.D)) GameManager.DeleteSaveFile();
     }
 }
