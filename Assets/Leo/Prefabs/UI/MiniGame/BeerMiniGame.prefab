@@ -895,6 +895,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Finger tuto
       objectReference: {fileID: 0}
+    - target: {fileID: 7121881495012595484, guid: fad20f5699b8c2d4382970bc43eb6ee2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7187936334988051110, guid: fad20f5699b8c2d4382970bc43eb6ee2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -908,7 +913,7 @@ PrefabInstance:
     - target: {fileID: 7187936334988051110, guid: fad20f5699b8c2d4382970bc43eb6ee2,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.6
+      value: 0.63
       objectReference: {fileID: 0}
     - target: {fileID: 7187936334988051110, guid: fad20f5699b8c2d4382970bc43eb6ee2,
         type: 3}
@@ -918,12 +923,12 @@ PrefabInstance:
     - target: {fileID: 7187936334988051110, guid: fad20f5699b8c2d4382970bc43eb6ee2,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.4
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 7187936334988051110, guid: fad20f5699b8c2d4382970bc43eb6ee2,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.7
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 7187936334988051110, guid: fad20f5699b8c2d4382970bc43eb6ee2,
         type: 3}
