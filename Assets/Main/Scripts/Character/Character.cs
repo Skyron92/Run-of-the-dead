@@ -60,7 +60,17 @@ public class Character : MonoBehaviour
     private bool IsMoving => !(Vector3.Distance(transform.position, spots[_actualSpot].position) < 0.01f);
 
     [HideInInspector] public bool isInvincible;
-    [HideInInspector] public bool isBoosted;
+
+    private bool _isBoosted;
+    public bool IsBoosted
+    {
+        get => _isBoosted;
+        set { 
+            _isBoosted = value;
+            speedEffect.Play();
+        }
+    }
+
     [HideInInspector] public bool hasReleased = true;
 
     private TweenerCore<Vector3, Vector3, VectorOptions> _jumpTweener;
@@ -75,6 +85,8 @@ public class Character : MonoBehaviour
     private float _targetTimer;
     private float _maxTimer = 2f;
     private bool _isHurt;
+
+    public ParticleSystem speedEffect;
     
     private void Awake() {
         _moveTweener?.Kill();
@@ -152,7 +164,7 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PNJ")) {
-            if(isBoosted) return;
+            if(IsBoosted) return;
             PNJ pnj = other.gameObject.GetComponent<PNJ>();
             DisableInputs();
             Debug.Log(pnj.GetDialogBox());

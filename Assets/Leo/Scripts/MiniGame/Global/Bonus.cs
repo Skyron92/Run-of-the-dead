@@ -19,7 +19,7 @@ public class Bike : Bonus
 {
     public override void Do() {
         RoadsManager.SpeedUp(RoadsManager.CurrentSpeed + 20);
-        Character.Current.isBoosted = true;
+        Character.Current.IsBoosted = true;
     }
 
     public Type GetType() {
