@@ -22,8 +22,6 @@ public class Taptoplay : MonoBehaviour
             Character.Current.EnableInputs();
             RoadsManager.StartMovement();
             RoadsManager.SpeedUp();
-            zombie.demarreteszombie();
-            runner.startlejeu();
             Destroy(gameObject);
         };
     }
