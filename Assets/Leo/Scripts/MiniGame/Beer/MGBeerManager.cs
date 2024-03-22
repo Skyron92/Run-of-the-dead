@@ -28,7 +28,7 @@ public class MGBeerManager : MonoBehaviour, IMiniGame
     [SerializeField] private Image rightLimitImage;
     [SerializeField] private Image leftLimitImage;
     [SerializeField] private GameObject finger;
-    private static bool _isFirstTime;
+    private static bool _isFirstTime = true;
 
     private int _goal;
     private int Goal {

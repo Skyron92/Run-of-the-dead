@@ -1,4 +1,7 @@
 ﻿using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
+using MiniGame.Zombie;
 using UnityEngine;
 
 public class Finger : MonoBehaviour
@@ -8,20 +11,25 @@ public class Finger : MonoBehaviour
     private RectTransform _rectTransform;
 
     [Header("Vertical settings")] 
-    [SerializeField] private float upTarget;
+    private float _upTarget;
     [SerializeField] private float downTarget;
     [SerializeField, Range(0,1)] private float verticalSpeed;
 
     [Header("Follow settings")] [SerializeField]
-    private Transform target;
-    private void Start() {
+    private Transform target; [SerializeField]
+    private BirdMovement birdMovement;
+
+    private TweenerCore<Vector3, Vector3, VectorOptions> moveTweener;
+    private void OnEnable() {
         _rectTransform = GetComponent<RectTransform>();
         switch (movementType) {
             case MovementType.Vertical :
+                _upTarget = transform.position.y;
                 VerticalMove();
                 break;
             case MovementType.FollowTarget :
-                Follow(target);
+                birdMovement.Moved += () => Follow(target.position);
+                birdMovement.Destroyed += () => birdMovement.Moved -= () => Follow(target.position);
                 break;
             default:
                 return;
@@ -29,11 +37,13 @@ public class Finger : MonoBehaviour
     }
 
     private void VerticalMove() {
-        _rectTransform.DOMoveY(upTarget, verticalSpeed).onComplete += () => _rectTransform.DOMoveY(downTarget, verticalSpeed).onComplete += VerticalMove;
+        _rectTransform.DOMoveY(downTarget, verticalSpeed).onComplete += () => 
+            _rectTransform.DOMoveY(_upTarget, verticalSpeed).onComplete += VerticalMove;
     }
 
-    private void Follow(Transform _target) {
-        _rectTransform.DOMove(_target.position, 1.2f).onComplete += () => Follow(_target);
+    private void Follow(Vector2 _target) {
+        moveTweener?.Kill();
+        moveTweener = _rectTransform.DOMove(_target, 1f);
     }
 }
 

@@ -67,7 +67,7 @@ namespace MiniGame.Zombie {
         [SerializeField] private Sprite deadBirdSprite;
         
         [SerializeField] private GameObject finger;
-        private static bool _isFirstTime;
+        private static bool _isFirstTime = true;
 
         private void Awake() {
             finger.SetActive(_isFirstTime);
@@ -136,6 +136,7 @@ namespace MiniGame.Zombie {
         }
 
         void Hit() {
+            finger.SetActive(false);
             image.DOColor(Color.red, fadeDuration).onComplete += () => image.DOColor(Color.white, fadeDuration);
             Life--;
             if(Life == 0) Die();

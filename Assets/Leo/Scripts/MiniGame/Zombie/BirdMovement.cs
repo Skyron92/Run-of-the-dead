@@ -23,10 +23,16 @@ namespace MiniGame.Zombie
         [SerializeField, Range(0.5f, 5f)] private float moveSpeed;
 
         private Vector2 _destination;
+        public Vector2 Destination => _destination;
 
         private RectTransform _selfRectTransform;
 
         private TweenerCore<Vector3, Vector3, VectorOptions> tweenerCore;
+
+        public delegate void EventHandler();
+
+        public event EventHandler Moved;
+        public event EventHandler Destroyed;
         private void Awake() {
             _selfRectTransform = GetComponent<RectTransform>();
         }
@@ -38,16 +44,21 @@ namespace MiniGame.Zombie
         private void Move() {
             SetUpDestination();
             tweenerCore = _selfRectTransform.DOMove(_destination, moveSpeed);
-            tweenerCore.onComplete += () => Move();
+            tweenerCore.onComplete += () => {
+                Move();
+                Moved?.Invoke();
+            };
         }
 
         public void StopMoving() {
             tweenerCore.Kill();
-            Destroy(this);
+            Destroy(this,0.1f);
+            Destroyed?.Invoke();
         }
         
         private void SetUpDestination() {
             _destination = new Vector2(Random.Range(Left, Right), Random.Range(Down, Up));
+            
         }
     }
 }
