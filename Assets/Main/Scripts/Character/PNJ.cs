@@ -26,6 +26,8 @@ public class PNJ : MonoBehaviour
             _index = Random.Range(0, prefabList.Count);
             prefabList[_index].SetActive(true);
         }
+        else
+            Destroy(gameObject);
     }
 
     private void Start()
