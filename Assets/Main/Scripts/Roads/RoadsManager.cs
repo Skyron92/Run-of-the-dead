@@ -100,7 +100,7 @@ public class RoadsManager : MonoBehaviour
     
     public static void SpeedUp() {
         isSpeeding?.Kill();
-        Character.Current.isBoosted = false;
+        Character.Current.IsBoosted = false;
         if (CurrentSpeed <= maxSpeed)
         {
             isSpeeding = DOTween.To(() => CurrentSpeed,f => CurrentSpeed = f, CurrentSpeed + SpeedIncr, 1f);
