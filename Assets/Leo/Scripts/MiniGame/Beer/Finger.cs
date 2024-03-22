@@ -1,4 +1,6 @@
 ﻿using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using MiniGame.Zombie;
 using UnityEngine;
 
@@ -16,6 +18,8 @@ public class Finger : MonoBehaviour
     [Header("Follow settings")] [SerializeField]
     private Transform target; [SerializeField]
     private BirdMovement birdMovement;
+
+    private TweenerCore<Vector3, Vector3, VectorOptions> moveTweener;
     private void OnEnable() {
         _rectTransform = GetComponent<RectTransform>();
         switch (movementType) {
@@ -24,8 +28,8 @@ public class Finger : MonoBehaviour
                 VerticalMove();
                 break;
             case MovementType.FollowTarget :
-                birdMovement.Moved += () => Follow(target);
-                birdMovement.Destroyed += () => birdMovement.Moved -= () => Follow(target);
+                birdMovement.Moved += () => Follow(target.position);
+                birdMovement.Destroyed += () => birdMovement.Moved -= () => Follow(target.position);
                 break;
             default:
                 return;
@@ -33,11 +37,13 @@ public class Finger : MonoBehaviour
     }
 
     private void VerticalMove() {
-        _rectTransform.DOMoveY(downTarget, verticalSpeed).onComplete += () => _rectTransform.DOMoveY(_upTarget, verticalSpeed).onComplete += VerticalMove;
+        _rectTransform.DOMoveY(downTarget, verticalSpeed).onComplete += () => 
+            _rectTransform.DOMoveY(_upTarget, verticalSpeed).onComplete += VerticalMove;
     }
 
-    private void Follow(Transform _target) {
-        _rectTransform.DOMove(_target.position, 1f);
+    private void Follow(Vector2 _target) {
+        moveTweener?.Kill();
+        moveTweener = _rectTransform.DOMove(_target, 1f);
     }
 }
 

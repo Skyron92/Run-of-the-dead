@@ -136,6 +136,7 @@ namespace MiniGame.Zombie {
         }
 
         void Hit() {
+            finger.SetActive(false);
             image.DOColor(Color.red, fadeDuration).onComplete += () => image.DOColor(Color.white, fadeDuration);
             Life--;
             if(Life == 0) Die();

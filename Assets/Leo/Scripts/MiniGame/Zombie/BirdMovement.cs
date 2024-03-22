@@ -23,6 +23,7 @@ namespace MiniGame.Zombie
         [SerializeField, Range(0.5f, 5f)] private float moveSpeed;
 
         private Vector2 _destination;
+        public Vector2 Destination => _destination;
 
         private RectTransform _selfRectTransform;
 
@@ -57,6 +58,7 @@ namespace MiniGame.Zombie
         
         private void SetUpDestination() {
             _destination = new Vector2(Random.Range(Left, Right), Random.Range(Down, Up));
+            
         }
     }
 }
