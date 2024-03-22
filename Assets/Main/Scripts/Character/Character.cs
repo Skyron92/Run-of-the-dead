@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
     private Vector2 _swipeDirection;
 
     private float _minimumSwipeMagnitude;
-    private float _sensibility;
+    private float _sensibility = 0.5f;
     
     // Current position index
     private int _actualSpot = 1;
@@ -62,8 +62,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public bool isInvincible;
 
     private bool _isBoosted;
-    public bool IsBoosted
-    {
+    public bool IsBoosted {
         get => _isBoosted;
         set { 
             _isBoosted = value;
