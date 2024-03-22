@@ -1880,7 +1880,7 @@ GameObject:
   - component: {fileID: 814268651}
   - component: {fileID: 814268650}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Cost text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3161,6 +3161,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1179076998}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1181467144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5533177996390474553, guid: 125f49615f311994397334480d684fe7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7558954549138183481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1193954597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4987,7 +4999,7 @@ GameObject:
   - component: {fileID: 1740786748}
   - component: {fileID: 1740786747}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Lvl text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5964,6 +5976,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1746075571006572360, guid: 8fb2ec63e31248543b164a3459ea7adb,
+        type: 3}
+      propertyPath: beerTMP
+      value: 
+      objectReference: {fileID: 1181467144}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

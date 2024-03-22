@@ -16,8 +16,7 @@ public class ButtonUpgrade : MonoBehaviour
     }
 
     private void Start() {
-        Debug.Log(Item.GetCost(type));
-        beerCountText.text = GameManager.GetBeerCount().ToString();
+        beerCountText.text = Item.GetCost(type).ToString();
     }
 
     private void DisplayIndicator() {
@@ -27,12 +26,8 @@ public class ButtonUpgrade : MonoBehaviour
 
     private void OnBeerCountChanged() {
         button.interactable = GameManager.GetBeerCount() >= Item.GetCost(type);
-        beerCountText.text = GameManager.GetBeerCount().ToString();
+        beerCountText.text = Item.GetCost(type).ToString();
         DisplayIndicator();
-        Debug.Log(GameManager.GetBeerCount());
-    }
-    void Update() {
-        beerCountText.text = GameManager.GetBeerCount().ToString();
     }
     
     public void OnButtonClicked()
