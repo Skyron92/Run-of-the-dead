@@ -31,6 +31,7 @@ namespace MiniGame.Zombie
         public delegate void EventHandler();
 
         public event EventHandler Moved;
+        public event EventHandler Destroyed;
         private void Awake() {
             _selfRectTransform = GetComponent<RectTransform>();
         }
@@ -50,7 +51,8 @@ namespace MiniGame.Zombie
 
         public void StopMoving() {
             tweenerCore.Kill();
-            Destroy(this);
+            Destroy(this,0.1f);
+            Destroyed?.Invoke();
         }
         
         private void SetUpDestination() {

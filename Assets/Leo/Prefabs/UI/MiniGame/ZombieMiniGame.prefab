@@ -1149,3 +1149,4 @@ MonoBehaviour:
   downTarget: 0
   verticalSpeed: 0
   target: {fileID: 6494065313695251627}
+  birdMovement: {fileID: 7561422571696926379}

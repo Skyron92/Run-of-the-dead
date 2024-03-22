@@ -9,7 +9,7 @@ public class Finger : MonoBehaviour
     private RectTransform _rectTransform;
 
     [Header("Vertical settings")] 
-    [SerializeField] private float upTarget;
+    private float _upTarget;
     [SerializeField] private float downTarget;
     [SerializeField, Range(0,1)] private float verticalSpeed;
 
@@ -20,10 +20,12 @@ public class Finger : MonoBehaviour
         _rectTransform = GetComponent<RectTransform>();
         switch (movementType) {
             case MovementType.Vertical :
+                _upTarget = transform.position.y;
                 VerticalMove();
                 break;
             case MovementType.FollowTarget :
-                Follow(target);
+                birdMovement.Moved += () => Follow(target);
+                birdMovement.Destroyed += () => birdMovement.Moved -= () => Follow(target);
                 break;
             default:
                 return;
@@ -31,11 +33,11 @@ public class Finger : MonoBehaviour
     }
 
     private void VerticalMove() {
-        _rectTransform.DOMoveY(upTarget, verticalSpeed).onComplete += () => _rectTransform.DOMoveY(downTarget, verticalSpeed).onComplete += VerticalMove;
+        _rectTransform.DOMoveY(downTarget, verticalSpeed).onComplete += () => _rectTransform.DOMoveY(_upTarget, verticalSpeed).onComplete += VerticalMove;
     }
 
     private void Follow(Transform _target) {
-        _rectTransform.DOMove(_target.position, 1f).onComplete += () => Follow(_target);
+        _rectTransform.DOMove(_target.position, 1f);
     }
 }
 
