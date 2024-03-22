@@ -12,7 +12,7 @@ public class Finger : MonoBehaviour
 
     [Header("Vertical settings")] 
     private float _upTarget;
-    [SerializeField] private float downTarget;
+    private float _downTarget;
     [SerializeField, Range(0,1)] private float verticalSpeed;
 
     [Header("Follow settings")] [SerializeField]
@@ -25,6 +25,7 @@ public class Finger : MonoBehaviour
         switch (movementType) {
             case MovementType.Vertical :
                 _upTarget = transform.position.y;
+                _downTarget = transform.position.y - 1000;
                 VerticalMove();
                 break;
             case MovementType.FollowTarget :
@@ -37,7 +38,7 @@ public class Finger : MonoBehaviour
     }
 
     private void VerticalMove() {
-        _rectTransform.DOMoveY(downTarget, verticalSpeed).onComplete += () => 
+        _rectTransform.DOMoveY(_downTarget, verticalSpeed).onComplete += () => 
             _rectTransform.DOMoveY(_upTarget, verticalSpeed).onComplete += VerticalMove;
     }
 
